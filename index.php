@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="cover.css" rel="stylesheet">
     <link rel="shortcut icon" href="SmallLogo.ico" />
-	<TITLE>Chibil</TITLE>
+  <TITLE>Chibil</TITLE>
 </head>
 <body>
   
   
      
-		<!-- Navbar -->
+    <!-- Navbar -->
 <nav class="navbar navbar-default">
- 	<div class="container">
- 		<div class="navbar-header">
-     		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-      			<span class="icon-bar"></span>
-       			<span class="icon-bar"></span>
-       			<span class="icon-bar"></span>                        
-     		</button>
-     	</div>
-   		     
+  <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+      </div>
+           
         <div class="collapse navbar-collapse" id="myNavbar">
             
-     			<ul class="nav navbar-nav navbar-right">
-               		<li style="font-size: 12px; margin-top: 3px;">
-     				    	<!--<a href="Formulario_Registro_Especialista.php" >-->
-     				    	<a href="#"><h7 id="colorletra"> <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#myModal" id="colorletra">&nbsp;Sign in&nbsp;</span> 
-     				    	</h7></a>
+          <ul class="nav navbar-nav navbar-right">
+                  <li style="font-size: 12px; margin-top: 3px;">
+                  <!--<a href="Formulario_Registro_Especialista.php" >-->
+                  <a href="#"><h7 id="colorletra"> <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#myModal" id="colorletra">&nbsp;Sign in&nbsp;</span> 
+                  </h7></a>
                     <!--Modal-->
                     <div class="modal fade" id="myModal" role="dialog">
                       <div class="modal-dialog modal-lg">
@@ -96,7 +96,7 @@
 
                                       <div align="left" class="form-group"> 
                                           <label id="colorletra" for="especialidad">Especialidad(es):</label>
-                                          <input type="text" class="form-control" name="txtEspecialidad" placeholder="Especialidad(es)" pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales">
+                                          <input type="text" class="form-control" name="txtEspecialidad" placeholder="Especialidad(es)" pattern='[A-Za-z áéíóú ÁÉÍÓÚ ,]+' title="No se aceptan números ni caractéres especiales">
                                       </div> 
 
                                     </div> <!--col-xs-6 -->
@@ -176,52 +176,52 @@
                     </div>
     
 
-               		</li>
-      				<li>
-     					<div class="dropdown" style="font-size: 12px;" >
-     				    	<li class="dropdown-header" id="menu1" data-toggle="dropdown"> <a href="#"><h7 id="colorletra">  
-     				    		<span class="glyphicon glyphicon-log-in" id="colorletra">&nbsp;Log in&nbsp;</span>
-     				    		</h7></a>
-               				</li>
-                               	<!-- Datos que va a desplegar el dropdown --> 				
-   							<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-    							<div class="container" id="login">
-    								<form class="form-signin">
-       									<h2 class="form-signin-heading" id="colorletra">Inicie sesión</h2>
-       										<label for="inputEmail" >Correo </label>
-       										<input type="email" id="inputEmail" class="form-control" placeholder="Email address" >
-       										<label for="inputPassword" class="sr-only">Contraseña</label>
-       										<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" >
-       										<div class="checkbox">
-         										<label id="colorletra"> <input type="checkbox"   value="remember-me"> Recuerda mi contraseña</label>
-           								</div>
-       										<button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnaceptar" type="submit">Aceptar</button>
-     							</div> <!-- /container login dropdown-->
-     						</ul> <!-- /ul  login dropdown-->
- 					    </div> <!-- /div  login dropdown-->
-     				</li>  <!-- /lista  login dropdown-->
-            	</ul><!-- /ul nav bar-->
-   		</div>  <!-- div class="collapse navbar-collapse" -->
+                  </li>
+              <li>
+              <div class="dropdown" style="font-size: 12px;" >
+                  <li class="dropdown-header" id="menu1" data-toggle="dropdown"> <a href="#"><h7 id="colorletra">  
+                    <span class="glyphicon glyphicon-log-in" id="colorletra">&nbsp;Log in&nbsp;</span>
+                    </h7></a>
+                      </li>
+                                <!-- Datos que va a desplegar el dropdown -->         
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                  <div class="container" id="login">
+                    <form class="form-signin">
+                        <h2 class="form-signin-heading" id="colorletra">Inicie sesión</h2>
+                          <label for="inputEmail" >Correo </label>
+                          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" >
+                          <label for="inputPassword" class="sr-only">Contraseña</label>
+                          <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" >
+                          <div class="checkbox">
+                            <label id="colorletra"> <input type="checkbox"   value="remember-me"> Recuerda mi contraseña</label>
+                          </div>
+                          <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnaceptar" type="submit">Aceptar</button>
+                  </div> <!-- /container login dropdown-->
+                </ul> <!-- /ul  login dropdown-->
+              </div> <!-- /div  login dropdown-->
+            </li>  <!-- /lista  login dropdown-->
+              </ul><!-- /ul nav bar-->
+      </div>  <!-- div class="collapse navbar-collapse" -->
     </div> <!-- div class="container" -->
 </nav> 
 
 
 <div class="site-wrapper">
   <div class="site-wrapper-inner">
-	  	<div class="cover-container">
-      		<div class="inner cover">
-        		<img src="Logo.png" alt="Chibil">
-      		</div> <!--div-inner-cover-->
+      <div class="cover-container">
+          <div class="inner cover">
+            <img src="Logo.png" alt="Chibil">
+          </div> <!--div-inner-cover-->
 
-        	<div class="inner cover">
-        		<h1 id="colorletra">Chibil</h1>
-        	</div>
-        	<div class="-inner-cover">
-      			<p class="lead" id="colorletra">Bienvenido y Bienvenida a Chibil la herramienta web que auxiliar en el monitoreo a pacientes con epilepsia haciendo uso del dispositivo vestible Chibil.</p>
-      	</div><!--div-->
+          <div class="inner cover">
+            <h1 id="colorletra">Chibil</h1>
+          </div>
+          <div class="-inner-cover">
+            <p class="lead" id="colorletra">Bienvenido y Bienvenida a Chibil la herramienta web que auxiliar en el monitoreo a pacientes con epilepsia haciendo uso del dispositivo vestible Chibil.</p>
+        </div><!--div-->
           
       </div> <!-- div-cover-container-->
-  </div>  	<!-- div-site-wrapper-inner-->
+  </div>    <!-- div-site-wrapper-inner-->
 </div> <!-- div-site-wrapper-->
 
 <footer class="footer">
@@ -229,99 +229,79 @@
         <p class="text-muted" id="colorletra">TT 2015-B118</p>
     </div>
 </footer> <!-- Footer-->
-	
+  
 
   <?php
     
     if (isset($_POST["btnRegistrar"])) {
-        # code...
-        include("config.php");
-        include("captura_persona.php");
-        include("captura_direccion.php");
-        include("captura_especialista.php");
-        include("captura_usr.php");
+      # code...
+      include("config.php");
+      include("captura_persona.php");
+      include("captura_direccion.php");
+      include("captura_especialista.php");
+      include("captura_usr.php");
+         
+      //lectura de datos cn el método POST
+        //PERSONA
+        //$id = mysql_query($conexion, "SELECT COUNT(id_persona) FROM $table_persona");
+        $nombre = getNombre();      //persona_tb
+        $apellidouno = getApellidouno(); //persona_tb
+        $apellidodos = getApellidodos(); //persona_tb
+        $sexo = getSexo();          //persona_tb
+        $telpersonal = getTelpersonal(); //persona_tb
+        $correo = getCorreo();    //persona_tb
+        //DIRECCION
+        $calle = getCalle();        //direccion_tb
+        $num = getNum();        //direccion_tb
+        $colonia = getColonia();    //direccion_tb
+        $codpost = getCodpost();    //direccion_tb
+        $telefono = getTelefono();    //direccion_tb
+        //ESPECIALISTA
+        $cedula = getCedula();        //especialista_tb
+        $especialidad = getEspecialidad();  //especialista_tb
+        //CUENTA DE USUARIO
+        $contrasena = getContrasena();    //usuario_tb
+        $recontrasena = getRecontrasena();
+
+        //Mensajes de error
+          $mensaje_contraseña = "Las contraseñas no coinciden";
+          $mensaje_correo = "El correo ya existe";
           
-        //lectura de datos cn el método POST
-          //PERSONA
-          //$id = mysql_query($conexion, "SELECT COUNT(id_persona) FROM $table_persona");
-         /* $nombre = getNombre();      //persona_tb
-          $apellidouno = getApellidouno(); //persona_tb
-          $apellidodos = getApellidodos(); //persona_tb
-          $sexo = getSexo();          //persona_tb
-          $telpersonal = getTelpersonal(); //persona_tb
-          $correo = getCorreo();    //persona_tb
-          //DIRECCION
-          $calle = getCalle();        //direccion_tb
-          $num = getNum();        //direccion_tb
-          $colonia = getColonia();    //direccion_tb
-          $codpost = getCodpost();    //direccion_tb
-          $telefono = getTelefono();    //direccion_tb
-          //ESPECIALISTA
-          $cedula = getCedula();        //especialista_tb
-          $especialidad = getEspecialidad();  //especialista_tb
-          //CUENTA DE USUARIO
-          $contrasena = getContrasena();    //usuario_tb
-          $recontrasena = getRecontrasena();*/
+      //Validar correo exite 
+      //$count_correo = "SELECT COUNT(id_persona) FROM $table_persona WHERE correo_col =  $correo";
 
-          //Validar correo exite 
-          $nombre = 'Nombre';      //persona_tb
-          $apellidouno = 'Apellido'; //persona_tb
-          $apellidodos = getApellidodos(); //persona_tb
-          $sexo = getSexo();          //persona_tb
-          $telpersonal = getTelpersonal(); //persona_tb
-          $correo = getCorreo();    //persona_tb
-          //DIRECCION
-          $calle = getCalle();        //direccion_tb
-          $num = getNum();        //direccion_tb
-          $colonia = getColonia();    //direccion_tb
-          $codpost = getCodpost();    //direccion_tb
-          $telefono = getTelefono();    //direccion_tb
-          //ESPECIALISTA
-          $cedula = getCedula();        //especialista_tb
-          $especialidad = getEspecialidad();  //especialista_tb
-          //CUENTA DE USUARIO
-          $contrasena = getContrasena();    //usuario_tb
-          $recontrasena = getRecontrasena();
+          
+      //Validar contraseña
+      
+      if($contrasena != $recontrasena){
+            echo "<script type=\"text/javascript\">alert(\"$mensaje_contraseña \");</script>"; 
+      } else {
+      
 
-          //Validar datos
-
-                 
         $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo') ";
           //mysql_query($conexion, $nueva_persona);
-
           if ($conexion->query($nueva_persona) === TRUE) {
             $last_id = $conexion->insert_id;
-            //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>"; 
-          
-        
-        $nueva_direccion =  "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id')";
-          mysql_query($conexion,$nueva_direccion);
-
-        // echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>"; 
-     
-          
-        $nuevo_usuario = "INSERT INTO $table_usuario (id_usuario, pssw_col, usrtipo_col) VALUES ('$last_id','$contrasena', 'ESPECIALISTA')";
-
-        //echo "<script type=\"text/javascript\">alert(\"$nuevo_usuario\");</script>"; 
-        
-        $nuevo_espec = "INSERT INTO $table_especialista (id_Especialista, cedula_col, especialidad_col) VALUES ('$last_id','$cedula', '$especialidad')";
-          mysql_query($conexion, $nuevo_espec);
-
-        //echo "<script type=\"text/javascript\">alert(\"$nuevo_espec\");</script>"; 
-        
-
-        }
-
-
-          
-          $nueva_persona = ""; 
-          $nueva_direccion = "";
-          $nuevo_espec = "";
-          $nuevo_usuario = "";
-
-    } 
-
-
+              //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>";        
+              $nueva_direccion =  "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id')";
+                $conexion->query($nueva_direccion);
+              // echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
+              $nuevo_usuario = "INSERT INTO $table_usuario (id_usuario, pssw_col, usrtipo_col) VALUES ('$last_id','$contrasena', 'ESPECIALISTA')";
+                $conexion->query($nuevo_usuario);
+              //echo "<script type=\"text/javascript\">alert(\"$nuevo_usuario\");</script>";              
+              $nuevo_espec = "INSERT INTO $table_especialista (id_Especialista, cedula_col, especialidad_col) VALUES ('$last_id','$cedula', '$especialidad')";
+                $conexion->query($nuevo_espec);
+              //echo "<script type=\"text/javascript\">alert(\"$nuevo_espec\");</script>";  
+      }  //else ifcontrasena    
+    echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. 1\"); </script>"; 
+    echo "<script language=Javascript> location.href=\"Bienvenido.php\"; </script>";     
+    } //if isset
+                
+                $nueva_persona = ""; 
+                $nueva_direccion = "";
+                $nuevo_espec = "";
+                $nuevo_usuario = "";
+          } 
   ?>
 
 </body>

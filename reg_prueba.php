@@ -43,8 +43,18 @@
                                      </div>
                                     </div>
                                   </div> -->
-                          </form>
+                </form>
 
-                       
+                 </div>
 
-                </div>
+<?php
+  
+        $nombre = $_POST['txtNombre'];      //persona_tb
+        $apellidouno = $_POST['txtApellidouno']; //persona_tb
+         
+
+        if ($nombre == $apellidouno){
+          echo "hola";
+        }
+
+?>
