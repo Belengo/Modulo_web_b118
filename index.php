@@ -55,24 +55,24 @@
                                       
                                       <div align="left" class="form-group"> <!-- nombre-->
                                         <label id="colorletra" for="nombre">Nombre(s):</label>
-                                        <input title="Números no permitidos" type="text" class="form-control" name="txtNombre" placeholder="Nombre(s)" required pattern='.*[0-9].*' />
+                                        <input  type="text" class="form-control" name="txtNombre" placeholder="Nombre(s)" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" />
                                        </div> <!-- nombre-->
               
                                       <div align="left" class="form-group"> <!-- apellidouno-->
                                         <label id="colorletra" for="apellidouno"> Primer Apellido: </label>
-                                        <input type="text" class="form-control" name="txtApellidouno" placeholder="Primer Apellido">
+                                        <input type="text" class="form-control" name="txtApellidouno" placeholder="Primer Apellido" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" >
                                       </div> <!--apellidouno-->
                                     
                                       <div align="left" class="form-group"> <!-- apellidodos-->
                                         <label id="colorletra" for="apellidodos">Segundo Apellido: </label>
-                                        <input type="text" class="form-control" name="txtApellidodos" placeholder="Segundo Apellido">
+                                        <input type="text" class="form-control" name="txtApellidodos" placeholder="Segundo Apellido" pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales">
                                       </div> <!--apellidodos-->
                                       
                                       <div align="left" class="form-group">
                                         <div class="form-group"><label id="colorletra"> Sexo: </label> </div>
                                           
                                           <div class="radio-inline">
-                                            <label><input type="radio" name="radSexo" value="F">Femenino</label>
+                                            <label><input type="radio" name="radSexo" value="F" required>Femenino</label>
                                           </div>
                                           
                                           <div class="radio-inline">
@@ -86,7 +86,7 @@
                                       
                                       <div align="left" class="form-group"> 
                                           <label id="colorletra" for="telpersonal">Celular:</label>
-                                          <input type="text" class="form-control" name="txtTelpersonal" placeholder="Celular">
+                                          <input type="text" class="form-control" name="txtTelpersonal" placeholder="Celular" pattern='[0-9]+' title="Sólo números">
                                       </div> 
 
                                       <div align="left" class="form-group"> 
@@ -96,7 +96,7 @@
 
                                       <div align="left" class="form-group"> 
                                           <label id="colorletra" for="especialidad">Especialidad(es):</label>
-                                          <input type="text" class="form-control" name="txtEspecialidad" placeholder="Especialidad(es)">
+                                          <input type="text" class="form-control" name="txtEspecialidad" placeholder="Especialidad(es)" pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales">
                                       </div> 
 
                                     </div> <!--col-xs-6 -->
@@ -105,27 +105,27 @@
                                       <div class="form-group"><h2>Datos de contacto</h2></div>
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="calle">Calle:</label>
-                                                <input type="text" class="form-control" name="txtCalle" placeholder="Calle">
+                                                <input type="text" class="form-control" name="txtCalle" placeholder="Calle" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9]+' title="No se aceptan caractéres especiales">
                                             </div>
 
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="num">Número:</label>
-                                                <input type="text" class="form-control" name="txtNum" placeholder="Numero ext. (e interior si aplica)">
+                                                <input type="text" class="form-control" name="txtNum" placeholder="Numero ext. (e interior si aplica)" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
 
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="email">Colonia:</label>
-                                                <input type="text" class="form-control" name="txtColonia" placeholder="Colonia">
+                                                <input type="text" class="form-control" name="txtColonia" placeholder="Colonia" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
 
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="codpost">Codigo Postal:</label>
-                                                <input type="text" class="form-control" name="txtCodpost" placeholder="Codigo Postal">
+                                                <input type="text" class="form-control" name="txtCodpost" placeholder="Codigo Postal" pattern='[0-9]+' title="No se aceptan letras">
                                             </div>
 
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="telefono">Teléfono:</label>
-                                                <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono local">
+                                                <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono local" pattern='[0-9]+' title="No se aceptan letras">
                                             </div>
                                     </div><!--col-xs-6 -->
                                  </div> <!-- row -->
@@ -137,17 +137,17 @@
                                         
                                         <div class="form-group">
                                           <label id="colorletra" for="correo">Correo Electrónico:</label>
-                                          <input type="email" class="form-control" name="txtCorreo" placeholder="Ingrese correo (con este ingresará al sistema)">
+                                          <input type="email" class="form-control" name="txtCorreo" placeholder="Ingrese correo (con este ingresará al sistema)" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com" >
                                         </div>
                                     
                                         <div class="form-group">
                                           <label id="colorletra" for="contrasena">Contraseña:</label>
-                                          <input type="password" class="form-control" name="txtContrasena" placeholder="Ingrese contraseña ">
+                                          <input type="password" class="form-control" name="txtContrasena" placeholder="Ingrese contraseña" required>
                                         </div>
                                     
                                         <div class="form-group">
                                           <label id="colorletra" for="contrasena">Repita Contraseña:</label>
-                                          <input type="password" class="form-control" name="txtRecontrasena" placeholder="Ingrese contraseña ">
+                                          <input type="password" class="form-control" name="txtRecontrasena" placeholder="Ingrese contraseña" required>
                                         </div>
                                     </div>
                                   </div> 
