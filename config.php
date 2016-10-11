@@ -2,7 +2,7 @@
 
 //Declara las variables para la conexión a la base de datos
 $host = "localhost";
-$basededatos = "tt";
+$basededatos = "B118";
 $usuariodb = "Admin";
 $clavedb = "root";
 

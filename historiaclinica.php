@@ -60,7 +60,7 @@
         <div id="upmenu">
         <a href="vestible.php"> Vestible </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="historiaclinica.php"> Historia Clínica  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="consulta.php" style="visibility:hidden;">Consultas</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       
         <a href="receta.php"> Recetas </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 </div>
@@ -76,47 +76,54 @@
 
     <div class="container-fluid">
         <form action="histor_temp.php" method="POST">    <!--action form--> 
-            <div class="row">
+            <div class="row" id="colorletra">
 
                 <div class="form-group" id="colorletra"><h1>Historia Clínica</h1></div>
                 
                 <div class="col-xs-6">
-                    <div align="left" class="form-group"> <!--Begin-->
-                        <label id="colorletra" for="peso">Alergias:</label>
-                    </div> <!--ends-->
+                    <div class="form-group">
+                      <label for="txtAlergias">Alergias:</label>
+                      <textarea class="form-control" rows="5" id="txtAlergias"></textarea>
+                    </div>
 
-                    <div align="left" class="form-group"> <!--Begin-->
-                        <textarea class="form-control"  name="txtAlergia" style="height:250px;" placeholder="Alergias" cols="5"> </textarea>
-                    </div> <!--ends-->
+                    <div class="form-group">
+                      <label for="txtAlergiasanti">Alergias antiepilépticos:</label>
+                      <textarea class="form-control" rows="5" id="txtAlergiasanti"></textarea>
+                    </div>
 
-                    <div align="left" class="form-group"> <!---->
-                        <label id="colorletra" for="presion">Antecedentes médicos</label>
-                    </div> <!--ends-->
+                    <div class="form-group">
+                      <label for="txtAntecedentes">Antecedentes:</label>
+                      <textarea class="form-control" rows="5" id="txtAntecedentes"></textarea>
+                    </div>
 
-                    <div align="left" class="form-group"> <!--Begin-->
-                        <textarea class="form-control"  name="txtAntecedentes" placeholder="Antecedentes" style="height:250px; "> </textarea>
-                    </div> <!--ends-->
+                    <div class="form-group">
+                      <label for="txtMotivo">Motivo de la consulta:</label>
+                      <textarea class="form-control" rows="5" id="txtMotivo"></textarea>
+                    </div>
                    
                 </div> <!-- div class col-xs-6-->
 
                 <div class="col-xs-6">
-                 
+                     <div class="form-group">
+                          <label for="txtCirugias">Cirugías:</label>
+                          <textarea class="form-control" rows="5" id="txtCirugias"></textarea>
+                        </div>
 
-                    <div align="left" class="form-group"> <!--Begin-->
-                        <label id="colorletra" for="frecuencia">Cirugías</label>
-                    </div> <!--ends-->
+                        <div class="form-group">
+                          <label for="txtAlergiasanti">Hospitalizaciones:</label>
+                          <textarea class="form-control" rows="5" id="txtAlergiasanti"></textarea>
+                        </div>
 
-                    <div align="left" class="form-group"> <!--Begin-->
-                        <textarea class="form-control"  name="txtCirugias" placeholder="Cirugías" style="height:250px; "> </textarea>
-                    </div> <!--ends-->
+                        <div class="form-group">
+                          <label for="txtTransfusiones">Transfusiones:</label>
+                          <textarea class="form-control" rows="5" id="txtTransfusiones"></textarea>
+                        </div>
 
-                    <div align="left" class="form-group"> <!--Begin-->
-                        <label id="colorletra" for="temperatura">Notas</label>
-                    </div> <!--ends-->  
+                        <div class="form-group">
+                          <label for="txtPadecimiento">Padecimiento actual:</label>
+                          <textarea class="form-control" rows="5" id="txtPadecimiento"></textarea>
+                        </div>
 
-                    <div align="left" class="form-group"> <!--Begin-->
-                        <textarea class="form-control"  name="txtNotas" placeholder="" style="height:250px; "> </textarea>
-                    </div> <!--ends-->
 
                 </div> <!--div col-xs-6-->
 
@@ -147,7 +154,7 @@
     if (isset($_POST["btnGuardarConsulta"])) {
         # code...
         include("config.php");
-        include("captura_histo_clinic.php");
+        include("./captura_histo_clinic.php");
 
         $alergias = getAlergia();
         $antecedentes = getAntecedentes();
@@ -156,7 +163,8 @@
 
         //Generar el id de Historia Clínica
         $idh = mysqli_query($conexion, "SELECT COUNT(Id_HistoClini) FROM $table_historiaclinica");
-        $date = mysqli_query($conexion, "SELECT DATE(NOW())");
+        $date ="SELECT DATE(NOW())";
+        $conexion -> query($date);
 
         mysqli_query($conexion, "INSERT INTO $table_historiaclinica (Id_HistoClini, fecha, alergias, antecedentesMedicos, cirugias, paciente_tb_id_Persona, notas_col) VALUES ('$idh','$date','$alergias', '$antecedentes', '$cirugias','$idh','$notas')");
 

@@ -67,13 +67,13 @@
     <div id="upmenu">
     <a href="vestible.php"> Vestible </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="historiaclinica.php"> Historia Clínica  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="consulta.php">Consultas</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
     <a href="receta.php"> Recetas </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
   </div>
   <div class="container" align="center">
 
-  <img src="grafica.png"> </img>
+  <img src="hiit.png.jpg"> </img>
   </div>
 </div>
 

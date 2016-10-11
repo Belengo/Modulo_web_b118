@@ -65,7 +65,7 @@
     <div id="upmenu">
     <a href="vestible.php"> Vestible </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="historiaclinica.php"> Historia Clínica  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="consulta.php" >Consultas</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
     <a href="receta.php" style="visibility:hidden;"> Recetas </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
   </div>
@@ -92,17 +92,17 @@
                  <tr>
                     <th>1. Medicamento&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>100mg<&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>cada 12hrs&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>hasta nueva consulta&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th> &nbsp;&nbsp;&nbsp;&nbsp;<img src="eliminar.png"></th>
+                    <th><input type=text placeholder="cada hh hrs">&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th><input type=text placeholder="periódo">&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th> &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal" id="colorletra"></span></th>
                  </tr>
 
                  <tr>
                     <th>2. Medicamento&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>50mg<&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>cada 24hrs&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th>hasta nueva consulta&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th> &nbsp;&nbsp;&nbsp;&nbsp;<img src="eliminar.png"></th>
+                    <th><input type=text placeholder="cada hh hrs" >&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th><input type=text placeholder="periódo">&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th> &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal" id="colorletra"></th>
                  </tr>
                </table>
             </div>
@@ -111,7 +111,10 @@
             </dir>
 
              <div class="container">
-                <input id="colorletra" type="submit" value="Agregar medicamento"></input> 
+              <form action="agregar_receta.php">
+                <input id="colorletra" id="btnAgregar" type="submit" value="Agregar medicamento">
+                 
+                </input> 
             </div>
 
               <div class="container">
@@ -131,13 +134,18 @@
 
 </div>
 
+<?php
 
+if (isset($_POST["btnAgregar"])) {
 
+    
 
+  $lista_medic =  "Lista de medicamentos.";
+echo "<script type=\"text/javascript\">alert(\"$lista_medic\");</script>";
+}
 
   
-
-
+?>
 
 
 

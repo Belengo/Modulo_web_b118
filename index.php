@@ -1,3 +1,7 @@
+<?php
+  session_start();// al volver al index si existe una session.
+ 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -186,16 +190,19 @@
                                 <!-- Datos que va a desplegar el dropdown -->         
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                   <div class="container" id="login">
-                    <form class="form-signin">
+                      <form action="validar.php" method="POST">
+                        <form class="form-signin">
                         <h2 class="form-signin-heading" id="colorletra">Inicie sesión</h2>
                           <label for="inputEmail" >Correo </label>
-                          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" >
+                          <input type="email" name="txtUsuario" class="form-control" placeholder="Email address" >
                           <label for="inputPassword" class="sr-only">Contraseña</label>
-                          <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" >
+                          <input type="password" name="txtPass" class="form-control" placeholder="Contraseña" >
                           <div class="checkbox">
                             <label id="colorletra"> <input type="checkbox"   value="remember-me"> Recuerda mi contraseña</label>
                           </div>
-                          <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnaceptar" type="submit">Aceptar</button>
+                          <button class="btn btn-lg btn-primary btn-block" id="colorfondo" name="btnAceptar" type="submit">Aceptar</button>
+                        </form>
+                      </form>
                   </div> <!-- /container login dropdown-->
                 </ul> <!-- /ul  login dropdown-->
               </div> <!-- /div  login dropdown-->
@@ -233,6 +240,8 @@
 
   <?php
     
+
+
     if (isset($_POST["btnRegistrar"])) {
       # code...
       include("config.php");
@@ -293,8 +302,8 @@
                 $conexion->query($nuevo_espec);
               //echo "<script type=\"text/javascript\">alert(\"$nuevo_espec\");</script>";  
       }  //else ifcontrasena    
-    echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. 1\"); </script>"; 
-    echo "<script language=Javascript> location.href=\"Bienvenido.php\"; </script>";     
+    echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. Inicie sesión\"); </script>"; 
+    //echo "<script language=Javascript> location.href=\"Bienvenido.php\"; </script>";     
     } //if isset
                 
                 $nueva_persona = ""; 

@@ -69,35 +69,56 @@
 		<div id="upmenu">
 		<a href="vestible.php"> Vestible </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="historiaclinica.php"> Historia Clínica  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="consulta.php">Consultas</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="receta.php"> Recetas </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
 	</div>
 
     
+ 		
+    <div class="row" id="colorletra">
+ 			  <div class="col-xs-3" > Nombre Paciente: 
 
- 	<div class="container" align="center" >
- 		<table  width="100%" id="colorletra">
- 			<br>
- 			  <tr>
- 			  	<td></td><th>Edad&nbsp;&nbsp;</th>
- 			  	<th>Teléfono&nbsp;&nbsp;</th>
- 			  	<th>Correo&nbsp;&nbsp;</th>
- 			  </tr>
- 			  <tr></tr>
- 			  <tr></tr>
- 			 </br>
- 		</table>
- 	</div>
+        <!-- <?php 
+        /* include(config.php)
+         $nombre_pac = "SELECT nombre_col FROM paciente_tb WHERE id_paciente= $idpac"
+        
 
-    <div class="row" align="center"> 
-    <div class="col-xs-4"></div>
-        <div class="col-xs-4" id="tth" style="margin-top:15%;" width=50%> <h7 id="colorletra"><p >Dx. Breve descripción del  diagnóstico (o el último guardado.) </p><p></p></h7> 
+        */
+        ?> -->
         </div>
-    <div class="col-xs-4"></div>
+        <div class="col-xs-3"> Tipo de crisis:
+        </div>
+        <div class="col-xs-3"> Alergias antipilépticos: 
+        </div>
     </div>
 
- </div>
+ 	
+
+    <div class="row"> 
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4" id="tth" style="margin-top:10%;" > <h7 id="colorletra"><p >Dx. Breve descripción del diagnóstico (o el último guardado.) </p></h7> 
+      </div>
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4"></div>
+    </div>
+
+    <div class="row"> 
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4" id="tth" style="margin-top:5%;" > <h7 id="colorletra"><p> TRATAMIENTO ACTUAL</p></h7> 
+      </div>
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4"></div>
+    </div>
+
+    <div class="row"> 
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4" id="tth" style="margin-top:5%;" > <h7 id="colorletra"><p> COMBINACIONES DE TRATAMIENTOS PREVIOS</p></h7> 
+      </div>
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4"></div>
+    </div>
+
+ </div> <!-- class="site-wrapper"-->
 
 
 <footer class="footer">
