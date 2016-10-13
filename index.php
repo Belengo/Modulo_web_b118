@@ -109,7 +109,7 @@
                                       <div class="form-group"><h2>Datos de contacto</h2></div>
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="calle">Calle:</label>
-                                                <input type="text" class="form-control" name="txtCalle" placeholder="Calle" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9]+' title="No se aceptan caractéres especiales">
+                                                <input type="text" class="form-control" name="txtCalle" placeholder="Calle" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
 
                                             <div align="left" class="form-group">
@@ -129,7 +129,7 @@
 
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="telefono">Teléfono:</label>
-                                                <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono local" pattern='[0-9]+' title="No se aceptan letras">
+                                                <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono local" pattern='[0-9 . A-Z a-z]+' title="No se aceptan letras">
                                             </div>
                                     </div><!--col-xs-6 -->
                                  </div> <!-- row -->
@@ -194,7 +194,7 @@
                         <form class="form-signin">
                         <h2 class="form-signin-heading" id="colorletra">Inicie sesión</h2>
                           <label for="inputEmail" >Correo </label>
-                          <input type="email" name="txtUsuario" class="form-control" placeholder="Email address" >
+                          <input type="email" name="txtUsuario" class="form-control" placeholder="Correo" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com" >
                           <label for="inputPassword" class="sr-only">Contraseña</label>
                           <input type="password" name="txtPass" class="form-control" placeholder="Contraseña" >
                           <div class="checkbox">
@@ -242,7 +242,7 @@
     
 
 
-    if (isset($_POST["btnRegistrar"])) {
+if (isset($_POST["btnRegistrar"])) {
       # code...
       include("config.php");
       include("captura_persona.php");
@@ -273,45 +273,52 @@
         $recontrasena = getRecontrasena();
 
         //Mensajes de error
-          $mensaje_contraseña = "Las contraseñas no coinciden";
-          $mensaje_correo = "El correo ya existe";
+        $mensaje_contraseña = "Las contraseñas no coinciden";
+        $mensaje_correo = "Ya existe una cuenta con ese correo";
+        $advertencia = "Declaro que los datos son reales, y doy mi autorización para validarlos. En caso de ser falsos será dado de baja del sistema";
           
       //Validar correo exite 
-      //$count_correo = "SELECT COUNT(id_persona) FROM $table_persona WHERE correo_col =  $correo";
+      $correo_existe = "SELECT correo_col FROM Persona_tb WHERE correo_col = '$correo'";
+        $res_correo = $conexion->query($correo_existe);
+        //echo "<script type=\"text/javascript\">alert(\"$correo_existe\");</script>";
+        $row_correo_ex = $res_correo->fetch_array(MYSQLI_ASSOC);
+        $row_correo = $row_correo_ex["correo_col"];
 
-          
-      //Validar contraseña
-      
-      if($contrasena != $recontrasena){
+      if ($row_correo == $correo){
+        echo "<script type=\"text/javascript\">alert(\"$mensaje_correo\");</script>";
+      } else {          
+        //Validar contraseña
+          if($contrasena != $recontrasena){
             echo "<script type=\"text/javascript\">alert(\"$mensaje_contraseña \");</script>"; 
-      } else {
-      
-
-        $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo') ";
-          //mysql_query($conexion, $nueva_persona);
-          if ($conexion->query($nueva_persona) === TRUE) {
-            $last_id = $conexion->insert_id;
-              //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>";        
-              $nueva_direccion =  "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id')";
-                $conexion->query($nueva_direccion);
-              // echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
-              $nuevo_usuario = "INSERT INTO $table_usuario (id_usuario, pssw_col, usrtipo_col) VALUES ('$last_id','$contrasena', 'ESPECIALISTA')";
-                $conexion->query($nuevo_usuario);
-              //echo "<script type=\"text/javascript\">alert(\"$nuevo_usuario\");</script>";              
-              $nuevo_espec = "INSERT INTO $table_especialista (id_Especialista, cedula_col, especialidad_col) VALUES ('$last_id','$cedula', '$especialidad')";
-                $conexion->query($nuevo_espec);
-              //echo "<script type=\"text/javascript\">alert(\"$nuevo_espec\");</script>";  
-      }  //else ifcontrasena    
-    echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. Inicie sesión\"); </script>"; 
-    //echo "<script language=Javascript> location.href=\"Bienvenido.php\"; </script>";     
-    } //if isset
+          } else {
+              $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo') ";
+            //mysql_query($conexion, $nueva_persona);
+              if ($conexion->query($nueva_persona) === TRUE) {
+              $last_id = $conexion->insert_id;
+                //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>";        
+                $nueva_direccion =  "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id')";
+                  $conexion->query($nueva_direccion);
+                // echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
+                $nuevo_usuario = "INSERT INTO $table_usuario (id_usuario, pssw_col, usrtipo_col) VALUES ('$last_id','$contrasena', 'ESPECIALISTA')";
+                  $conexion->query($nuevo_usuario);
+                //echo "<script type=\"text/javascript\">alert(\"$nuevo_usuario\");</script>";              
+                $nuevo_espec = "INSERT INTO $table_especialista (id_Especialista, cedula_col, especialidad_col) VALUES ('$last_id','$cedula', '$especialidad')";
+                  $conexion->query($nuevo_espec);
+                //echo "<script type=\"text/javascript\">alert(\"$nuevo_espec\");</script>"; 
                 
-                $nueva_persona = ""; 
-                $nueva_direccion = "";
-                $nuevo_espec = "";
-                $nuevo_usuario = "";
-          } 
-  ?>
+        }  //else if nueva persona = true   
+      echo "<script type=\"text/javascript\">alert(\"$advertencia\");</script>";
+      //echo "<script language=Javascript> location.href=\"index.php\"; </script>";     
+      } //else contraseña
+    } //else //correo existente
+                  
+                  $nueva_persona = ""; 
+                  $nueva_direccion = "";
+                  $nuevo_espec = "";
+                  $nuevo_usuario = "";
+} //if isset 
+  
+?>
 
 </body>
 </html>

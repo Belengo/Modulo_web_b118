@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 
 include("config.php");
@@ -9,9 +9,14 @@ if(isset($_POST["btnAceptar"])){
 	$user = $_POST['txtUsuario'];
 	$pssw = $_POST['txtPass'];
 
-	$nombre_completo = "SELECT CONCAT(nombre_col,'',apellidouno_col,' ', apellidodos_col) FROM Persona_tb where correo_col = '$user'";
+	$nombre_completo = "SELECT nombre_col,apellidouno_col, apellidodos_col FROM Persona_tb where correo_col = '$user'";
 		$conexion->query($nombre_completo);
 		//echo "<script type=\"text/javascript\">alert(\"$nombre_completo\");</script>";
+		/*$row_nom_comp = $nombre_completo->fetch_array(MYSQLI_ASSOC);
+		/*$row_nombre = $row_nom_comp["nombre_col"];
+		$row_apellidouno = $row_nom_comp["apellidouno_col"];
+		$row_apellidodos = $row_nom_comp["apellidodos_col"];*/
+		
 
 	$id_pers = "SELECT id_persona FROM Persona_tb WHERE correo_col = '$user'";
 	$res_id_pers = $conexion->query($id_pers);
@@ -27,7 +32,7 @@ if(isset($_POST["btnAceptar"])){
 			# code...
 			//$num_row = $res_pssw->num_rows;
 			//if( $num_row > 0 ) {
-			echo "<script type=\"text/javascript\">alert(\"Bienvenido a Chibil\");</script>";
+			echo "<script type=\"text/javascript\">alert(\"Bienvenido a Chibil \");</script>";
 			echo "<script language=Javascript> location.href=\"Bienvenido.php\"; </script>";
 			//}  
 		} else {

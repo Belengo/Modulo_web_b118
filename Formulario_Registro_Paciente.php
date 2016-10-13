@@ -114,7 +114,7 @@
           <div class="form-group"><h2>Datos de contacto</h2></div>
                 <div align="left" class="form-group">
                     <label id="colorletra" for="calle">Calle:</label>
-                    <input type="text" class="form-control" name="txtCalle" placeholder="Calle" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9]+' title="No se aceptan caractéres especiales">
+                    <input type="text" class="form-control" name="txtCalle" placeholder="Calle" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                 </div>
 
                 <div align="left" class="form-group">
@@ -139,7 +139,7 @@
 
                 <div align="left" class="form-group">
                     <label id="colorletra" for="vestible">Código Vestible:</label>
-                    <input type="text" class="form-control" name="txtVestible" placeholder="Código de vestible" required title="Este campo es necesario">
+                    <input type="text" class="form-control" name="txtVestible" placeholder="Código de vestible" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9]+' required title="Este campo es necesario">
                 </div>
 
         </div><!--col-xs-6 -->
@@ -194,7 +194,20 @@ if (isset($_POST["btnRegistrar"])) {
         //PACIENTE
         $vestible = getVestible();  //paciente_tb
 
+
+        $mensaje_correo_ya_existe = "El correo que intenta registrar ya está dado de alta";
+
         //Verificar correo existente
+        $correo_existe = "SELECT correo_col FROM Persona_tb WHERE correo_col = '$correo'";
+        $res_correo = $conexion->query($correo_existe);
+        //echo "<script type=\"text/javascript\">alert(\"$correo_existe\");</script>";
+        $row_correo_ex = $res_correo->fetch_array(MYSQLI_ASSOC);
+        $row_correo = $row_correo_ex["correo_col"];
+
+
+        if ($row_correo == $correo){
+          echo "<script type=\"text/javascript\">alert(\"$mensaje_correo_ya_existe\");</script>";
+        } else {
 
           $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo'); ";
               if ($conexion->query($nueva_persona) === TRUE) {
@@ -204,10 +217,11 @@ if (isset($_POST["btnRegistrar"])) {
           $nueva_direccion = "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id');";
               $conexion->query($nueva_direccion);
                //echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
-              $nuevo_paciente =  "INSERT INTO $table_paciente (id_Paciente, idvestible) VALUES ('$last_id','$vestible');";
+              $nuevo_paciente =  "INSERT INTO $table_paciente (id_Paciente) VALUES ('$last_id');";
                 $conexion->query($nuevo_paciente);
         echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. 1\"); </script>"; 
-        echo "<script language=Javascript> location.href=\"pag_paciente.php\"; </script>";  
+        echo "<script language=Javascript> location.href=\"verpacientes.php\"; </script>";  
+      } //else
         
 } //if isset
 
