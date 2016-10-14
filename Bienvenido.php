@@ -7,11 +7,12 @@
 	<meta charset="UTF-8">
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="fonts/flaticon.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="cover.css" rel="stylesheet">
-    <link href="flaticon.css" rel="stylesheet1">
+   <!--css incon--> <link href="css_root/flaticon.css" rel="stylesheet">
     <link rel="shortcut icon" href="SmallLogo.ico" />
 	<TITLE>Chibil</TITLE>
 </head>
@@ -32,6 +33,7 @@
        			<span class="icon-bar"></span>
        			<span class="icon-bar"></span>                        
      		</button>
+        <a class="navbar-brand" href="#" id="colorletra">Chibil</h5></a>
      	</div>
    		     
         <div class="collapse navbar-collapse" id="myNavbar">
@@ -39,7 +41,7 @@
      			<ul class="nav navbar-nav navbar-right">
                		
 	     				<a href="index.php" >
-	     				<span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png">Chibil</span> </a> </img>
+	     				<span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png"></span> </a> </img>
 	                
             	</ul><!-- /ul nav bar-->
    		</div>  <!-- div class="collapse navbar-collapse" -->
@@ -51,17 +53,60 @@
 
 
 <div class="site-wrapper">
-  <div class="container" >
+  <!--<div class="container" >
 		<div id="upmenu">
       <a href="verpacientes.php"> Mis Pacientes  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		  <a href="Formulario_Registro_Paciente.php" > Registrar Nuevo Paciente </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		  <a href="Medicamentos.php"> Medicamentos </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="Modificar_datos.php"> Modificar mis Datos</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
-  </div>
-  <div class="container" align="center">
-  </div>
+  </div> <!--div class container-->
+
+  <div id ="colorletra" class="container" align="center">
+    <!-- Container (Services Section) -->
+<div class="container-fluid ">
+
+<div class="jumbotron text-center">
+  <h1 >Dr. <!--NOMBRE DEL Dr.--> </h1>
+  <p>Bienvenido a Chibil</p>
 </div>
+  
+
+
+  <div class="col-md-4 col-sm-6">
+    <div class="row">
+      <img class="img-thumbnail" src="imgs/pacientes.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='verpacientes.php'" width="200" height="200"> </img> </a>
+    </div>
+    <div class="row">
+      <span>PACIENTES</span>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6">
+    <div class="row">
+      <img class="img-thumbnail" src="imgs/farmacos.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='Medicamentos.php'" width="200" height="200"> </img>
+    </div>
+    <div class="row">
+      <span>FÁRMACOS</span>
+     </div>
+  </div>
+
+  <div class="col-md-4 col-sm-6">
+    <div class="row">
+      <img class="img-thumbnail" src="imgs/medica.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" width="200" height="200"> </img>
+    </div>
+    <div class="row">
+      <span>MI PERFIL</span>
+    </div>
+  </div>
+
+  
+
+</div>  <!-- class container-fluid tet center-->
+
+  </div> <!-- class container color letra-->
+
+</div> <!-- div site wrapper-->
 
 
 <footer class="footer">
@@ -70,6 +115,22 @@
     </div>
 </footer> <!-- Footer-->
 
+
+
+<!--comienza js-->
+<script>
+function bigImg(x) {
+    x.style.height = "250px";
+    x.style.width = "250px";
+}
+
+function normalImg(x) {
+    x.style.height = "200px";
+    x.style.width = "200px";
+}
+</script>
+
+<!-- Termina js-->
 
 <!-- Comienza php-->
 

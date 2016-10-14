@@ -124,8 +124,6 @@ body {
   padding: 10px 20px;
   font-weight: bold;
 }
-
-
 /*
  * Footer
  */
@@ -176,7 +174,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 25px;
-  background-color:#E8E8E8 ;
+  background-color:#E8E8E8;
 }
 
 #upmenu {
@@ -201,6 +199,9 @@ body {
   color: rgb(35,54,79);
 }
 
+#letra{
+  color:rgb(240,255,240);
+}
 
 #colorfondo{
   background-color: rgb(35,54,79);

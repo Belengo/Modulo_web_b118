@@ -1,5 +1,5 @@
 <?php
-  session_start();// al volver al index si existe una session.
+  session_start();
  
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="cover.css" rel="stylesheet">
-    <link rel="shortcut icon" href="SmallLogo.ico" />
+    
   <TITLE>Chibil</TITLE>
 </head>
 <body>
@@ -28,14 +28,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
         </button>
+        <a class="navbar-brand" href="#" id="colorletra">Chibil</h5></a>
       </div>
            
         <div class="collapse navbar-collapse" id="myNavbar">
             
           <ul class="nav navbar-nav navbar-right">
                   <li style="font-size: 12px; margin-top: 3px;">
-                  <!--<a href="Formulario_Registro_Especialista.php" >-->
-                  <a href="#"><h7 id="colorletra"> <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#myModal" id="colorletra">&nbsp;Sign in&nbsp;</span> 
+                  <a href="#"><h7 id="colorletra"> <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#myModal" >&nbsp;Sign in&nbsp;</span> 
                   </h7></a>
                     <!--Modal-->
                     <div class="modal fade" id="myModal" role="dialog">
