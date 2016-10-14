@@ -47,58 +47,53 @@
  
 
 <div class="site-wrapper">
-  <div class="container" >
-    <div id="upmenu">
-      <a href="verpacientes.php"> Mis Pacientes  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Formulario_Registro_Paciente.php" > Registrar Nuevo Paciente </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Medicamentos.php"> Medicamentos </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Modificar_datos.php"> Modificar mis Datos</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
- 
- 
-  <div height="600px" class="container">
-  <h1> </h1>
-  </div>
-      
-  <div class="container">
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>Pacientes</h4>
-        </div>
-        <table id="colorletra" class="table table-fixed">
-          <thead>
-            <tr style="font-weight:bold">
-              <td class="col-xs-4">Nombre</td> 
-              <td class="col-xs-4">Telefono</td>
-              <td class="col-xs-4">Correo</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="col-xs-4"><a id="colorletra" href="pag_paciente.php">Nombre Apellidouno Apellido2</a></td>
-              <td class="col-xs-4">55555555</td>
-              <td class="col-xs-4">correo1@gmail.com</td>
-            </tr>
-            <tr>
-              <td class="col-xs-4">Nombre Apellidouno Apellido2</td>
-              <td class="col-xs-4">55555555</td>
-              <td class="col-xs-4">correo1@gmail.com</td>
-            </tr>
-            <tr>
-              <td class="col-xs-4">Nombre Apellidouno Apellido2</td>
-              <td class="col-xs-4">55555555</td>
-              <td class="col-xs-4">correo1@gmail.com</td>
-            </tr>
-          </tbody>
-        </table>
+  <div id ="colorletra" class="container-fluid" align="center">
+    <!-- Container (Services Section) -->
+    <div class="container-fluid">
+      <div class="jumbotron text-center">
+        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
+        <p>Bienvenido a Chibil</p>
       </div>
-    </div>
-  </div>
-   </div>
-  <div class="container" align="center">
-  </div>
-</div>
+      
+      <div class="container">
+        <div class="row">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Pacientes</h4>
+            </div>
+            <table id="colorletra" class="table table-fixed">
+              <thead>
+                <tr style="font-weight:bold">
+                  <td class="col-xs-4">Nombre</td> 
+                  <td class="col-xs-4">Telefono</td>
+                  <td class="col-xs-4">Correo</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-xs-4"><a id="colorletra" href="pag_paciente.php">Nombre Apellidouno Apellido2</a></td>
+                  <td class="col-xs-4">55555555</td>
+                  <td class="col-xs-4">correo1@gmail.com</td>
+                </tr>
+                <tr>
+                  <td class="col-xs-4">Nombre Apellidouno Apellido2</td>
+                  <td class="col-xs-4">55555555</td>
+                  <td class="col-xs-4">correo1@gmail.com</td>
+                </tr>
+                <tr>
+                  <td class="col-xs-4">Nombre Apellidouno Apellido2</td>
+                  <td class="col-xs-4">55555555</td>
+                  <td class="col-xs-4">correo1@gmail.com</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div> <!--container-fliud-->
+  </div> <!--container-fliud-->
+</div><!--Site wrapper-->
 
 
 

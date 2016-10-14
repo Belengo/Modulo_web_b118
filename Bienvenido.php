@@ -53,59 +53,41 @@
 
 
 <div class="site-wrapper">
-  <!--<div class="container" >
-		<div id="upmenu">
-      <a href="verpacientes.php"> Mis Pacientes  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		  <a href="Formulario_Registro_Paciente.php" > Registrar Nuevo Paciente </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		  <a href="Medicamentos.php"> Medicamentos </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Modificar_datos.php"> Modificar mis Datos</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</div>
-  </div> <!--div class container-->
-
-  <div id ="colorletra" class="container" align="center">
+  <div id ="colorletra" class="container-fluid" align="center">
     <!-- Container (Services Section) -->
-<div class="container-fluid ">
+    <div class="container-fluid">
+      <div class="jumbotron text-center">
+        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
+        <p>Bienvenido a Chibil</p>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="row">
+          <img class="img-thumbnail" src="imgs/pacientes.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='verpacientes.php'" width="200" height="200"> </img> </a>
+        </div>
+        <div class="row">
+          <span>PACIENTES</span>
+        </div>
+      </div>
 
-<div class="jumbotron text-center">
-  <h1 >Dr. <!--NOMBRE DEL Dr.--> </h1>
-  <p>Bienvenido a Chibil</p>
-</div>
-  
+      <div class="col-md-4 col-sm-6">
+        <div class="row">
+          <img class="img-thumbnail" src="imgs/farmacos.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='Medicamentos.php'" width="200" height="200"> </img>
+        </div>
+        <div class="row">
+          <span>FÁRMACOS</span>
+         </div>
+      </div>
 
-
-  <div class="col-md-4 col-sm-6">
-    <div class="row">
-      <img class="img-thumbnail" src="imgs/pacientes.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='verpacientes.php'" width="200" height="200"> </img> </a>
-    </div>
-    <div class="row">
-      <span>PACIENTES</span>
-    </div>
-  </div>
-
-  <div class="col-md-4 col-sm-6">
-    <div class="row">
-      <img class="img-thumbnail" src="imgs/farmacos.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='Medicamentos.php'" width="200" height="200"> </img>
-    </div>
-    <div class="row">
-      <span>FÁRMACOS</span>
-     </div>
-  </div>
-
-  <div class="col-md-4 col-sm-6">
-    <div class="row">
-      <img class="img-thumbnail" src="imgs/medica.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" width="200" height="200"> </img>
-    </div>
-    <div class="row">
-      <span>MI PERFIL</span>
-    </div>
-  </div>
-
-  
-
-</div>  <!-- class container-fluid tet center-->
-
-  </div> <!-- class container color letra-->
-
+      <div class="col-md-4 col-sm-6">
+        <div class="row">
+          <img class="img-thumbnail" src="imgs/medica.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" width="200" height="200"> </img>
+        </div>
+        <div class="row">
+          <span>MI PERFIL</span>
+        </div>
+      </div>
+    </div>  <!-- class container-fluid tet center-->
+  </div> <!-- class container fluid color letra-->
 </div> <!-- div site wrapper-->
 
 
@@ -118,17 +100,7 @@
 
 
 <!--comienza js-->
-<script>
-function bigImg(x) {
-    x.style.height = "250px";
-    x.style.width = "250px";
-}
 
-function normalImg(x) {
-    x.style.height = "200px";
-    x.style.width = "200px";
-}
-</script>
 
 <!-- Termina js-->
 
