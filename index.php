@@ -1,7 +1,11 @@
 <?php
   session_start();
- 
+  include("config.php");
+  if(isset($_SESSION['userid'])){
+    echo '<script>window.location ="Bienvenido.php" </script>';
+  }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -244,7 +248,7 @@
 
 if (isset($_POST["btnRegistrar"])) {
       # code...
-      include("config.php");
+      //include("config.php");
       include("captura_persona.php");
       include("captura_direccion.php");
       include("captura_especialista.php");

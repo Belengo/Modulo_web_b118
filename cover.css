@@ -175,6 +175,12 @@ body {
   /* Set the fixed height of the footer here */
   height: 25px;
   background-color:#E8E8E8;
+  margin-top: 5%;
+}
+
+.jumbotron{
+  height: 100px;
+  padding-top: 5px;
 }
 
 #upmenu {
@@ -213,6 +219,16 @@ body {
   height: 25px
  }
 
- 
- 
+#margen{
+  margin-top:6%;
+}
+
+#paddin{
+  padding-top: 6%;
+}
+
+#border{
+  padding-top: 10px;
+  border-top: solid;
+}
 

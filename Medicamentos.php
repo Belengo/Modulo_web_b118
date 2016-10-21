@@ -45,72 +45,81 @@
 
 
 <div class="site-wrapper">
-  <div class="container" >
-    <div id="upmenu">
-      <a href="verpacientes.php"> Mis Pacientes  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Formulario_Registro_Paciente.php" > Registrar Nuevo Paciente </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Medicamentos.php"> Medicamentos </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Modificar_datos.php"> Modificar mis Datos</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
- 
- 
-  <div height="600px" class="container">
-  <h1> </h1>
-  </div>
+  <div id ="colorletra" class="container-fluid" align="center">
+    <!-- Container (Services Section) -->
+
+    <div class="container-fluid">
       
-  <div class="container">
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>Medicamentos</h4>
-        </div>
-        <table id="colorletra" class="table table-fixed">
-          <thead>
-            <tr style="font-weight:bold">
-              <td class="col-xs-2">Sustancia Activa</td> 
-              <td class="col-xs-2">Marca</td>
-              <td class="col-xs-2">Presentación</td>
-              <td class="col-xs-2">Unidades</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="col-xs-2">Sustancia1</td>
-              <td class="col-xs-2">Marca1</td>
-              <td class="col-xs-2">Inyectable</td>
-              <td class="col-xs-2">000mg</td>
-            </tr>
-            <tr>
-              <td class="col-xs-2">Sustancia2</td>
-              <td class="col-xs-2">Marca2</td>
-              <td class="col-xs-2">Tabletas</td>
-              <td class="col-xs-2">000mg</td>
-            </tr>
-            <tr>
-              <td class="col-xs-2">Sustancia3</td>
-              <td class="col-xs-2">Marca3</td>
-              <td class="col-xs-2">Capsulas</td>
-              <td class="col-xs-2">000mg</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="jumbotron text-center">
+        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
+        <p>Bienvenido a Chibil</p>
       </div>
-    </div>
-  </div>
-   </div>
-  <div class="container" align="center">
-  </div>
-</div>
+ 
+ 
+  <div class="container">
+      
+      <?php
+        include("config.php");
+        
+        $seleccionar_medicamentos = "SELECT * FROM Medicamento_cat";
+        $selec_pac = $conexion->query($seleccionar_pacientes);
+        $total_pacientes = mysqli_num_rows($selec_pac);
+        $row = mysqli_fetch_array($selec_pac, MYSQLI_ASSOC);
+        
+      ?>
+
+        <div class="row">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Fármacos</h4>
+            </div>
+            <table id="colorletra" class="table table-fixed">
+              <thead>
+                <tr style="font-weight:bold" align="center">
+                  <td class="col-xs-4">Sustancia Activa</td> 
+                  <td class="col-xs-4">Unidades</td>
+                  <td class="col-xs-4">Laboratorio</td>
+                  <td class="col-xs-4">Presentación</td>
+                </tr>
+              </thead>
+
+              <tbody align="center">
+              <?php 
+                for ($i=0;$i<$total_pacientes; $i++){ ?>
+                  <tr>
+                    <td class="col-xs-4" id="colorletra"> <?php  
+                    printf( "%s", $row['NombreCompleto']);
+                      ?>
+                    </td>
+
+                    <td class="col-xs-4" id="colorletra"> <?php 
+                    printf( "%s", $row['telefono']);
+                     ?>
+                    </td>
+
+                    <td class="col-xs-4" id="colorletra"> <?php
+                    printf( "%s", $row['correo']);
+                    ?>
+                    </td>
+                    </tr>
+                <?php } ?>
+       
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> <!-- container //tabla -->
+
+</div> <!--container-fliud-->
+  </div> <!--container-fliud-->
+</div><!--Site wrapper-->
 
 
 
 
 
 <footer class="footer">
-    <div class="container">
+    <div class="container-fluid bg-4 text-center">
         <p class="text-muted" id="colorletra">TT 2015-B118</p>
     </div>
 </footer> <!-- Footer-->
-
-</body>
-</html>

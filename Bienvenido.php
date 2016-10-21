@@ -1,6 +1,12 @@
 <?php
  session_start();
+include("config.php");
+ if(isset($_SESSION['userid'])){
+} else {
+ echo '<script> window.location="index.php" </script>';
+}
  ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +45,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             
      			<ul class="nav navbar-nav navbar-right">
-               		
-	     				<a href="index.php" >
+            	<li><a href="log_out.php" >Cerrar Sesión</li>
 	     				<span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png"></span> </a> </img>
 	                
             	</ul><!-- /ul nav bar-->
@@ -53,14 +58,29 @@
 
 
 <div class="site-wrapper">
-  <div id ="colorletra" class="container-fluid" align="center">
+  <div id ="colorletra" class="container-fluid" align="center" >
     <!-- Container (Services Section) -->
     <div class="container-fluid">
       <div class="jumbotron text-center">
-        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
+        <div class="container-fluid" align="left"><a href="Logo.png"></a> </div>
+        <h3> <?php  
+                  $id = $_SESSION['userid'];
+                  $Consulta_Sexo = "SELECT sexo_col from Persona_tb where id_persona = $id";
+                  $res_sex = $conexion->query($Consulta_Sexo);
+                  $row_res_sexo = $res_sex->fetch_array(MYSQLI_ASSOC);
+                  $row_sexo = $row_res_sexo["sexo_col"];
+                     if ($row_sexo == 'F') {
+                       # code...
+                      echo 'Dra. '.$_SESSION['user']; 
+                     } else {
+                      echo 'Dr. '.$_SESSION['user'];
+                     }
+                    ?>
+        </h3>
         <p>Bienvenido a Chibil</p>
       </div>
-      <div class="col-md-4 col-sm-6">
+    <div id="paddin">
+      <div class="col-md-4 col-sm-6" >
         <div class="row">
           <img class="img-thumbnail" src="imgs/pacientes.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='verpacientes.php'" width="200" height="200"> </img> </a>
         </div>
@@ -86,13 +106,14 @@
           <span>MI PERFIL</span>
         </div>
       </div>
+    </div>
     </div>  <!-- class container-fluid tet center-->
   </div> <!-- class container fluid color letra-->
 </div> <!-- div site wrapper-->
 
 
 <footer class="footer">
-    <div class="container">
+    <div class="container-fluid bg-4 text-center">
         <p class="text-muted" id="colorletra">TT 2015-B118</p>
     </div>
 </footer> <!-- Footer-->
