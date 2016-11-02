@@ -93,13 +93,18 @@
                                         </div>
                                       
                                       <div align="left" class="form-group"> 
-                                          <label id="colorletra" for="telpersonal">Celular:</label>
+                                          <label id="colorletra" for="txttelpersonal">Celular:</label>
                                           <input type="text" class="form-control" name="txtTelpersonal" placeholder="Celular" pattern='[0-9]+' title="Sólo números">
                                       </div> 
 
                                       <div align="left" class="form-group"> 
-                                          <label id="colorletra" for="cedula">Cédula:</label>
+                                          <label id="colorletra" for="txtcedula">Cédula:</label>
                                           <input type="text" class="form-control" name="txtCedula" placeholder="Cédula">
+                                      </div> 
+
+                                      <div align="left" class="form-group"> 
+                                          <label id="colorletra" for="txtInstitucionCedula">Institución que expide la Cédula:</label>
+                                          <input type="text" class="form-control" name="txtInstitucionCedula" placeholder="Cédula">
                                       </div> 
 
                                       <div align="left" class="form-group"> 
@@ -134,6 +139,11 @@
                                             <div align="left" class="form-group">
                                                 <label id="colorletra" for="telefono">Teléfono:</label>
                                                 <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono local" pattern='[0-9 . A-Z a-z]+' title="No se aceptan letras">
+                                            </div>
+
+                                            <div align="left" class="form-group">
+                                                <label id="colorletra" for="telefono">Municipio/Delegación:</label>
+                                                <input type="text" class="form-control" name="txtDelegacion" placeholder="Municipio o Delegación" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
                                     </div><!--col-xs-6 -->
                                  </div> <!-- row -->
@@ -244,7 +254,7 @@
 
   <?php
     
-
+ 
 
 if (isset($_POST["btnRegistrar"])) {
       # code...
@@ -269,9 +279,11 @@ if (isset($_POST["btnRegistrar"])) {
         $colonia = getColonia();    //direccion_tb
         $codpost = getCodpost();    //direccion_tb
         $telefono = getTelefono();    //direccion_tb
+        $delegacion = getDelegacion();
         //ESPECIALISTA
         $cedula = getCedula();        //especialista_tb
         $especialidad = getEspecialidad();  //especialista_tb
+        $institucionCedula = getInstitucionCedula();
         //CUENTA DE USUARIO
         $contrasena = getContrasena();    //usuario_tb
         $recontrasena = getRecontrasena();
@@ -293,20 +305,21 @@ if (isset($_POST["btnRegistrar"])) {
       } else {          
         //Validar contraseña
           if($contrasena != $recontrasena){
-            echo "<script type=\"text/javascript\">alert(\"$mensaje_contraseña \");</script>"; 
+            echo "<script type=\"text/javascript\">alert(\"$mensaje_contraseña \");</script>";
+
           } else {
-              $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo') ";
+              $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo'); ";
             //mysql_query($conexion, $nueva_persona);
               if ($conexion->query($nueva_persona) === TRUE) {
               $last_id = $conexion->insert_id;
                 //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>";        
-                $nueva_direccion =  "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id')";
+                $nueva_direccion =  "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona, delegacion_col) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id', '$delegacion');";
                   $conexion->query($nueva_direccion);
                 // echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
                 $nuevo_usuario = "INSERT INTO $table_usuario (id_usuario, pssw_col, usrtipo_col) VALUES ('$last_id','$contrasena', 'ESPECIALISTA')";
                   $conexion->query($nuevo_usuario);
                 //echo "<script type=\"text/javascript\">alert(\"$nuevo_usuario\");</script>";              
-                $nuevo_espec = "INSERT INTO $table_especialista (id_Especialista, cedula_col, especialidad_col) VALUES ('$last_id','$cedula', '$especialidad')";
+                $nuevo_espec = "INSERT INTO $table_especialista (id_Especialista, cedula_col, especialidad_col, institucioncedula_col) VALUES ('$last_id','$cedula', '$especialidad', '$institucionCedula')";
                   $conexion->query($nuevo_espec);
                 //echo "<script type=\"text/javascript\">alert(\"$nuevo_espec\");</script>"; 
                 

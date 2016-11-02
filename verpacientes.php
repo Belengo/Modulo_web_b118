@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@ session_start();
 <!-- Todos los plugins JavaScript de Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
 
-<form action="nverpacientes.php" method="get">
+
 
 <!-- Navbar -->
     <!-- Navbar -->
@@ -59,80 +60,82 @@ session_start();
         <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
         <p>Bienvenido a Chibil</p>
       </div>
-      
-      <div class="container" style="margin-top:5px;">
 
-      <?php
-        include("config.php");
-       
-        //Declarar Consulta 
-        $seleccionar_pacientes = "SELECT nombre_col, apellidouno_col, apellidodos_col, telpersonal_col as 'telefono', correo_col as 'correo'  FROM Persona_tb where id_persona in (SELECT * FROM  Paciente_tb);";
-        // $seleccionar_pacientes = SELECT Persona_tb.nombre_col, Persona_tb.apellidouno_col, Persona_tb.apellidodos_col, Persona_tb.telpersonal_col as 'telefono', Persona_tb.correo_col AS 'correo' FROM Persona_tb INNER JOIN Paciente_tb ON  Paciente_tb.id_Paciente = Persona_tb.id_persona ORDER BY Persona_tb.nombre_col;
-;
+<div clas="container" style="margin-top:5px">   
+  <div class="container" ">
+  <?php
+    $id_session = $_SESSION['userid'];
+    include("config.php");
+    //Declarar Consulta 
+      $seleccionar_pacientes = "SELECT nombre_col, apellidouno_col, apellidodos_col, telpersonal_col as 'telefono', correo_col as 'correo', id_persona FROM $table_persona WHERE id_persona in (Select id_paciente FROM $table_paciente where Especialista_tb_id_especialista = '$id_session')";
+      //echo "<script type=\"text/javascript\">alert(\"$seleccionar_pacientes\");</script>"; 
 
+    //Query de consulta
+      $selec_pac = $conexion->query($seleccionar_pacientes);
         
-        //Query de consulta
-        $selec_pac = $conexion->query($seleccionar_pacientes);
+    //numero total de pacientes
+      $total_pacientes = mysqli_num_rows($selec_pac);
+  ?>
 
-        //numero total de pacientes
-        $total_pacientes = mysqli_num_rows($selec_pac);
-
-        
-       
-        
-      ?>
-
-        <div class="row">
-
-          <div class="panel panel-default">
-
-            <div class="panel-heading">
-                
-              <div class="col-xs-4" align="left"><img class="img-thumbnail" src="imgs/user.svg" onmouseover="this.width=55;this.height=55;" onmouseout="this.width=40;this.height=40;" onclick="window.location='Formulario_Registro_Paciente.php'" width="40" height="40"><span>Agregar Nuevo<span></div>  
-                <div class="col-xs-4"></div>      
-                <div class="col-xs-4"><input type="search" class="form-control" id="usr" placeholder="Buscar paciente..."></input></div>
-              <br /> </br/>
-            </div> <!--div class panel heading-->
-            
-            <table id="colorletra" class="table table-fixed">
-              <thead>
-                <tr style="font-weight:bold" align="center">
-                  <td class="col-xs-4"><img class="img-thumbnail" src="imgs/id-card.svg" width="40" height="40" ></img></td> 
-                  <td class="col-xs-4"><img class="img-thumbnail" src="imgs/phone-receiver.svg" width="40" height="40" > </img></td>
-                  <td class="col-xs-4"><img class="img-thumbnail" src="imgs/email.svg" width="40" height="40" ></img></td>
-                </tr>
-              </thead>
-
-              <tbody align="center">
-              <?php 
-                while($row = mysqli_fetch_array($selec_pac)){ ?>
-                  <tr>
-                                   
-                    <td class="col-xs-4" id="colorletra" >
+    <div class="row" style="margin-top: 5%;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="col-xs-4" align="left"><img class="img-thumbnail" src="imgs/user.svg" onmouseover="this.width=55;this.height=55;" onmouseout="this.width=40;this.height=40;" onclick="window.location='Formulario_Registro_Paciente.php'" width="40" height="40"><span>Agregar Nuevo<span>
+          </div>  
+          <div class="col-xs-4"></div>      
+          <div class="col-xs-4"><input type="search" class="form-control" id="usr" placeholder="Buscar paciente..."></input></div>
+          <br /> </br/>
+        </div> <!--div class panel heading-->
+           
+        <table id="colorletra" class="table table-fixed" >
+          <thead>
+            <tr style="font-weight:bold" align="center">
+              <td class="col-xs-4"><img class="img-thumbnail" src="imgs/id-card.svg" width="40" height="40" ></img></td> 
+              <td class="col-xs-4"><img class="img-thumbnail" src="imgs/phone-receiver.svg" width="40" height="40" > </img></td>
+              <td class="col-xs-4"><img class="img-thumbnail" src="imgs/email.svg" width="40" height="40" ></img></td>
+            </tr>
+          </thead>
+          <tbody align="center">
+            <?php 
+              for($i=0;$i<$total_pacientes; $i++){
+                $row = mysqli_fetch_array($selec_pac);
+                 //while($row = mysqli_fetch_array($selec_pac)){ ?>
+                <tr>
+                  <td class="col-xs-4" id="colorletra" >
                     <?php  
-                    printf( "%s %s %s", $row['nombre_col'], $row['apellidouno_col'], $row['apellidodos_col']);
-                      ?>
-                    </td>
-
-                    <td class="col-xs-4" id="colorletra"> <?php 
-                    printf( "%s", $row['telefono']);
-                     ?>
-                    </td>
-
-                    <td class="col-xs-4" id="colorletra"> <?php
-                    printf( "%s", $row['correo']);
-                    ?> <a href="pag_paciente.php"><img src="imgs/eye.svg" height="30" width="30" align="right"> </img> </a>
-                    </td>
-                    </tr>
-              <?php } ?>
-              </tbody>
-            </table>
-
-
-          </div> <!-- panel panel-default"> -->
-        </div> <!-- div class row-->
-      </div> <!-- container //tabla -->
+                      printf( "%s %s %s", $row['nombre_col'], $row['apellidouno_col'], $row['apellidodos_col']); ?>
+                  </td>
+                  <td class="col-xs-4" id="colorletra"> <?php 
+                      printf( "%s", $row['telefono']); ?>
+                  </td>
+                  <td class="col-xs-4" id="colorletra"> <?php
+                      printf( "%s", $row['correo']); ?>
+                  </td>
+                  <td class="col-xs-1" id="colorletra"> 
+                    <form action="pag_paciente.php" method="POST">
+                    <input type="hidden" name="correo_paciente" value="<?php echo $row['correo'] ?>" width="3" height="3" >
+                    <input class="botoncontacto" value="" type="submit" name="ver"></input>  
+                    </input>
+                    </form> 
+                  </td>
+                </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div> <!-- panel panel-default"> -->
+    </div> <!-- div class row-->
+  </div> <!-- container -->
       <?php printf("El total de sus pacientes es %d", $total_pacientes); ?>
+      
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="container-fluid" align="right"> 
+        <a href="Bienvenido.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- container margin top =5%-->
 
     </div> <!--container-fliud-->
   </div> <!--container-fliud-->

@@ -1,10 +1,10 @@
 <?php
  session_start();
 include("config.php");
- if(isset($_SESSION['userid'])){
-} else {
- echo '<script> window.location="index.php" </script>';
-}
+   if(isset($_SESSION['userid'])){
+    } else {
+      echo '<script> window.location="index.php" </script>';
+    }
  ?>
 
 <!DOCTYPE html>
@@ -72,13 +72,24 @@ include("config.php");
                      if ($row_sexo == 'F') {
                        # code...
                       echo 'Dra. '.$_SESSION['user']; 
+                      echo '<p>Bienvenida a Chibil</p>';
                      } else {
                       echo 'Dr. '.$_SESSION['user'];
+                      ECHO '<p>Bienvenido a Chibil</p>';
                      }
                     ?>
         </h3>
-        <p>Bienvenido a Chibil</p>
+        
       </div>
+      <div class="row">       
+      <div class="col-xs-12" id="colorletra" align="right"> <?php 
+          $date = "SELECT CURDATE() as 'fecha'";
+          $res_date = $conexion -> query($date);
+          $row_res_date = $res_date -> fetch_array(MYSQLI_ASSOC);
+          $fecha_actual = $row_res_date['fecha'];
+          
+          echo 'Fecha: '.$fecha_actual; ?></div> 
+     </div> 
     <div id="paddin">
       <div class="col-md-4 col-sm-6" >
         <div class="row">
@@ -118,23 +129,6 @@ include("config.php");
     </div>
 </footer> <!-- Footer-->
 
-
-
-<!--comienza js-->
-
-
-<!-- Termina js-->
-
-<!-- Comienza php-->
-
-<?php
-
-
-
-
-?>
-
-<!-- Termina php-->
 
 
 </body>

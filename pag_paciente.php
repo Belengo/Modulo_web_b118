@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+include('config.php'); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,84 +45,149 @@
               <a href="index.php" >
               <span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png">Chibil</span> </a> </img>
                   
-              </ul><!-- /ul nav bar-->
+              </ul><!-- /
+              ul nav bar-->
       </div>  <!-- div class="collapse navbar-collapse" -->
     </div> <!-- div class="container" -->
 </nav>
 
 
 <div class="site-wrapper">
-  <div class="container">
-    <div id="upmenu">
-    </div>
-</div>
-  
-  <div class="container" >
-    <div id="upmenu">
-      <a href="verpacientes.php"> Pacientes  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Formulario_Registro_Paciente.php" > Registrar Nuevo Paciente </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Medicamentos.php"> Medicamentos </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Modificar_datos.php"> Modificar mis Datos</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
-  </div>
+  <div id ="colorletra" class="container-fluid" align="center">
+    <div class="container-fluid">
+      
+      <div class="jumbotron text-center">
+        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
+        <p>Bienvenido a Chibil</p>
+      </div>
+      
+<div class="container">
+            <?php 
+            //RECIBE DATO (CORREO PACIENTE)
+          //  $id_paciente = $_SESSION['paciente'];
+            $correo_pac = $_POST['correo_paciente'];
+           //CONSULTA ID
+              $id_pac = "SELECT id_persona FROM $table_persona WHERE correo_col='$correo_pac';";
+              $res_id_pac = $conexion -> query($id_pac);
+              $row_res_id_pac = $res_id_pac->fetch_array(MYSQLI_ASSOC); 
+              $id_paciente = $row_res_id_pac['id_persona'];
+            //GENERA VARIABLE DE SESIÓN DE PACIENTE
+              $_SESSION['paciente'] = $id_paciente;
+            //CONSULTA Nombre del paciente  
+              $nombre_pac = "SELECT CONCAT (nombre_col,' ', apellidouno_col,' ',apellidodos_col) as 'NombreCompleto' FROM $table_persona WHERE id_persona='$id_paciente'";
+                $res_nombre_pac = $conexion->query($nombre_pac);
+                $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
+            //Consulta a tabla diagnóstico 
+              $diagnostico = "SELECT * FROM $table_diagnostico WHERE Paciente_tb_id_Paciente = '$id_paciente' group by fecha_col order by fecha_col DESC LIMIT 1;";
+              //echo "<script type=\"text/javascript\">alert(\"$diagnostico\");</script>";
+                $res_diagnostico = $conexion -> query($diagnostico);
+                $row_res_diagnostico = $res_diagnostico -> fetch_array(MYSQLI_ASSOC);
+            //consulta a tabla alergias
+                $alergias = "SELECT * FROM $table_diagnostico WHERE Paciente_tb_id_Paciente = '$id_paciente' group by fecha_col order by fecha_col DESC LIMIT 1;"
+            ?>
     
-    <div class="container" >
-    </div>
-
-	 <div class="container" >
-		<div id="upmenu">
-		<a href="vestible.php"> Vestible </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="historiaclinica.php"> Historia Clínica  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="receta.php"> Recetas </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</div>
-	</div>
-
-    
- 		
-    <div class="row" id="colorletra">
- 			  <div class="col-xs-3" > Nombre Paciente: 
-
-        <!-- <?php 
-        /* include(config.php)
-         $nombre_pac = "SELECT nombre_col FROM paciente_tb WHERE id_paciente= $idpac"
-        
-
-        */
-        ?> -->
-        </div>
-        <div class="col-xs-3"> Tipo de crisis:
-        </div>
-        <div class="col-xs-3"> Alergias antipilépticos: 
-        </div>
-    </div>
-
- 	
-
-    <div class="row"> 
-      <div class="col-xs-4"></div>
-      <div class="col-xs-4" id="tth" style="margin-top:10%;" > <h7 id="colorletra"><p >Dx. Breve descripción del diagnóstico (o el último guardado.) </p></h7> 
+    <div class="row" id="colorletra" align="left"><!--Contenedor datos pac-->
+      <div class="col-xs-12 col-md-4" id="caja">  <br /><h7> Paciente: </h7> <h4 align="center" />
+        <?php 
+          $row_nombre_paciente = $row_res_nombre_pac["NombreCompleto"];
+          echo $row_nombre_paciente;
+        ?> </h4>
       </div>
-      <div class="col-xs-4"></div>
-      <div class="col-xs-4"></div>
-    </div>
-
-    <div class="row"> 
-      <div class="col-xs-4"></div>
-      <div class="col-xs-4" id="tth" style="margin-top:5%;" > <h7 id="colorletra"><p> TRATAMIENTO ACTUAL</p></h7> 
+      <div class="col-xs-12 col-md-4" id="caja"><br /> <h7> Tipo de crisis: </h7> <h4 align="center" />
+        <?php   
+          echo $row_res_diagnostico["crisistipo_col"];
+        ?>
       </div>
-      <div class="col-xs-4"></div>
-      <div class="col-xs-4"></div>
-    </div>
-
-    <div class="row"> 
-      <div class="col-xs-4"></div>
-      <div class="col-xs-4" id="tth" style="margin-top:5%;" > <h7 id="colorletra"><p> COMBINACIONES DE TRATAMIENTOS PREVIOS</p></h7> 
+      <div class="col-xs-12 col-md-4" id="caja"><br /> <h7> Alergias Antipilépticos:</h7> <h4 align="center" />
+        <?php
+          echo $row_res_alergia['antiepilepticos'];
+        ?> 
       </div>
-      <div class="col-xs-4"></div>
-      <div class="col-xs-4"></div>
+    </div> <!--Contenedor datos pacientes-->
+
+    <div class="row" style="margin-top:10%;" >
+      <div class="col-xs-4" align="center">
+        <div class="container-fluid"  style="margin-top:7%;" > <!--Contenedor botones pac-->
+          <div class="row" style="margin-top:7%;"> <!--HistoriaClinica-->
+            <div class="col-xs-4">
+              <form action="historiaclinica.php" method="POST">
+              <input type="submit" class="botonclinica" value="" name="historiaclinica"></input>HISTORIA CLÍNICA
+              <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
+              </input> 
+              </form> 
+            </div>
+          </div> <!--HistoriaClinica-->
+          <div class="row" style="margin-top:7%;"> <!--Recetas-->
+            <div class="col-xs-4" > 
+              <form action="receta.php" method="POST">
+              <input class="botonreceta" value="" type="submit" name="historiaclinica"></input> RECETAS
+              <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
+              </input> 
+              </form> 
+            </div>
+          </div>  <!--Recetas-->
+          <div class="row" style="margin-top:7%;">  <!--Vestible-->
+            <div class="col-xs-4">
+              <form action="vestible.php" method="POST">
+              <input class="botonvestible" value="" type="submit" name="historiaclinica"></input> VESTIBLE
+              <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
+              </input> 
+              </form>
+            </div>          
+          </div> <!--Vestible-->
+        </div><!-- Contenedor botones pac-->
+      </div> <!--div class="col-xs-4" align="center"-->
+
+      <div class="col-xs-8">
+        <div class="container-fluid" align="center"> <!--contenedor datos DX trata y cobinaciones de tratamientos previos-->
+
+          <div class="row" style="margin-top:7%;"> <!-- DX -->
+            <div class="col-xs-6" id="caja1">
+              <h7 id="colorletra">
+                <?php 
+                  echo "Dx. ".$row_res_diagnostico["padecimientoActual_col"];
+                ?>   
+              </p></h7>           
+            </div>
+           </div>  <!-- DX -->
+
+          <div class="row" style="margin-top:7%;"> <!-- TRATAMIENTO ACTUAL -->
+            <div class="col-xs-6" id="caja1" name="TRATAMIENTO">
+              <h7 id="colorletra"><p>  TRATAMIENTO ACTUAL
+                <?php 
+                  /*echo "Dx. ".$row_res_ultima_fecha['padecimientoActual_col'];*/
+                ?>   
+              </p></h7>           
+            </div>
+          </div>  <!-- TRATAMIENTO ACTUAL -->
+
+          <div class="row" style="margin-top:7%;">  <!-- COMBINACIONES TRATAMIENTO -->
+            <div class="col-xs-6" id="caja1">
+              <h7 id="colorletra"><p> COMBINACIONES DE TRATAMIENTOS 
+                <?php 
+                  /*echo "Dx. ".$row_res_ultima_fecha['combinciones_col'];*/
+                ?>   
+              </p></h7>           
+            </div>
+          </div>  <!-- COMBINACIONES TRATAMIENTO -->
+        </div> <!--contenedor datos DX trata y cobinaciones de tratamientos previos-->
+      </div> <!-- div class="col-xs-8"> -->
+    </div> <!--ROW  -->
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="container-fluid" align="right"> 
+          <a href="verpacientes.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
+        </div>
+      </div>
     </div>
 
- </div> <!-- class="site-wrapper"-->
+</div> <!--DIV CLASS CONTAINER -->
+
+
+    </div> <!-- DIV CLASS CONTAINER FLUID -->
+  </div> <!--div CONTAINER fluid color letra-->
+</div> <!-- class="site-wrapper"-->
 
 
 <footer class="footer">

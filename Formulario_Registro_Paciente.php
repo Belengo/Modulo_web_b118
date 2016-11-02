@@ -1,3 +1,4 @@
+<? session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +104,7 @@
 
                 <div align="left" class="form-group">
                     <label id="colorletra" for="correo">Correo Electrónico:</label>
-                    <input type="email" class="form-control" name="txtCorreo" placeholder="Ingrese correo" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com"> 
+                    <input type="email" class="form-control" name="txtCorreo" placeholder="Ingrese correo" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com" required> 
             </div>
 
         </div> <!--col-xs-6 -->
@@ -136,11 +137,14 @@
                     <label id="colorletra" for="telefono">Teléfono:</label>
                     <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono" pattern='[0-9]+' title="No se aceptan letras">
                 </div>
-
                 <div align="left" class="form-group">
+                  <label id="colorletra" for="telefono">Municipio/Delegación:</label>
+                  <input type="text" class="form-control" name="txtDelegacion" placeholder="Municipio o Delegación" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
+                </div>
+                <!--<div align="left" class="form-group">
                     <label id="colorletra" for="vestible">Código Vestible:</label>
                     <input type="text" class="form-control" name="txtVestible" placeholder="Código de vestible" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9]+' required title="Este campo es necesario">
-                </div>
+                </div>-->
 
         </div><!--col-xs-6 -->
       </div> <!-- row -->
@@ -168,12 +172,14 @@
 </footer>
 
 <?php
+
 if (isset($_POST["btnRegistrar"])) {
       # code...
       include("config.php");
       include("captura_persona.php");
       include("captura_direccion.php");
       include("capturar_pac.php");
+      
       
          
       //lectura de datos cn el método POST
@@ -191,14 +197,17 @@ if (isset($_POST["btnRegistrar"])) {
         $colonia = getColonia();    //direccion_tb
         $codpost = getCodpost();    //direccion_tb
         $telefono = getTelefono();    //direccion_tb
+        $delegacion = getDelegacion();
         //PACIENTE
         $vestible = getVestible();  //paciente_tb
+        $id_especialista = $_SESSION['userid'];
 
+        $Sintaxis='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
 
         $mensaje_correo_ya_existe = "El correo que intenta registrar ya está dado de alta";
 
         //Verificar correo existente
-        $correo_existe = "SELECT correo_col FROM Persona_tb WHERE correo_col = '$correo'";
+        $correo_existe = "SELECT correo_col FROM $table_persona WHERE correo_col = '$correo'";
         $res_correo = $conexion->query($correo_existe);
         //echo "<script type=\"text/javascript\">alert(\"$correo_existe\");</script>";
         $row_correo_ex = $res_correo->fetch_array(MYSQLI_ASSOC);
@@ -207,20 +216,21 @@ if (isset($_POST["btnRegistrar"])) {
 
         if ($row_correo == $correo){
           echo "<script type=\"text/javascript\">alert(\"$mensaje_correo_ya_existe\");</script>";
-        } else {
+        } else{
+            $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo'); ";
+                if ($conexion->query($nueva_persona) === TRUE) {
+                  $last_id = $conexion->insert_id;
+                    //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>";
+                }
+            $nueva_direccion = "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona, delegacion_col ) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id', '$delegacion');";
+                $conexion->query($nueva_direccion);
+                 //echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
+                $nuevo_paciente =  "INSERT INTO $table_paciente (id_Paciente, Especialista_tb_id_Especialista) VALUES ('$last_id','$id_especialista');";
+                echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";
+                  $conexion->query($nuevo_paciente);
+          echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. 1\"); </script>"; 
+          echo "<script language=Javascript> location.href=\"verpacientes.php\"; </script>";
 
-          $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo'); ";
-              if ($conexion->query($nueva_persona) === TRUE) {
-                $last_id = $conexion->insert_id;
-                  //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>";
-              }
-          $nueva_direccion = "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id');";
-              $conexion->query($nueva_direccion);
-               //echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
-              $nuevo_paciente =  "INSERT INTO $table_paciente (id_Paciente) VALUES ('$last_id');";
-                $conexion->query($nuevo_paciente);
-        echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. 1\"); </script>"; 
-        echo "<script language=Javascript> location.href=\"verpacientes.php\"; </script>";  
       } //else
         
 } //if isset

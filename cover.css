@@ -28,6 +28,7 @@ html,
 body {
   height: 100%;
   background-color: #fff;
+  font-family:Courier New;
 }
 
 body {
@@ -166,7 +167,7 @@ body {
   .cover-container {
     width: 700px;
   }
-}
+} 
 
 .footer {
   position:relative;
@@ -181,6 +182,65 @@ body {
 .jumbotron{
   height: 100px;
   padding-top: 5px;
+}
+
+.botoncontacto {
+background-image: url(imgs/eye.svg); 
+width: 30px;
+height: 30px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
+.botonclinica {
+background-image: url(imgs/historia.svg); 
+width: 70px;
+height: 70px;
+text-align:right;
+border-width: 0;
+background-color: white;
+margin-top: 5%;
+}
+
+.botonreceta {
+background-image: url(imgs/receta-1.svg); 
+width: 70px;
+height: 70px;
+text-align:right;
+border-width: 0;
+background-color: white;
+margin-top: 5%;
+}
+
+.botonvestible {
+background-image: url(imgs/vestible3.svg); 
+width: 70px;
+height: 70px;
+text-align:right;
+border-width: 0;
+background-color: white;
+margin-top: 5%;
+}
+
+.botonregresar {
+background-image: url(imgs/back.svg); 
+width: 50px;
+height: 50px;
+text-align:right;
+border-width: 0;
+background-color: white;
+margin-top: 3%;
+}
+
+.botonnuevareceta{
+background-image: url(imgs/receta-2.svg); 
+width: 70px;
+height: 70px;
+text-align:right;
+border-width: 0;
+background-color: white;
+margin-top: 3%;
 }
 
 #upmenu {
@@ -230,5 +290,30 @@ body {
 #border{
   padding-top: 10px;
   border-top: solid;
+}
+
+#caja{
+-webkit-box-shadow: 10px 10px 18px -6px rgba(35,54,79,1);
+-moz-box-shadow: 10px 10px 18px -6px rgba(35,54,79,1);
+box-shadow: 10px 10px 18px -6px rgba(35,54,79,1);
+}
+
+#caja1{
+border-radius: 42px 42px 42px 42px;
+-moz-border-radius: 42px 42px 42px 42px;
+-webkit-border-radius: 42px 42px 42px 42px;
+border: 4px dotted #23364f;
+}
+
+.suggest-element{
+margin-left:5px;
+margin-top:5px;
+width:350px;
+cursor:pointer;
+}
+#suggestions {
+width:350px;
+height:150px;
+overflow: auto;
 }
 

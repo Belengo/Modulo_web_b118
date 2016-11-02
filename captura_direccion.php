@@ -23,4 +23,8 @@
  		return $_POST['txtTelefono'];
  	} 
 
+ 	function getDelegacion(){
+ 		return $_POST['txtDelegacion'];
+ 	} 
+
  ?>
