@@ -111,7 +111,7 @@ include("config.php");
 
       <div class="col-md-4 col-sm-6">
         <div class="row">
-          <img class="img-thumbnail" src="imgs/medica.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" width="200" height="200"> </img>
+          <img class="img-thumbnail" src="imgs/medica.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='miperfil.php'" width="200" height="200"> </img>
         </div>
         <div class="row">
           <span>MI PERFIL</span>

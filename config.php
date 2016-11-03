@@ -69,3 +69,5 @@ if($conexion->connect_errno){
 	echo "Disculpe las molestias, estamos experimentando fallos...";
 	exit();
 }
+
+

@@ -14,13 +14,31 @@ session_start();
     <link href="cover.css" rel="stylesheet">
     <link rel="shortcut icon" href="SmallLogo.ico" />
 	<TITLE>Chibil</TITLE>
-</head>
-<body >
+
 
 <!-- Librería jQuery requerida por los plugins de JavaScript -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- Todos los plugins JavaScript de Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
+
+
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            (function ($) {
+                $('#filtrar').keyup(function () {
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('.buscar tr').hide();
+                    $('.buscar tr').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+                })
+            }(jQuery));
+        });
+      </script>  
+</head>
+<body >
+
 
 
 
@@ -83,7 +101,11 @@ session_start();
           <div class="col-xs-4" align="left"><img class="img-thumbnail" src="imgs/user.svg" onmouseover="this.width=55;this.height=55;" onmouseout="this.width=40;this.height=40;" onclick="window.location='Formulario_Registro_Paciente.php'" width="40" height="40"><span>Agregar Nuevo<span>
           </div>  
           <div class="col-xs-4"></div>      
-          <div class="col-xs-4"><input type="search" class="form-control" id="usr" placeholder="Buscar paciente..."></input></div>
+          <div class="col-xs-4">
+            <div class="input-group">
+              <input type="search" class="form-control" id="filtrar" placeholder="Buscar paciente..."></input>
+            </div>
+          </div>
           <br /> </br/>
         </div> <!--div class panel heading-->
            
@@ -95,7 +117,7 @@ session_start();
               <td class="col-xs-4"><img class="img-thumbnail" src="imgs/email.svg" width="40" height="40" ></img></td>
             </tr>
           </thead>
-          <tbody align="center">
+          <tbody align="center" class="buscar">
             <?php 
               for($i=0;$i<$total_pacientes; $i++){
                 $row = mysqli_fetch_array($selec_pac);
@@ -125,7 +147,7 @@ session_start();
       </div> <!-- panel panel-default"> -->
     </div> <!-- div class row-->
   </div> <!-- container -->
-      <?php printf("El total de sus pacientes es %d", $total_pacientes); ?>
+     
       
   <div class="row">
     <div class="col-xs-12">

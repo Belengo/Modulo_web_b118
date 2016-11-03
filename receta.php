@@ -2,7 +2,6 @@
 include("config.php");
 ?>
                
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,39 +14,7 @@ include("config.php");
     <link href="cover.css" rel="stylesheet">
     <link href="flaticon.css" rel="stylesheet1">
     <link rel="shortcut icon" href="SmallLogo.ico" />
-  <TITLE>Chibil</TITLE>
-<!--sCRIPT QUE ESTA EN ESPERA DE LO QUE SE ESCRIBE -->
-    <script type="text/javascript" src="jquery.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {    
-                //Al escribir dentro del input con id="service"
-                $('#service').keypress(function(){
-                    //Obtenemos el value del input
-                    var service = $(this).val();        
-                    var dataString = 'service='+service;
-                    //Le pasamos el valor del input al ajax
-                    $.ajax({
-                        type: "POST",
-                        url: "receta.php",
-                        data: dataString,
-                        success: function(data) {
-                            //Escribimos las sugerencias que nos manda la consulta
-                            $('#suggestions').fadeIn(1000).html(data);
-                            //Al hacer click en algua de las sugerencias
-                            $('.suggest-element').live('click', function(){
-                            //Obtenemos la id unica de la sugerencia pulsada
-                                var id = $(this).attr('id');
-                                //Editamos el valor del input con data de la sugerencia pulsada
-                                $('#service').val($('#'+id).attr('data'));
-                                //Hacemos desaparecer el resto de sugerencias
-                                $('#suggestions').fadeOut(1000);
-                            });              
-                        }
-                    });
-                });              
-            });    
-        </script>
-
+  <TITLE>Chibil</TITLE>      
 </head>
 <body>
 
@@ -91,54 +58,76 @@ include("config.php");
       </div>
 
      
-<div class="container">
-    <div class="container-fluid">
-     
-          <?php
-            //no borrar
-            $id_pac = $_SESSION['paciente']; 
-            //$correo_pac = $_POST['correo_paciente']; 
-              $nombre_pac = "SELECT CONCAT (nombre_col,' ', apellidouno_col,' ',apellidodos_col) as 'NombreCompleto', correo_col as 'correo' FROM $table_persona WHERE id_persona='$id_pac'";
-              //echo "<script type=\"text/javascript\">alert(\"$nombre_pac\");</script>"; 
-              $res_nombre_pac = $conexion->query($nombre_pac);
-              $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
-          ?>
+<div clas="container" style="margin-top:5px">   
+  <div class="container" ">
+  <?php
+        $id_pac = $_SESSION['paciente']; 
+        //$correo_pac = $_POST['correo_paciente']; 
+          $nombre_pac = "SELECT CONCAT (nombre_col,' ', apellidouno_col,' ',apellidodos_col) as 'NombreCompleto', correo_col as 'correo' FROM $table_persona WHERE id_persona='$id_pac'";
+          //echo "<script type=\"text/javascript\">alert(\"$nombre_pac\");</script>"; 
+          $res_nombre_pac = $conexion->query($nombre_pac);
+          $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
+    
 
-        <div class="container-fluid" align="center">
-            <div class="row">
-                <!-- trigger modal -->
-                <button type="button" class="botonnuevareceta" data-toggle="modal" data-target="#myModal"></button>
-                    <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-                        
-                        <!-- Modal content-->
-                        <div class="modal-content" style="margin-top: 7%">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Nueva Receta</h4>
-                            </div>
-                            <div class="modal-body">
-                             <!--modal body -->
-                             <form> <!--AQUI APARECEN  LA SUGERENCIAS -->
-                                Ingrese medicamento: <input type="text" size="50" id="service" name="service" />
-                               <div id="suggestions"></div>
-                                    
-                            </form>  
+    
+    //Declarar Consulta 
+      $seleccionar_receta = "SELECT fecha_col as 'fecha' FROM $table_tratamiento WHERE Paciente_tb_id_Paciente = $id_pac";
+      //echo "<script type=\"text/javascript\">alert(\"$seleccionar_receta\");</script>"; 
 
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- -->
-            </div> <!-- row-->
-        </div>  <!-- container fluid -->
+    //Query de consulta
+      $selec_recet = $conexion->query($seleccionar_receta);
         
+    //numero total de pacientes
+      $total_recetas = mysqli_num_rows($selec_recet);
+  ?>
 
-
+    <div class="row" style="margin-top: 5%;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="col-xs-4" align="left"><span>Historial Recetas<span>
+          </div>  
+          <div class="col-xs-4"></div>      
+          <div class="col-xs-4">
+            
+          </div>
+          <br /> </br/>
+        </div> <!--div class panel heading-->
+        <div class="table-responsive"> 
+        <table id="colorletra" class="table" >
+          <thead>
+            <tr style="font-weight:bold" align="center">
+              <td class="col-xs-4"><img class="img-thumbnail" src="imgs/calendario.svg" width="40" height="40" ></img></td> 
+            </tr>
+          </thead>
+          <tbody align="center" class="buscar">
+            <?php 
+              for($i=0;$i<$total_recetas ; $i++){
+                $row = mysqli_fetch_array($selec_recet);
+                 //while($row = mysqli_fetch_array($selec_pac)){ ?>
+                <tr>
+                  <td class="col-xs-4" id="colorletra" >
+                   <?php
+                       printf("%s", $row['fecha']);
+                   ?>
+                  </td>
+                  <td class="col-xs-1" id="colorletra"> 
+                    <form action="receta.php" method="POST">
+                    <input type="hidden" name="correo_paciente" value="<?php echo $row['fecha'] ?>" width="3" height="3" >
+                    <input class="botonver_mas" value="" type="submit" name="ver"></input>  
+                    </input>
+                    </form> 
+                  </td>
+                  
+                  
+                </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+        </div>
+      </div> <!-- panel panel-default"> -->
+    </div> <!-- div class row-->
+  </div> <!-- container -->
+         
 
         <div class="row">
             <div class="col-xs-12">
@@ -172,15 +161,4 @@ include("config.php");
 
 <!-- Comienza php-->
 
-<?php
-
-    header('Content-type: text/html; charset=iso-8859-1');
-    
-    $busqueda = $_POST['service'];
-    $query_services = "SELECT * FROM Medicamento_cat where (Select nombre_col FROM Nombremedicamento_cat) like 'Carba';";
-    //$query_services = mysql_query("SELECT  FROM services WHERE title like '" . $busqueda . "%' AND status=1 ORDER BY title DESC", $conexion);
-    while ($row_services = mysqli_fetch_array($query_services)) {
-        echo '<div class="suggest-element"><a data="'.$row_services['title'].'" id="service'.$row_services['service_id'].'">'.utf8_encode($row_services['title']).'</a></div>';
-    }
-?>
 

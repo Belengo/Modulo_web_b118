@@ -184,14 +184,7 @@ body {
   padding-top: 5px;
 }
 
-.botoncontacto {
-background-image: url(imgs/eye.svg); 
-width: 30px;
-height: 30px;
-text-align:right;
-border-width: 0;
-background-color: white;
-}
+
 
 .botonclinica {
 background-image: url(imgs/historia.svg); 
@@ -205,12 +198,20 @@ margin-top: 5%;
 
 .botonreceta {
 background-image: url(imgs/receta-1.svg); 
-width: 70px;
-height: 70px;
+width: 40px;
+height: 40px;
 text-align:right;
 border-width: 0;
 background-color: white;
-margin-top: 5%;
+}
+
+.botonimprimir {
+background-image: url(imgs/print.svg); 
+width: 40px;
+height: 40px;
+text-align:left;
+border-width: 0;
+background-color: white;
 }
 
 .botonvestible {
@@ -242,6 +243,25 @@ border-width: 0;
 background-color: white;
 margin-top: 3%;
 }
+
+.botoncontacto {
+background-image: url(imgs/eye.svg); 
+width: 30px;
+height: 30px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
+.botonver_mas{
+background-image: url(imgs/ver_mas.svg); 
+width: 30px;
+height: 30px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
 
 #upmenu {
     background-color:#23364f;
