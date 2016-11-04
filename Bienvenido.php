@@ -22,7 +22,7 @@ include("config.php");
     <link rel="shortcut icon" href="SmallLogo.ico" />
 	<TITLE>Chibil</TITLE>
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!-- Librería jQuery requerida por los plugins de JavaScript -->
 <script src="http://code.jquery.com/jquery.js"></script>
@@ -30,7 +30,7 @@ include("config.php");
 <script src="js/bootstrap.min.js"></script>
 
 <!-- Navbar -->
-
+<div>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -39,7 +39,7 @@ include("config.php");
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><h5><span data-toggle="modal" data-target="#ModalChibil">Chibil</span></h5></a>
+      <a class="navbar-brand" href="#"><span data-toggle="modal" data-target="#ModalChibil" id="letrablanca">Chibil</span></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -56,6 +56,7 @@ include("config.php");
     </div>
   </div>
 </nav>
+</div>
 
 <div class="site-wrapper">
   <div id ="colorletra" class="container-fluid" align="center" >
@@ -81,6 +82,7 @@ include("config.php");
         </h3>
         
       </div>
+
       <div class="row">       
       <div class="col-xs-12" id="colorletra" align="right"> <?php 
           $date = "SELECT CURDATE() as 'fecha'";
@@ -90,31 +92,35 @@ include("config.php");
           
           echo 'Fecha: '.$fecha_actual; ?></div> 
      </div> 
+    
+
     <div id="paddin">
+
+    
       <div class="col-md-4 col-sm-6" >
         <div class="row">
-          <img class="img-thumbnail" src="imgs/pacientes.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='verpacientes.php'" width="200" height="200"> </img> </a>
-        </div>
-        <div class="row">
-          <span>PACIENTES</span>
+          <div id="ex4">
+          <img  src="imgs/pacientes.svg" o onclick="window.location='verpacientes.php'" width="200" height="200"> </img> <p>PACIENTES </p>
+          </div>
         </div>
       </div>
+ 
+
+   
+      <div class="col-md-4 col-sm-6">
+        <div class="row">
+          <div id="ex4">
+            <img src="imgs/medical.svg" onclick="window.location='Medicamentos.php'" width="200" height="200"> </img> <p>FÁRMACOS</p>
+          </div>
+        </div>
+      </div>
+   
 
       <div class="col-md-4 col-sm-6">
         <div class="row">
-          <img class="img-thumbnail" src="imgs/farmacos.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='Medicamentos.php'" width="200" height="200"> </img>
-        </div>
-        <div class="row">
-          <span>FÁRMACOS</span>
-         </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="row">
-          <img class="img-thumbnail" src="imgs/medica.svg" onmouseover="this.width=250;this.height=250;" onmouseout="this.width=200;this.height=200;" onclick="window.location='miperfil.php'" width="200" height="200"> </img>
-        </div>
-        <div class="row">
-          <span>MI PERFIL</span>
+          <div id="ex4">
+            <img src="imgs/brain.svg" onclick="window.location='miperfil.php'" width="200" height="200"> </img> <p>MI PERFIL</p>
+          </div>
         </div>
       </div>
     </div>
@@ -124,8 +130,8 @@ include("config.php");
 
 
 <footer class="footer">
-    <div class="container-fluid bg-4 text-center">
-        <p class="text-muted" id="colorletra">TT 2015-B118</p>
+    <div class="container-fluid text-center" id="letrablanca">
+        <p class="text-muted" id="letrablanca">TT 2015-B118</p>
     </div>
 </footer> <!-- Footer-->
 

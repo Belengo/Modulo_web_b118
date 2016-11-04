@@ -135,7 +135,7 @@ body {
 }
 
 .navbar-inverse{
-  background-color: rgb(35,54,79);
+  background-color: rgba(35,54,79,.9);
   color: white ;
 
 }
@@ -175,13 +175,13 @@ body {
 } 
 
 .footer {
-  position:relative;
+  position:fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 25px;
-  background-color:#E8E8E8;
- margin-top: 3%;
+  background-color:rgba(35,54,79,.9);
+  margin-top: 5%;
 }
 
 .jumbotron{
@@ -323,8 +323,14 @@ background-color: white;
 }
 
 #paddin{
-  padding-top: 6%;
+  padding-top: 4%;
 }
+
+#img_paddin{
+  padding-top: 2%;
+}
+
+
 
 #border{
   padding-top: 10px;
@@ -399,6 +405,30 @@ overflow: auto;
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+#ex4 {
+width: 250px;
+height: 250px;
+line-height: 0px;
+
+color: transparent; font-size: 40px;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 90;
+text-transform: uppercase;
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-ms-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+#ex4:hover {
+line-height: 50px;
+color: rgb(35,54,79);
+background-color: rgba(35,54,79,.8);
+color: #fff
+}
+#ex4 img{ float: inherit;
+margin: 0 15px;
 }
 
 
