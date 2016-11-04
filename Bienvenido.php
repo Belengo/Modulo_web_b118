@@ -30,32 +30,32 @@ include("config.php");
 <script src="js/bootstrap.min.js"></script>
 
 <!-- Navbar -->
-		<!-- Navbar -->
-<nav class="navbar navbar-default">
- 	<div class="container">
- 		<div class="navbar-header">
-     		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-      			<span class="icon-bar"></span>
-       			<span class="icon-bar"></span>
-       			<span class="icon-bar"></span>                        
-     		</button>
-        <a class="navbar-brand" href="#" id="colorletra">Chibil</h5></a>
-     	</div>
-   		     
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-     			<ul class="nav navbar-nav navbar-right">
-            	<li><a href="log_out.php" >Cerrar Sesión</li>
-	     				<span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png"></span> </a> </img>
-	                
-            	</ul><!-- /ul nav bar-->
-   		</div>  <!-- div class="collapse navbar-collapse" -->
-    </div> <!-- div class="container" -->
-</nav> 
 
-
-
-
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><h5><span data-toggle="modal" data-target="#ModalChibil">Chibil</span></h5></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img class="botonbarchibil" src="imgs/circuito.svg"></img><span class="caret" style="margin-top: 3px"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="log_out.php">Cerrar sesión</a></li>
+            <li><a href="miperfil.php">Mi perfil</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
 <div class="site-wrapper">
   <div id ="colorletra" class="container-fluid" align="center" >
@@ -129,6 +129,32 @@ include("config.php");
     </div>
 </footer> <!-- Footer-->
 
+
+<!-- Modal CHIBIL -->
+<div id="ModalChibil" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="colorletra">CHIBIL</h4>
+      </div>
+      <div class="modal-body" id="colorletra">
+        <p> El término epilepsia tiene su origen en la palabra griega “epilambanein” que significa ser atacado o tomado por sorpresa(1). </p> <P>Existen descripciones precisas de las crisis, los sintomas previos, factores desencadenantes y efectos secundarios de las crisis, los cuales son muy parecidos a como los describen en la actualidad</P>
+        <p>Para diferentes culturas, como los griegos, era un origen divino, mientras en otras le atribuian un origen religioso, y casi siempre demoniaco, sobre todo en la edad media.</p>
+        <p>En México se consideraba a las convulsiones sagradas “citam tamcaz” o “Cancha pahal. Los aztecas englobaban a la epilepsia en el término “enfermedad sacra” y en el Codex Vaticanus B podemos encontrar una bella representación pictográfica.(2)</p>
+        <p>En un intento por recordar y dar presencia a las culturas mayas residentes en Mexico, nombramos a este sistema CHIBIL, ya que fueron los mayas quienes nombraban así a la EPILEPSIA. </p>
+        <p align="left">(1) http://www.sld.cu/galerias/pdf/sitios/santiagodecuba/epilepsia1.pdf
+        <br/>(2) https://encolombia.com/medicina/revistas-medicas/academedicina/va-54/medicina22354medicinaprehispanica/
+        </p>
+        <img src="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Gracias</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>

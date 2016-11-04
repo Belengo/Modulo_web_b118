@@ -16,30 +16,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="cover.css" rel="stylesheet">
+
     
   <TITLE>Chibil</TITLE>
 </head>
 <body>
   
   
-     
-    <!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
+<!-- Navbar -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="#" id="colorletra">Chibil</h5></a>
-      </div>
-           
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-          <ul class="nav navbar-nav navbar-right">
-                  <li style="font-size: 12px; margin-top: 3px;">
-                  <a href="#"><h7 id="colorletra"> <span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#myModal" >&nbsp;Sign in&nbsp;</span> 
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="#"><h5><span data-toggle="modal" data-target="#ModalChibil">Chibil</span></h5></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li style="font-size: 12px; margin-top: 3px;">
+          <a href="#"><h7><span class="glyphicon glyphicon-user" data-toggle="modal" data-target="#myModal" >&nbsp;Sign in&nbsp;</span> 
                   </h7></a>
                     <!--Modal-->
                     <div class="modal fade" id="myModal" role="dialog">
@@ -62,17 +60,17 @@
                                       
                                       
                                       <div align="left" class="form-group"> <!-- nombre-->
-                                        <label id="colorletra" for="nombre">Nombre(s):</label>
+                                        <label id="colorletra" for="txtNombre">Nombre(s):</label>
                                         <input  type="text" class="form-control" name="txtNombre" placeholder="Nombre(s)" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" />
                                        </div> <!-- nombre-->
               
                                       <div align="left" class="form-group"> <!-- apellidouno-->
-                                        <label id="colorletra" for="apellidouno"> Primer Apellido: </label>
+                                        <label id="colorletra" for="txtApellidouno"> Primer Apellido: </label>
                                         <input type="text" class="form-control" name="txtApellidouno" placeholder="Primer Apellido" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" >
                                       </div> <!--apellidouno-->
                                     
                                       <div align="left" class="form-group"> <!-- apellidodos-->
-                                        <label id="colorletra" for="apellidodos">Segundo Apellido: </label>
+                                        <label id="colorletra" for="txtApellidodos">Segundo Apellido: </label>
                                         <input type="text" class="form-control" name="txtApellidodos" placeholder="Segundo Apellido" pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales">
                                       </div> <!--apellidodos-->
                                       
@@ -93,22 +91,22 @@
                                         </div>
                                       
                                       <div align="left" class="form-group"> 
-                                          <label id="colorletra" for="txttelpersonal">Celular:</label>
+                                          <label id="colorletra" for="txtTelpersonal">Celular:</label>
                                           <input type="text" class="form-control" name="txtTelpersonal" placeholder="Celular" pattern='[0-9]+' title="Sólo números">
                                       </div> 
 
                                       <div align="left" class="form-group"> 
-                                          <label id="colorletra" for="txtcedula">Cédula:</label>
+                                          <label id="colorletra" for="txtCedula">Cédula:</label>
                                           <input type="text" class="form-control" name="txtCedula" placeholder="Cédula">
                                       </div> 
 
                                       <div align="left" class="form-group"> 
                                           <label id="colorletra" for="txtInstitucionCedula">Institución que expide la Cédula:</label>
-                                          <input type="text" class="form-control" name="txtInstitucionCedula" placeholder="Cédula">
+                                          <input type="text" class="form-control" name="txtInstitucionCedula" placeholder="Institución que expide">
                                       </div> 
 
                                       <div align="left" class="form-group"> 
-                                          <label id="colorletra" for="especialidad">Especialidad(es):</label>
+                                          <label id="colorletra" for="txtEspecialidad">Especialidad(es):</label>
                                           <input type="text" class="form-control" name="txtEspecialidad" placeholder="Especialidad(es)" pattern='[A-Za-z áéíóú ÁÉÍÓÚ ,]+' title="No se aceptan números ni caractéres especiales">
                                       </div> 
 
@@ -117,32 +115,32 @@
                                     <div class="col-xs-5">
                                       <div class="form-group"><h2>Datos de contacto</h2></div>
                                             <div align="left" class="form-group">
-                                                <label id="colorletra" for="calle">Calle:</label>
+                                                <label id="colorletra" for="txtCalle">Calle:</label>
                                                 <input type="text" class="form-control" name="txtCalle" placeholder="Calle" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
 
                                             <div align="left" class="form-group">
-                                                <label id="colorletra" for="num">Número:</label>
+                                                <label id="colorletra" for="txtNum">Número:</label>
                                                 <input type="text" class="form-control" name="txtNum" placeholder="Numero ext. (e interior si aplica)" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
 
                                             <div align="left" class="form-group">
-                                                <label id="colorletra" for="email">Colonia:</label>
+                                                <label id="colorletra" for="txtColonia">Colonia:</label>
                                                 <input type="text" class="form-control" name="txtColonia" placeholder="Colonia" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
 
                                             <div align="left" class="form-group">
-                                                <label id="colorletra" for="codpost">Codigo Postal:</label>
+                                                <label id="colorletra" for="txtCodpost">Codigo Postal:</label>
                                                 <input type="text" class="form-control" name="txtCodpost" placeholder="Codigo Postal" pattern='[0-9]+' title="No se aceptan letras">
                                             </div>
 
                                             <div align="left" class="form-group">
-                                                <label id="colorletra" for="telefono">Teléfono:</label>
+                                                <label id="colorletra" for="txtTelefono">Teléfono:</label>
                                                 <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono local" pattern='[0-9 . A-Z a-z]+' title="No se aceptan letras">
                                             </div>
 
                                             <div align="left" class="form-group">
-                                                <label id="colorletra" for="telefono">Municipio/Delegación:</label>
+                                                <label id="colorletra" for="txtDelegacion">Municipio/Delegación:</label>
                                                 <input type="text" class="form-control" name="txtDelegacion" placeholder="Municipio o Delegación" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
                                     </div><!--col-xs-6 -->
@@ -154,17 +152,17 @@
                                         <div class="form-group"><h2>Cuenta de usuario</h2></div>
                                         
                                         <div class="form-group">
-                                          <label id="colorletra" for="correo">Correo Electrónico:</label>
+                                          <label id="colorletra" for="txtCorreo">Correo Electrónico:</label>
                                           <input type="email" class="form-control" name="txtCorreo" placeholder="Ingrese correo (con este ingresará al sistema)" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com" >
                                         </div>
                                     
                                         <div class="form-group">
-                                          <label id="colorletra" for="contrasena">Contraseña:</label>
+                                          <label id="colorletra" for="txtContrasena">Contraseña:</label>
                                           <input type="password" class="form-control" name="txtContrasena" placeholder="Ingrese contraseña" required>
                                         </div>
                                     
                                         <div class="form-group">
-                                          <label id="colorletra" for="contrasena">Repita Contraseña:</label>
+                                          <label id="colorletra" for="txtRecontrasena">Repita Contraseña:</label>
                                           <input type="password" class="form-control" name="txtRecontrasena" placeholder="Ingrese contraseña" required>
                                         </div>
                                     </div>
@@ -197,8 +195,8 @@
                   </li>
               <li>
               <div class="dropdown" style="font-size: 12px;" >
-                  <li class="dropdown-header" id="menu1" data-toggle="dropdown"> <a href="#"><h7 id="colorletra">  
-                    <span class="glyphicon glyphicon-log-in" id="colorletra">&nbsp;Log in&nbsp;</span>
+                  <li class="dropdown-header" id="menu1" data-toggle="dropdown"> <a href="#"><h7>  
+                    <span class="glyphicon glyphicon-log-in">&nbsp;Log in&nbsp;</span>
                     </h7></a>
                       </li>
                                 <!-- Datos que va a desplegar el dropdown -->         
@@ -206,11 +204,11 @@
                   <div class="container" id="login">
                       <form action="validar.php" method="POST">
                         <form class="form-signin">
-                        <h2 class="form-signin-heading" id="colorletra">Inicie sesión</h2>
-                          <label for="inputEmail" >Correo </label>
-                          <input type="email" name="txtUsuario" class="form-control" placeholder="Correo" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com" >
-                          <label for="inputPassword" class="sr-only">Contraseña</label>
-                          <input type="password" name="txtPass" class="form-control" placeholder="Contraseña" >
+                        <h3 class="form-signin-heading" id="colorletra" s>Inicie sesión</h3>
+                          <label for="txtUsuario" id="colorletra">Correo:</label>
+                          <input type="email" name="txtUsuario" class="form-control" placeholder="correo@example.com" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com">
+                          <label for="txtPass" id="colorletra">Contraseña: </label>
+                          <input type="password" name="txtPass" class="form-control" placeholder="********" >
                           <div class="checkbox">
                             <label id="colorletra"> <input type="checkbox"   value="remember-me"> Recuerda mi contraseña</label>
                           </div>
@@ -231,7 +229,7 @@
   <div class="site-wrapper-inner">
       <div class="cover-container">
           <div class="inner cover">
-            <img src="Logo.png" alt="Chibil">
+            <img src="imgs/Logo.png" alt="Chibil">
           </div> <!--div-inner-cover-->
 
           <div class="inner cover">
@@ -247,15 +245,65 @@
 
 <footer class="footer">
     <div class="container">
-        <p class="text-muted" id="colorletra">TT 2015-B118</p>
+        <p class="text-muted" id="colorletra" data-toggle="modal" data-target="#ModalInfo" >TT 2015-B118</p>
     </div>
 </footer> <!-- Footer-->
   
+<!-- Modal INFO -->
+<div id="ModalInfo" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">TT B118</h4>
+      </div>
+      <div class="modal-body" id="colorletra">
+        <p>Este sistema fue desarrollado en la ESCUELA SUPERIOR DE CÓMPUTO del INSTITUTO POLITÉCNICO NACIONAL por:</p>
+        <p>Ana Belén González Rodríguez
+        <br/>Moisés Abraham Vázquez Pérez</p>
+        <p>Para cumplir su finalidad es necesario el uso de la prenda CHIBIL, desarrollada por los mismos alumnos como parte de Trabajo Terminal para titulación</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Gracias</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal CHIBIL -->
+<div id="ModalChibil" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="colorletra">CHIBIL</h4>
+      </div>
+      <div class="modal-body" id="colorletra">
+        <p> El término epilepsia tiene su origen en la palabra griega “epilambanein” que significa ser atacado o tomado por sorpresa(1). </p> <P>Existen descripciones precisas de las crisis, los sintomas previos, factores desencadenantes y efectos secundarios de las crisis, los cuales son muy parecidos a como los describen en la actualidad</P>
+        <p>Para diferentes culturas, como los griegos, era un origen divino, mientras en otras le atribuian un origen religioso, y casi siempre demoniaco, sobre todo en la edad media.</p>
+        <p>En México se consideraba a las convulsiones sagradas “citam tamcaz” o “Cancha pahal. Los aztecas englobaban a la epilepsia en el término “enfermedad sacra” y en el Codex Vaticanus B podemos encontrar una bella representación pictográfica.(2)</p>
+        <p>En un intento por recordar y dar presencia a las culturas mayas residentes en Mexico, nombramos a este sistema CHIBIL, ya que fueron los mayas quienes nombraban así a la EPILEPSIA. </p>
+        <p align="left">(1) http://www.sld.cu/galerias/pdf/sitios/santiagodecuba/epilepsia1.pdf
+        <br/>(2) https://encolombia.com/medicina/revistas-medicas/academedicina/va-54/medicina22354medicinaprehispanica/
+        </p>
+        <img src="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Gracias</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
   <?php
-    
  
-
+        
 if (isset($_POST["btnRegistrar"])) {
       # code...
       //include("config.php");
@@ -263,10 +311,12 @@ if (isset($_POST["btnRegistrar"])) {
       include("captura_direccion.php");
       include("captura_especialista.php");
       include("captura_usr.php");
-         
+      include("mensajes.php");  
+      
+        
+  
       //lectura de datos cn el método POST
         //PERSONA
-        //$id = mysql_query($conexion, "SELECT COUNT(id_persona) FROM $table_persona");
         $nombre = getNombre();      //persona_tb
         $apellidouno = getApellidouno(); //persona_tb
         $apellidodos = getApellidodos(); //persona_tb
@@ -287,18 +337,14 @@ if (isset($_POST["btnRegistrar"])) {
         //CUENTA DE USUARIO
         $contrasena = getContrasena();    //usuario_tb
         $recontrasena = getRecontrasena();
+         
 
-        //Mensajes de error
-        $mensaje_contraseña = "Las contraseñas no coinciden";
-        $mensaje_correo = "Ya existe una cuenta con ese correo";
-        $advertencia = "Declaro que los datos son reales, y doy mi autorización para validarlos. En caso de ser falsos será dado de baja del sistema";
-          
-      //Validar correo exite 
-      $correo_existe = "SELECT correo_col FROM Persona_tb WHERE correo_col = '$correo'";
-        $res_correo = $conexion->query($correo_existe);
-        //echo "<script type=\"text/javascript\">alert(\"$correo_existe\");</script>";
-        $row_correo_ex = $res_correo->fetch_array(MYSQLI_ASSOC);
-        $row_correo = $row_correo_ex["correo_col"];
+        
+    //Validar correo exite 
+    $correo_existe = "SELECT correo_col FROM Persona_tb WHERE correo_col = '$correo'";
+    $res_correo = $conexion->query($correo_existe);
+    $row_correo_ex = $res_correo->fetch_array(MYSQLI_ASSOC);
+    $row_correo = $row_correo_ex["correo_col"];
 
       if ($row_correo == $correo){
         echo "<script type=\"text/javascript\">alert(\"$mensaje_correo\");</script>";
@@ -328,6 +374,8 @@ if (isset($_POST["btnRegistrar"])) {
       //echo "<script language=Javascript> location.href=\"index.php\"; </script>";     
       } //else contraseña
     } //else //correo existente
+
+  
                   
                   $nueva_persona = ""; 
                   $nueva_direccion = "";
@@ -336,6 +384,5 @@ if (isset($_POST["btnRegistrar"])) {
 } //if isset 
   
 ?>
-
 </body>
 </html>
