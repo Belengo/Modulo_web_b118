@@ -1,4 +1,6 @@
-<? session_start(); ?>
+<? session_start(); 
+include('rutas.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="cover.css" rel="stylesheet">
+    <link href="../css/cover.css" rel="stylesheet">
     <link rel="shortcut icon" href="SmallLogo.ico" />
   <TITLE>Chibil</TITLE>
 </head>
@@ -22,46 +24,18 @@
 <script src="js/bootstrap.min.js"></script>
 
 
-
-<!-- Navbar -->
-    <!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
+<div class="container-fluid" > 
+    <div class="row" id="img_paddin">
+      <div class="col-xs-12">
+        <div class="container-fluid" align="left"> 
+          <a href="verpacientes.php"> <img src="<?php echo $rutaimgs.'back.svg' ?>" width="50px" height=" 50px"> </img> </a>
+        </div>
       </div>
-           
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-          <ul class="nav navbar-nav navbar-right">
-                  
-              <a href="index.php" >
-              <span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png">Chibil</span> </a> </img>
-                  
-              </ul><!-- /ul nav bar-->
-      </div>  <!-- div class="collapse navbar-collapse" -->
-    </div> <!-- div class="container" -->
-</nav>
-
-
-<div class="site-wrapper">
-  <div class="container">
-    <div id="upmenu">
-    </div>
-</div>
-  
-  <div class="container" >
-    <div id="upmenu">
-      <a href="verpacientes.php"> Pacientes  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Formulario_Registro_Paciente.php" > Registrar Nuevo Paciente </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Medicamentos.php"> Medicamentos </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Modificar_datos.php"> Modificar mis Datos</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
   </div>
+
+<div class="container" ">
+
+
 
 
   <div id="colorletra" class="container">
@@ -152,24 +126,16 @@
     </div> <!--container-fluid-->
   </div> <!--container-->
 
-      <div class="row"> 
+      <div class="row" id="border"> 
         <div class="col-xl-6">
          <div class="form-group">
-          <button type="submit" name="btnRegistrar" class="btn btn-primary btn-lg active">Registrar</button> 
+          <button type="submit" name="btnRegistrar" class="btn btn-primary btn-lg active" >Registrar</button> 
          </form>
           </div>
         </div>
       </div>
-
-  
-</div> <!-- div class site wrapper-->
-
-
-<footer class="footer">
-  <div class=" container">
-    <p class="text-muted" id="colorletra">TT 2015-B118</p>
-    </div>
-</footer>
+ </div> <!-- container-->
+</div> <!--container fluid -->
 
 <?php
 
@@ -226,9 +192,9 @@ if (isset($_POST["btnRegistrar"])) {
                 $conexion->query($nueva_direccion);
                  //echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
                 $nuevo_paciente =  "INSERT INTO $table_paciente (id_Paciente, Especialista_tb_id_Especialista) VALUES ('$last_id','$id_especialista');";
-                echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";
+                //echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";
                   $conexion->query($nuevo_paciente);
-          echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. 1\"); </script>"; 
+          echo "<script> alert (\"Su registro se ha guardado satisfactoriamente. \"); </script>"; 
           echo "<script language=Javascript> location.href=\"verpacientes.php\"; </script>";
 
       } //else

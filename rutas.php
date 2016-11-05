@@ -1,0 +1,5 @@
+<?php
+
+$rutaimgs = "imgs/";
+
+?>

@@ -147,7 +147,7 @@ include("config.php");
 
 
      <div class="container-fluid">
-      <iframe src="Bienvenido.php" name="iframe_inicio" width="100%" height="0" frameborder="0" transparency="transparency" onload="autofitIframe(this);" scrolling="no"></iframe> 
+      <iframe src="Bienvenido.php" name="iframe_inicio" width="100%" height="0" frameborder="0" transparency="transparency" onload="autofitIframe(this);" scrolling="auto"></iframe> 
     </div>
 
     </div>

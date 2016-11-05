@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include('rutas.php')
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,8 +81,8 @@ session_start();
         <table id="colorletra" class="table table-fixed" >
           <thead>
             <tr style="font-weight:bold" align="center">
-              <td class="col-xs-4"><img class="img-thumbnail" src="imgs/id-card.svg" width="40" height="40" ></img></td> 
-              <td class="col-xs-4"><img class="img-thumbnail" src="imgs/phone-receiver.svg" width="40" height="40" > </img></td>
+              <td class="col-xs-4"><img class="img-thumbnail" src= "imgs/id-card.svg" width="40" height="40" ></img></td> 
+              <td class="col-xs-4"><img class="img-thumbnail" src= "imgs/phone-receiver.svg" width="40" height="40" > </img></td>
               <td class="col-xs-4"><img class="img-thumbnail" src="imgs/email.svg" width="40" height="40" ></img></td>
             </tr>
           </thead>
