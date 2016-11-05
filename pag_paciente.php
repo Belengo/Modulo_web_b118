@@ -26,42 +26,18 @@ include('config.php');
 
 
 
-<!-- Navbar -->
-    <!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-      </div>
-           
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-          <ul class="nav navbar-nav navbar-right">
-                  
-              <a href="index.php" >
-              <span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png">Chibil</span> </a> </img>
-                  
-              </ul><!-- /
-              ul nav bar-->
-      </div>  <!-- div class="collapse navbar-collapse" -->
-    </div> <!-- div class="container" -->
-</nav>
+<div class="container-fluid">
 
-
-<div class="site-wrapper">
-  <div id ="colorletra" class="container-fluid" align="center">
-    <div class="container-fluid">
-      
-      <div class="jumbotron text-center">
-        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
-        <p>Bienvenido a Chibil</p>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="container-fluid" align="left"> 
+          <a href="verpacientes.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
+        </div>
       </div>
-      
-<div class="container">
+    </div>
+
+  
+<div class="container-fluid" align="center" >
             <?php 
             //RECIBE DATO (CORREO PACIENTE)
           //  $id_paciente = $_SESSION['paciente'];
@@ -105,10 +81,12 @@ include('config.php');
       </div>
     </div> <!--Contenedor datos pacientes-->
 
-    <div class="row" style="margin-top:10%;" >
+    <div class="row" id="paddin" >
       <div class="col-xs-4" align="center">
-        <div class="container-fluid"  style="margin-top:7%;" > <!--Contenedor botones pac-->
-          <div class="row" style="margin-top:7%;"> <!--HistoriaClinica-->
+
+        <div class="container-fluid" " > <!--Contenedor botones pac-->
+
+          <div class="row"> <!--HistoriaClinica-->
             <div class="col-xs-4">
               <form action="historiaclinica.php" method="POST">
               <input type="submit" class="botonclinica" value="" name="historiaclinica"></input>HISTORIA CLÍNICA
@@ -118,7 +96,7 @@ include('config.php');
             </div>
           </div> <!--HistoriaClinica-->
           
-          <div class="row" style="margin-top:7%;"> <!--Recetas-->
+          <div class="row"> <!--Recetas-->
             <div class="col-xs-4" > 
               <button type="button" class="botonnuevareceta" data-toggle="modal" data-target="#myModal"></button>RECETA 
                 <div class="row" align="CENTER"> </div>
@@ -127,7 +105,7 @@ include('config.php');
                     <div class="modal-dialog modal-lg">
                         
                         <!-- Modal content-->
-                        <div class="modal-content" style="margin-top: 7%">
+                        <div class="modal-content" >
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">Nueva Receta</h4>
@@ -164,7 +142,7 @@ include('config.php');
             </div>
           </div>  <!--Recetas-->
 
-          <div class="row" style="margin-top:7%;">  <!--Vestible-->
+          <div class="row">  <!--Vestible-->
             <div class="col-xs-4">
               <form action="vestible.php" method="POST">
               <input class="botonvestible" value="" type="submit" name="historiaclinica"></input> VESTIBLE
@@ -174,12 +152,13 @@ include('config.php');
             </div>          
           </div> <!--Vestible-->
         </div><!-- Contenedor botones pac-->
+
       </div> <!--div class="col-xs-4" align="center"-->
 
       <div class="col-xs-8">
         <div class="container-fluid" align="center"> <!--contenedor datos DX trata y cobinaciones de tratamientos previos-->
 
-          <div class="row" style="margin-top:7%;"> <!-- DX -->
+          <div class="row" id="container_margin" > <!-- DX -->
             <div class="col-xs-6" id="caja1">
               <h7 id="colorletra">
                 <?php 
@@ -189,7 +168,7 @@ include('config.php');
             </div>
            </div>  <!-- DX -->
 
-          <div class="row" style="margin-top:7%;"> <!-- TRATAMIENTO ACTUAL -->
+          <div class="row" id="container_margin"> <!-- TRATAMIENTO ACTUAL -->
             <div class="col-xs-6" id="caja1" name="TRATAMIENTO">
               <h7 id="colorletra"><p>  TRATAMIENTO ACTUAL
                 <?php 
@@ -198,8 +177,7 @@ include('config.php');
               </p></h7>           
             </div>
           </div>  <!-- TRATAMIENTO ACTUAL -->
-
-          <div class="row" style="margin-top:7%;">  <!-- COMBINACIONES TRATAMIENTO -->
+          <div class="row"  id="container_margin">  <!-- COMBINACIONES TRATAMIENTO -->
             <div class="col-xs-6" id="caja1">
               <h7 id="colorletra"><p> COMBINACIONES DE TRATAMIENTOS 
                 <?php 
@@ -212,27 +190,12 @@ include('config.php');
       </div> <!-- div class="col-xs-8"> -->
     </div> <!--ROW  -->
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="container-fluid" align="right"> 
-          <a href="verpacientes.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
-        </div>
-      </div>
-    </div>
+
 
 </div> <!--DIV CLASS CONTAINER -->
+</div>
 
 
-    </div> <!-- DIV CLASS CONTAINER FLUID -->
-  </div> <!--div CONTAINER fluid color letra-->
-</div> <!-- class="site-wrapper"-->
-
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted" id="colorletra">TT 2015-B118</p>
-  	</div>
-</footer>
 
 </body>
 </html>

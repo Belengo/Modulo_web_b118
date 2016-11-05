@@ -30,7 +30,7 @@ if(isset($_POST["btnAceptar"])){
 			$_SESSION['userid'] = $row_idpersona['id_persona'];
 			$_SESSION['user'] = $row_nombre['Nombre_Completo'];
 			echo "<script type=\"text/javascript\"> alert(\"$Welcome\");</script>";
-			echo "<script language=Javascript> location.href=\"Bienvenido.php\"; </script>";
+			echo "<script language=Javascript> location.href=\"inicio.php\"; </script>";
 			//}  
 		} else {
 			echo "<script type=\"text/javascript\">alert(\"USUARIO O CONTRASEÑA INCORRECTO\");</script>";

@@ -20,67 +20,36 @@ session_start();
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- Todos los plugins JavaScript de Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
-
-
-
-        <script type="text/javascript">
-        $(document).ready(function () {
-            (function ($) {
-                $('#filtrar').keyup(function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $('.buscar tr').hide();
-                    $('.buscar tr').filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-                })
-            }(jQuery));
-        });
+    <script type="text/javascript">
+      $(document).ready(function () {
+        (function ($) {
+          $('#filtrar').keyup(function () {
+            var rex = new RegExp($(this).val(), 'i');
+              $('.buscar tr').hide();
+              $('.buscar tr').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+          })
+        }(jQuery));
+      });
       </script>  
 </head>
 <body >
 
 
-
-
-<!-- Navbar -->
-    <!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
+<div class="container-fluid" > 
+    <div class="row" id="img_paddin">
+    <div class="col-xs-12">
+      <div class="container-fluid" align="left"> 
+        <a href="Bienvenido.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
       </div>
-           
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-          <ul class="nav navbar-nav navbar-right">
-                  
-              <a href="index.php" >
-              <span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png">Chibil</span> </a> </img>
-                  
-              </ul><!-- /ul nav bar-->
-      </div>  <!-- div class="collapse navbar-collapse" -->
-    </div> <!-- div class="container" -->
-</nav>
+    </div>
+  </div>
 
- 
-
-<div class="site-wrapper">
-  <div id ="colorletra" class="container-fluid" align="center">
-    <!-- Container (Services Section) -->
-
-    <div class="container-fluid">
-      
-      <div class="jumbotron text-center">
-        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
-        <p>Bienvenido a Chibil</p>
-      </div>
-
-<div clas="container" style="margin-top:5px">   
   <div class="container" ">
+
+
+
   <?php
     $id_session = $_SESSION['userid'];
     include("config.php");
@@ -95,10 +64,10 @@ session_start();
       $total_pacientes = mysqli_num_rows($selec_pac);
   ?>
 
-    <div class="row" style="margin-top: 5%;">
+    <div class="row">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <div class="col-xs-4" align="left"><img class="img-thumbnail" src="imgs/user.svg" onmouseover="this.width=55;this.height=55;" onmouseout="this.width=40;this.height=40;" onclick="window.location='Formulario_Registro_Paciente.php'" width="40" height="40"><span>Agregar Nuevo<span>
+          <div class="col-xs-4" align="left"><img class="img-thumbnail" src="imgs/user.svg" onmouseover="this.width=55;this.height=55;" onmouseout="this.width=40;this.height=40;" onclick="window.location='Formulario_Registro_Paciente.php'" width="40" height="40"><span>Nuevo<span>
           </div>  
           <div class="col-xs-4"></div>      
           <div class="col-xs-4">
@@ -147,31 +116,15 @@ session_start();
       </div> <!-- panel panel-default"> -->
     </div> <!-- div class row-->
   </div> <!-- container -->
+
+
+
      
       
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="container-fluid" align="right"> 
-        <a href="Bienvenido.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
-      </div>
-    </div>
-  </div>
+
 
 </div> <!-- container margin top =5%-->
 
-    </div> <!--container-fliud-->
-  </div> <!--container-fliud-->
-</div><!--Site wrapper-->
-
-
-
-
-
-<footer class="footer">
-    <div class="container-fluid bg-4 text-center">
-        <p class="text-muted" id="colorletra">TT 2015-B118</p>
-    </div>
-</footer> <!-- Footer-->
 
 
 </body>

@@ -31,6 +31,7 @@ body {
   font-family:Courier New;
 }
 
+
 body {
   color: #fff;
   text-align: center;
@@ -311,7 +312,7 @@ background-color: white;
 #colorfondo{
   background-color: rgb(35,54,79);
 }
- /* color para las letraas rgb(35,54,79) */
+ /* color para las letras rgb(35,54,79) */
 
  #icono {
   width: 20px;
@@ -330,11 +331,16 @@ background-color: white;
   padding-top: 2%;
 }
 
+#container_margin{
+    padding-top: 5%
+}
 
 
 #border{
   padding-top: 10px;
   border-top: solid;
+  margin-top: 5%; 
+  margin-bottom:5%;
 }
 
 #caja{

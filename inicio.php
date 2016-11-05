@@ -22,7 +22,7 @@ include("config.php");
     <link rel="shortcut icon" href="SmallLogo.ico" />
 	<TITLE>Chibil</TITLE>
      <script language="JavaScript">
-    //Ajusta el tamaño del iframe al de su contenido interior para evitar scroll
+    //Ajusta el tamaño de un iframe al de su contenido interior para evitar scroll
     function autofitIframe(id){
     if (!window.opera && document.all && document.getElementById){
     id.style.height=id.contentWindow.document.body.scrollHeight;
@@ -41,7 +41,7 @@ include("config.php");
 
 <!-- Navbar -->
 <div>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -57,8 +57,9 @@ include("config.php");
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img class="botonbarchibil" src="imgs/circuito.svg"></img><span class="caret" style="margin-top: 3px"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="log_out.php">Cerrar sesión</a></li>
-            <li><a href="miperfil.php">Mi perfil</a></li>
+            <li><a href="log_out.php" >Cerrar sesión</a></li>
+            <li><a href="miperfil.php" target="iframe_inicio">Mi perfil</a></li>
+            <li><a href="Bienvenido.php" target="iframe_inicio" >Página de Inicio</a></li>
           </ul>
         </li>
       </ul>
@@ -72,8 +73,9 @@ include("config.php");
   <div id ="colorletra" class="container-fluid" align="center" >
     <!-- Container (Services Section) -->
     <div class="container-fluid">
-      <div class="jumbotron text-center">
-        <div class="container-fluid" align="left"><a href="Logo.png"></a>  
+     <!--Jumbotron -->
+      <div class="jumbotron text-center" style="margin-top:6%;">
+        <div class="container-fluid" align="left">  
         </div><h3> <?php  
                   $id = $_SESSION['userid'];
                   $Consulta_Sexo = "SELECT sexo_col from Persona_tb where id_persona = $id";
@@ -89,30 +91,96 @@ include("config.php");
                       ECHO '<p>Bienvenido a Chibil</p>';
                      }
                     ?></h3>       
-      </div>
+      </div> <!--Jumbotron -->
 
       <div class="row">       
         <div class="col-xs-12" id="colorletra" align="right"> <?php 
-            $date = "SELECT CURDATE() as 'fecha'";
+            $date = "SELECT DAY(CURDATE()) as 'dia', MONTH(CURDATE()) as 'mes', YEAR(CURDATE()) as 'anio'; ";
             $res_date = $conexion -> query($date);
             $row_res_date = $res_date -> fetch_array(MYSQLI_ASSOC);
-            $fecha_actual = $row_res_date['fecha'];
+            $row_mes = $row_res_date['mes'];
+
+              switch ($row_mes) {
+                case 1:
+                    $mes='enero';
+                    break;
+                case 2:
+                    $mes='febrero';
+                    break;
+                case 3:
+                    $mes='marzo';
+                    break;
+                case 4:
+                    $mes='abril';
+                    break;
+                case 5:
+                    $mes='mayo';
+                    break;
+                case 6:
+                    $mes='junio';
+                    break;
+                case 7:
+                    $mes='julio';
+                    break;
+                case 8:
+                    $mes='agosto';
+                    break;
+                case 9:
+                    $mes='septiembre';
+                    break;
+                case 10:
+                    $mes='octubre';
+                    break;
+                case 11:
+                    $mes='noviembre';
+                    break;
+                case 12:
+                    $mes='diciembre';
+                    break;
+                
+
+            }
             
-            echo 'Fecha: '.$fecha_actual; ?>
+            echo 'Hoy es '.$row_res_date['dia'].' de '. $mes.' de '.$row_res_date['anio']?>
         </div> 
       </div> 
 
+
      <div class="container-fluid">
-      <iframe src="Bienvenido.php" name="iframe_inicio" width="100%" height="0" frameborder="0" transparency="transparency" onload="autofitIframe(this);"></iframe> 
+      <iframe src="Bienvenido.php" name="iframe_inicio" width="100%" height="0" frameborder="0" transparency="transparency" onload="autofitIframe(this);" scrolling="no"></iframe> 
     </div>
+
+    </div>
+  </div>
+</div>
      
-
-      <footer class="footer">
-          <div class="container-fluid text-center" id="letrablanca">
-              <p class="text-muted" id="letrablanca">TT 2015-B118</p>
-          </div>
-      </footer> <!-- Footer-->
-
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted" id="letrablanca" data-toggle="modal" data-target="#ModalInfo" >TT 2015-B118</p>
+    </div>
+</footer> <!-- Footer-->
+  
+<!-- Modal INFO -->
+<div id="ModalInfo" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">TT B118</h4>
+      </div>
+      <div class="modal-body" id="colorletra">
+        <p>Este sistema fue desarrollado en la ESCUELA SUPERIOR DE CÓMPUTO del INSTITUTO POLITÉCNICO NACIONAL por:</p>
+        <p>Ana Belén González Rodríguez
+        <br/>Moisés Abraham Vázquez Pérez</p>
+        <p>Para cumplir su finalidad es necesario el uso de la prenda CHIBIL, desarrollada por los mismos alumnos como parte de Trabajo Terminal para titulación</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Gracias</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       <!-- Modal CHIBIL -->
       <div id="ModalChibil" class="modal fade" role="dialog">

@@ -2,7 +2,7 @@
   session_start();
   include("config.php");
   if(isset($_SESSION['userid'])){
-    echo '<script>window.location ="Bienvenido.php" </script>';
+    echo '<script>window.location ="inicio.php" </script>';
   }
 ?>
 
@@ -32,7 +32,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="#"><h5><span data-toggle="modal" data-target="#ModalChibil">Chibil</span></h5></a>
+        <a class="navbar-brand" href="#"><span data-toggle="modal" data-target="#ModalChibil" id="letrablanca">CHIBIL</span></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -245,7 +245,7 @@
 
 <footer class="footer">
     <div class="container">
-        <p class="text-muted" id="colorletra" data-toggle="modal" data-target="#ModalInfo" >TT 2015-B118</p>
+        <p class="text-muted" id="letrablanca" data-toggle="modal" data-target="#ModalInfo" >TT 2015-B118</p>
     </div>
 </footer> <!-- Footer-->
   

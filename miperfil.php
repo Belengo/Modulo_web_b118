@@ -28,43 +28,22 @@ include("config.php");
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- Todos los plugins JavaScript de Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
+  
 
-<!-- Navbar -->
-		<!-- Navbar -->
-<nav class="navbar navbar-default">
- 	<div class="container">
- 		<div class="navbar-header">
-     		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-      			<span class="icon-bar"></span>
-       			<span class="icon-bar"></span>
-       			<span class="icon-bar"></span>                        
-     		</button>
-        <a class="navbar-brand" href="#" id="colorletra">Chibil</h5></a>
-     	</div>
-   		     
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-     			<ul class="nav navbar-nav navbar-right">
-            	<li><a href="log_out.php" >Cerrar Sesión</li>
-	     				<span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png"></span> </a> </img>
-	                
-            	</ul><!-- /ul nav bar-->
-   		</div>  <!-- div class="collapse navbar-collapse" -->
-    </div> <!-- div class="container" -->
-</nav> 
+<div class="container-fluid" >
+
+<div class="row" >
+    <div class="col-xs-12">
+      <div class="container-fluid" align="left"> 
+        <a href="Bienvenido.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
+      </div>
+    </div>
+  </div>
 
 
 
-
-
-<div class="site-wrapper">
-  <div id ="colorletra" class="container-fluid" align="center" >
-    <!-- Container (Services Section) -->
-    <div class="container-fluid">
-      <div class="jumbotron text-center"> </div>
-        
-        <div class="container-fluid" align="left"><a href="Logo.png"></a> </div>
-        <h3> <?php  
+    <div class="container-fluid" align="left"></div>
+      <?php  
                   $id = $_SESSION['userid'];
                   $Consulta_persona = "SELECT * from Persona_tb where id_persona = $id";
                   $res_persona = $conexion->query($Consulta_persona);
@@ -83,32 +62,31 @@ include("config.php");
                   $row_user = $res_user->fetch_array(MYSQLI_ASSOC);
 
                   ?>
-        </h3>
-        
+       
       
       <div class="row"> 
       <form action="miperfil.php" method="POST">  <!--action form --> 
         <div class="row"> 
-          <div class="form-group"><h2>Datos Personales</h2></div>
+          <div class="form-group"><h2 id="colorletra">Datos Personales</h2></div>
         </div>
 
           <div class="row">
             <div class="col-xs-4">
               <div align="left" class="form-group"> <!-- nombre-->
               <label id="colorletra" for="nombre">Nombre(s):</label>
-              <input  type="text" class="form-control" name="txtNombre" value="<?php echo $row_pers['nombre_col']; ?>" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" />
+              <input  type="text" class="form-control" name="txtNombre" value="<?php echo $row_pers['nombre_col']; ?>" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" disabled/>
               </div> <!-- nombre-->
             </div>
             <div class="col-xs-4">
               <div align="left" class="form-group"> <!-- apellidouno-->
               <label id="colorletra" for="apellidouno"> Primer Apellido: </label>
-              <input type="text" class="form-control" name="txtApellidouno" value="<?php echo $row_pers['apellidouno_col']; ?>" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" >
+              <input type="text" class="form-control" name="txtApellidouno" value="<?php echo $row_pers['apellidouno_col']; ?>" required pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" disabled>
               </div> <!--apellidouno-->
             </div>                      
             <div class="col-xs-4"> 
               <div align="left" class="form-group"> <!-- apellidodos-->
               <label id="colorletra" for="apellidodos">Segundo Apellido: </label>
-              <input type="text" class="form-control" name="txtApellidodos" value="<?php echo $row_pers['apellidodos_col']; ?>" pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales">
+              <input type="text" class="form-control" name="txtApellidodos" value="<?php echo $row_pers['apellidodos_col']; ?>" pattern='[A-Za-z áéíóú ÁÉÍÓÚ]+' title="No se aceptan números ni caractéres especiales" disabled>
               </div> <!--apellidodos-->
             </div>
           </div>
@@ -139,7 +117,7 @@ include("config.php");
 
 
           <div class="row">
-            <div class="form-group"><h2>Datos de contacto</h2></div>
+            <div class="form-group"><h2 id="colorletra">Datos de contacto</h2></div>
           </div>
           <div class="row">
             <div class="col-xs-4">
@@ -182,7 +160,7 @@ include("config.php");
             </div>
           </div>                                       
           <div class="row">
-            <div class="form-group"><h2>Cuenta de usuario</h2></div>
+            <div class="form-group"><h2 id="colorletra">Cuenta de usuario</h2></div>
           </div>
           <div class="row">
             <div class="col-xs-4">
@@ -194,44 +172,28 @@ include("config.php");
             <div class="col-xs-4">
               <div class="form-group">
               <label id="colorletra" for="contrasena">Contraseña:</label>
-              <input type="password" class="form-control" name="txtContrasena" value="<?php echo $row_pers['pssw_col']; ?>" required>
+              <input type="password" class="form-control" name="txtContrasena" value="<?php echo $row_pers['pssw_col']; ?>">
               </div>
             </div>
             <div class="col-xs-4">
               <div class="form-group">
               <label id="colorletra" for="contrasena">Repita Contraseña:</label>
-              <input type="password" class="form-control" name="txtRecontrasena" value="<?php echo $row_pers['pssw_col']; ?>" required>
+              <input type="password" class="form-control" name="txtRecontrasena" value="<?php echo $row_pers['pssw_col']; ?>">
               </div>
             </div>
           </div>
-                                        
-                                  
-                                    
-                                        
-                               
-
-    
-      <div class="row"> 
-        <div class="col-xl-6">
+       
+      <div class="row" style="margin-top: 2%; margin-bottom: 2%"> 
+        <div class="col-xs-12">
          <div class="form-group">
-
-          <button type="submit" name="btnGuardarDatos" class="btn btn-primary btn-lg active">Guardar</button> 
+          <button type="submit" name="btnGuardarDatos" class="btn btn-primary btn-lg active">Actualizar</button> 
          </form>
-          </div>
-        </div>
-      </div>
-      
-      </div> <!--container fluid -->
-    </div>  <!-- class container-fluid align center-->
-  </div> <!-- class container fluid color letra-->
-</div> <!-- div site wrapper-->
+          </div> <!--row -->
 
 
-<footer class="footer">
-    <div class="container-fluid bg-4 text-center">
-        <p class="text-muted" id="colorletra">TT 2015-B118</p>
-    </div>
-</footer> <!-- Footer-->
+
+</div> <!-- CONTAINER-->
+
 
 
 

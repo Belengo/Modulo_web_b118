@@ -1,9 +1,6 @@
 <?php session_start();
 include("config.php");
-  
-?>
-               
-
+?>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,41 +22,31 @@ include("config.php");
 <!-- Todos los plugins JavaScript de Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
 
-<!-- Navbar -->
-    <!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
+      <?php
+        $id_pac = $_SESSION['paciente']; 
+        //$correo_pac = $_POST['correo_paciente']; 
+          $nombre_pac = "SELECT CONCAT (nombre_col,' ', apellidouno_col,' ',apellidodos_col) as 'NombreCompleto', correo_col as 'correo' FROM $table_persona WHERE id_persona='$id_pac'";
+          //echo "<script type=\"text/javascript\">alert(\"$nombre_pac\");</script>"; 
+          $res_nombre_pac = $conexion->query($nombre_pac);
+          $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
+      ?>
+
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="container-fluid" align="left"> 
+          <form action="pag_paciente.php" method="POST">
+        <input type="hidden" name="correo_paciente" value="<?php echo $row_res_nombre_pac['correo'] ?>" width="3" height="3" >
+        <input class="botonregresar" value="" type="submit" name="ver">
+        </input>  
+        </input>
+      </form>
+        </div>
       </div>
-           
-        <div class="collapse navbar-collapse" id="myNavbar">
-            
-          <ul class="nav navbar-nav navbar-right">
-                  
-              <a href="index.php" >
-              <span id="colorletra" style="margin-top:3px;"><img src="linkedinsquare.png">Chibil</span> </a> </img>
-                  
-              </ul><!-- /ul nav bar-->
-      </div>  <!-- div class="collapse navbar-collapse" -->
-    </div> <!-- div class="container" -->
-</nav> 
+    </div>
 
 
-<div class="site-wrapper">
-  <div id ="colorletra" class="container-fluid" align="center">
-    <div class="container-fluid">
-      
-      <div class="jumbotron text-center">
-        <h1 >Dr. Nombre Apellidouno<!--NOMBRE DEL Dr.--> </h1>
-        <p>Bienvenido a Chibil</p>
-      </div>
-
-     
 
 <div class="container-fluid">
   <div class="container" id="colorletra"> <!-- CONTENEDOR DE PESTAÑAS-->
@@ -73,25 +60,12 @@ include("config.php");
     </ul>  
 
     <div class="tab-content">
-      <?php
-        $id_pac = $_SESSION['paciente']; 
-        //$correo_pac = $_POST['correo_paciente']; 
-          $nombre_pac = "SELECT CONCAT (nombre_col,' ', apellidouno_col,' ',apellidodos_col) as 'NombreCompleto', correo_col as 'correo' FROM $table_persona WHERE id_persona='$id_pac'";
-          //echo "<script type=\"text/javascript\">alert(\"$nombre_pac\");</script>"; 
-          $res_nombre_pac = $conexion->query($nombre_pac);
-          $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
-      ?>
+
 
     <div id="Datos" class="tab-pane fade in active" align="left">
         <img src="imgs/historia.svg" height="45" width="45"></img>
         <h3>Historia clínica de:</h3><h4> <?php $row_nombre_paciente = $row_res_nombre_pac["NombreCompleto"];
-          echo $row_nombre_paciente; ?> </h4>
-        <form action="pag_paciente.php" method="POST">
-        <input type="hidden" name="correo_paciente" value="<?php echo $row_res_nombre_pac['correo'] ?>" width="3" height="3" >
-        <input class="botonregresar" value="" type="submit" name="ver">
-        </input>  
-        </input>
-        </form>                  
+          echo $row_nombre_paciente; ?> </h4>                 
     </div>
 
     <div id="Diagnostico" class="tab-pane fade"> <!--Diagnostico -->
@@ -128,7 +102,7 @@ include("config.php");
             </div>
           </div>
         </div>
-          <div class="row" id="border" style="margin-top: 10%;">
+          <div class="row" id="border">
             <div class="col-xs-3"></div>
             <div class="col-xs-3">
               <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnModificarDiagnostico" type="submit">Modificar</button>
@@ -228,7 +202,7 @@ include("config.php");
         </div> 
 
        <!-- Botones modificar guardar -->
-        <div class="row" id="border" style="margin-top: 10%;">
+        <div class="row" id="border">
           <div class="col-xs-3"></div>
           <div class="col-xs-3">
             <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnModificarHeredo" type="submit">Modificar</button>
@@ -305,7 +279,7 @@ include("config.php");
             </div>
           </div>
 
-        <div class="row" id="border" style="margin-top: 10%;">
+        <div class="row" id="border">
           <div class="col-xs-3"></div>
           <div class="col-xs-3">
             <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnModificarPatologicos" type="submit">Modificar</button>
@@ -340,7 +314,7 @@ include("config.php");
               <label for="txtNotasNoPatologicos">Notas:</label>
               <textarea class="form-control" rows="3" name="txtNotasNoPatologicos" placeholder="Otros..."></textarea>
             </div>
-            <div class="row" id="border" style="margin-top: 10%;">
+            <div class="row" id="border" >
               <div class="col-xs-3"></div>
               <div class="col-xs-3">
                 <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnModificarNopato" type="submit">Modificar</button>
@@ -378,7 +352,7 @@ include("config.php");
                   </div>
                 </div> 
               </div>             
-              <div class="row" id="border" style="margin-top: 10%;">
+              <div class="row" id="border">
                 <div class="col-xs-3"></div>
                 <div class="col-xs-3">
                   <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnModificarAlergias" type="submit">Modificar</button>
@@ -394,28 +368,11 @@ include("config.php");
     </div> <!--Div class tab-content-->
   </div> <!--Div class container-->
 </div><!--div class container-fluid -->
-     
-
-      
-    </div> <!--class="container-fluid" align="center"> -->
-  </div> <!--<div class="container-fluid"-->
-</div> <!--div class site-wrapper-->
-
+</div>
+    
 <?php
         //Obtener id_paciente
         $id_pac = $_SESSION['paciente'];
         echo $id_pac;
 ?>
 
-<footer class="footer">
-  <div class="container">
-    <p class="text-muted" id="colorletra">TT 2015-B118</p>
-    </div>
-</footer>
-
-
-<!-- Comienza php-->
-
-<?php
-
-?>
