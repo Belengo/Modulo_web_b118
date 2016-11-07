@@ -58,8 +58,8 @@ include("config.php");
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img class="botonbarchibil" src="imgs/circuito.svg"></img><span class="caret" style="margin-top: 3px"></span></a>
           <ul class="dropdown-menu">
             <li><a href="log_out.php" >Cerrar sesión</a></li>
-            <li><a href="miperfil.php" target="iframe_inicio">Mi perfil</a></li>
-            <li><a href="Bienvenido.php" target="iframe_inicio" >Página de Inicio</a></li>
+            <li><a href="miperfiladmin.php" target="iframe_inicio">Mi perfil</a></li>
+            <li><a href="welcome_admin.php" target="iframe_inicio" >Página de Inicio</a></li>
           </ul>
         </li>
       </ul>
@@ -84,10 +84,10 @@ include("config.php");
                   $row_sexo = $row_res_sexo["sexo_col"];
                      if ($row_sexo == 'F') {
                        # code...
-                      echo 'Dra. '.$_SESSION['user']; 
+                      echo ''.$_SESSION['user']; 
                       echo '<p>Bienvenida a Chibil</p>';
                      } else {
-                      echo 'Dr. '.$_SESSION['user'];
+                      echo ''.$_SESSION['user'];
                       ECHO '<p>Bienvenido a Chibil</p>';
                      }
                     ?></h3>       
@@ -137,9 +137,7 @@ include("config.php");
                 case 12:
                     $mes='diciembre';
                     break;
-                
-
-            }
+   }
             
             echo 'Hoy es '.$row_res_date['dia'].' de '. $mes.' de '.$row_res_date['anio']?>
         </div> 
@@ -147,7 +145,7 @@ include("config.php");
 
 
      <div class="container-fluid">
-      <iframe src="Bienvenido.php" name="iframe_inicio" width="100%" height="0" frameborder="0" transparency="transparency" onload="autofitIframe(this);" scrolling="yes"></iframe> 
+      <iframe src="welcome_admin.php" name="iframe_inicio" width="100%" height="0" frameborder="0" transparency="transparency" onload="autofitIframe(this);" scrolling="yes"></iframe> 
     </div>
 
     </div>

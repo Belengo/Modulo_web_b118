@@ -244,10 +244,52 @@
 </div> <!-- div-site-wrapper-->
 
 <footer class="footer">
-    <div class="container">
-        <p class="text-muted" id="letrablanca" data-toggle="modal" data-target="#ModalInfo" >TT 2015-B118</p>
-    </div>
+    <div class="container" >
+      <div class="row">
+        <div class="col-xs-4"> </div>
+        <div class="col-xs-4">
+          <h7  align="center" id="letrablanca" data-toggle="modal" data-target="#ModalInfo" >TT 2015-B118</h7>        
+        </div>
+        <div class="col-xs-4" align="right">
+          <img src="imgs/admin.png" height="15px" width="15px" data-toggle="modal" data-target="#ModalAdmin">
+        </div>  
+      </div>
+    </div>   
 </footer> <!-- Footer-->
+
+    
+                
+<!-- Modal ADMIN -->
+<div id="ModalAdmin" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="colorletra">Inicie sesión</h4>
+      </div>
+      <div class="modal-body" id="colorletra">
+        <div class="container" id="login">
+          <form action="validar.php" method="POST">
+            <form class="form-signin">
+              <h3 class="form-signin-heading" id="colorletra" s></h3>
+              <label for="txtUsuario" id="colorletra">Correo:</label>
+              <input type="email" name="txtUsuario" class="form-control" placeholder="correo@example.com" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" title="Utiliza el formato correo@example.com">
+              <label for="txtPass" id="colorletra">Contraseña: </label>
+              <input type="password" name="txtPass" class="form-control" placeholder="********" >
+              <div class="checkbox">
+                <label id="colorletra"> <input type="checkbox"   value="remember-me"> Recuerda mi contraseña</label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" id="colorfondo" name="btnAceptar" type="submit">Aceptar</button>
+            </form>
+          </form>
+        </div> <!-- /container login dropdown-->
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
   
 <!-- Modal INFO -->
 <div id="ModalInfo" class="modal fade" role="dialog">
@@ -301,8 +343,8 @@
 
 
 
-  <?php
- 
+
+<?php
         
 if (isset($_POST["btnRegistrar"])) {
       # code...
@@ -312,9 +354,7 @@ if (isset($_POST["btnRegistrar"])) {
       include("captura_especialista.php");
       include("captura_usr.php");
       include("mensajes.php");  
-      
-        
-  
+
       //lectura de datos cn el método POST
         //PERSONA
         $nombre = getNombre();      //persona_tb
@@ -337,9 +377,7 @@ if (isset($_POST["btnRegistrar"])) {
         //CUENTA DE USUARIO
         $contrasena = getContrasena();    //usuario_tb
         $recontrasena = getRecontrasena();
-         
-
-        
+    
     //Validar correo exite 
     $correo_existe = "SELECT correo_col FROM Persona_tb WHERE correo_col = '$correo'";
     $res_correo = $conexion->query($correo_existe);
@@ -354,6 +392,8 @@ if (isset($_POST["btnRegistrar"])) {
             echo "<script type=\"text/javascript\">alert(\"$mensaje_contraseña \");</script>";
 
           } else {
+
+            $secret_pssw = password_hash($contrasena, PASSWORD_BCRYPT);
               $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo'); ";
             //mysql_query($conexion, $nueva_persona);
               if ($conexion->query($nueva_persona) === TRUE) {
@@ -362,7 +402,7 @@ if (isset($_POST["btnRegistrar"])) {
                 $nueva_direccion =  "INSERT INTO $table_direccion (calle_col, num_col, colonia_col, codpost_col, telefono_col, persona_tb_id_persona, delegacion_col) VALUES ('$calle','$num', '$colonia', '$codpost', '$telefono', '$last_id', '$delegacion');";
                   $conexion->query($nueva_direccion);
                 // echo "<script type=\"text/javascript\">alert(\"$nueva_direccion\");</script>";                
-                $nuevo_usuario = "INSERT INTO $table_usuario (id_usuario, pssw_col, usrtipo_col) VALUES ('$last_id','$contrasena', 'ESPECIALISTA')";
+                $nuevo_usuario = "INSERT INTO $table_usuario (id_usuario, pssw_col, usrtipo_col) VALUES ('$last_id','$secret_pssw', 'ESPECIALISTA')";
                   $conexion->query($nuevo_usuario);
                 //echo "<script type=\"text/javascript\">alert(\"$nuevo_usuario\");</script>";              
                 $nuevo_espec = "INSERT INTO $table_especialista (id_Especialista, cedula_col, especialidad_col, institucioncedula_col) VALUES ('$last_id','$cedula', '$especialidad', '$institucionCedula')";
@@ -374,15 +414,13 @@ if (isset($_POST["btnRegistrar"])) {
       //echo "<script language=Javascript> location.href=\"index.php\"; </script>";     
       } //else contraseña
     } //else //correo existente
-
-  
-                  
+              
                   $nueva_persona = ""; 
                   $nueva_direccion = "";
                   $nuevo_espec = "";
                   $nuevo_usuario = "";
-} //if isset 
-  
+} //if isset   
 ?>
+
 </body>
 </html>

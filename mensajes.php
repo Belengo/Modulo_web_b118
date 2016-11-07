@@ -8,4 +8,8 @@
 	$mensaje_correo_ya_existe = "El correo que intenta registrar ya esta dado de alta";
 	$MensajeGuardadoCorrectamente = "Se ha guardado correctamente";
 
+//Validar
+	$Welcome = "Bienvenido a Chibil";
+	$wronguser = "Usuario o contraseña incorrecto"; 
+	$dataneeded = "Necesitas ingresar correo y contraseña";
 ?>

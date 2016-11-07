@@ -364,6 +364,16 @@ border-width: 0;
 background-color: white;
 }
 
+.botonverpacientes{
+background-image: url(imgs/pacientes.svg); 
+width: 70px;
+height: 70px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
+
 /*Letter colors */
 
 #colorletra{

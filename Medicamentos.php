@@ -41,7 +41,7 @@ session_start();
     <div class="row" id="img_paddin" >
     <div class="col-xs-12">
       <div class="container-fluid" align="left"> 
-        <a href="Bienvenido.php"> <img src="imgs/back.svg" width="50px" height=" 50px"> </img> </a>
+        <img src="imgs/back.svg" width="50px" height=" 50px" onclick="history.back(-1);"> </img> 
       </div>
     </div>
   </div>
