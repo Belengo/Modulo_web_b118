@@ -42,7 +42,7 @@ include("config.php");
        <div class="col-md-4 col-sm-6">
         <div class="row">
           <div id="ex4">
-            <img src="imgs/medical.svg" onclick="window.location='farmacos_admin.php'" width="200" height="200"> </img> <p>FÁRMACOS</p>
+            <img src="imgs/medical.svg" onclick="window.location='medicamentos_admin.php'" width="200" height="200"> </img> <p>FÁRMACOS</p>
           </div>
         </div>
       </div>

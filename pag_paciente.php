@@ -13,7 +13,9 @@ include('config.php');
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="cover.css" rel="stylesheet">
     <link rel="shortcut icon" href="SmallLogo.ico" />
+    <script src="statics/js/functions.js"></script>
   <TITLE>Chibil</TITLE>
+ 
 </head>
 
 
@@ -95,52 +97,17 @@ include('config.php');
               </form> 
             </div>
           </div> <!--HistoriaClinica-->
-          
-          <div class="row"> <!--Recetas-->
-            <div class="col-xs-4" > 
-              <button type="button" class="botonnuevareceta" data-toggle="modal" data-target="#myModal"></button>RECETA 
-                <div class="row" align="CENTER"> </div>
-                    <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        
-                        <!-- Modal content-->
-                        <div class="modal-content" >
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Nueva Receta</h4>
-                            </div>
-                            <div class="modal-body">
-                             <!--modal body -->
-                             <form> <!--AQUI APARECEN  LA SUGERENCIAS -->
-                                Ingrese medicamento: <input type="text" size="50" id="service" name="service" />
-                               <div id="suggestions"> </div>            
-                            </form>  
-                            </div>
 
-                            <div class="modal-footer">
-                            <div class="row">
-                              
-                                <form action="PDFreceta.php" method="POST"> Imprimir
-                                <input type="submit" class="botonimprimir" value="" name="historialreceta"></input>
-                                <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
-                                </input> 
-                                </form> 
-                              
-                                <form action="receta.php" method="POST"> Historial
-                                <input type="submit" class="botonreceta" value="" name="historialreceta"></input>
-                                <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
-                                </input> 
-                                </form> 
-                              
-                            </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- modal fade--> 
-            </div>
-          </div>  <!--Recetas-->
+          <div class="row">  <!--Receta-->
+            <div class="col-xs-4">
+              <form action="receta.php" method="POST">
+              <input class="botonnuevareceta" value="" type="submit" name="historiaclinica"></input> RECETA
+              <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
+              </input> 
+              </form>
+            </div>          
+          </div> <!--Receta-->          
+
 
           <div class="row">  <!--Vestible-->
             <div class="col-xs-4">

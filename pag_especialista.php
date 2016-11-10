@@ -1,6 +1,16 @@
 <?php
 session_start();
 include('config.php'); 
+include('mensajes.php');
+
+$now = time();
+  
+   if($now > $_SESSION['expire']) {
+    session_destroy();
+    echo "<script type=\"text/javascript\"> alert(\"$Sesion_expired\");</script>";
+    echo '<script> location.href="http://localhost:8888/Modulo_web_b118/index.php" </script>';
+    exit;
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,25 +77,22 @@ include('config.php');
       <div class="col-xs-4" align="center">
         <div class="container-fluid" " > <!--Contenedor botones pac-->
           <div class="row"> <!--HistoriaClinica-->
-            <div class="col-xs-4">
-                <!--<form action="verpac.php" method="POST"> -->
-                <input type="submit" class="botonverpacientes" value="" name="verpacientes" onClick="document.getElementById('tabla_pacientes').style.visibility='visible'"><h5 id="colorletra">Pacientes </h5></input>
 
-                <!-- </form> -->
-            </div>
           </div> <!--HistoriaClinica-->
         </div><!-- Contenedor botones pac-->
       </div> <!--div class="col-xs-4" align="center"-->     
     </div> <!--ROW  -->
-    <div class="row" style="visibility: hidden;" id="tabla_pacientes">
-        <div class="panel panel-default">
-          <div class="panel-heading">      
-            <div class="col-xs-8">
-              <div class="input-group">
+    <div class="row"  id="tabla_pacientes">
+        <div class="panel panel-default"> 
+          <div class="panel-heading"> 
+           <div class="col-xs-4"> </div>
+            <div class="col-xs-4"> </div>    
+            <div class="col-xs-4">
+              <div class="input-group"> 
                 <input type="search" class="form-control" id="filtrar" placeholder="Buscar paciente..."></input>
               </div>
             </div>
-            <div class="col-xs-4"></div>
+
             <br /> </br/>
           </div> <!--div class panel heading-->
             <table id="colorletra" class="table table-fixed" >

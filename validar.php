@@ -31,6 +31,9 @@
   			# code...
  			$_SESSION['userid'] = $row_nombre['id_persona'];
  			$_SESSION['user'] = $row_nombre['Nombre_Completo'];
+      $_SESSION['start'] = time();
+      $_SESSION['expire'] = $_SESSION['start'] + (1 * 60);
+
  			echo "<script type=\"text/javascript\"> alert(\"$Welcome\");</script>";
  			if($usrtipo == 'ESPECIALISTA'){
   				echo "<script language=Javascript> location.href=\"inicio.php\"; </script>";

@@ -1,10 +1,10 @@
 <?php
 
 //Declara las variables para la conexión a la base de datos
-$host = "localhost";
-$basededatos = "B118";
-$usuariodb = "Admin";
-$clavedb = "root";
+$Servidor = "localhost";
+$BaseDatos = "B118";
+$Usuario = "Admin";
+$Clave = "root";
 
 //declara las variables para usar cualquier tabla o catalogo de la base de datos. 
 //falta del vestible.
@@ -62,7 +62,7 @@ $table_alergias_antiepilepticos = "Alergias_tb_has_SustanciaActiva_cat";
  error_reporting(0);
 
  //Realiza la conexión 
-$conexion = new mysqli($host,$usuariodb,$clavedb,$basededatos);
+$conexion = new mysqli($Servidor,$Usuario,$Clave,$BaseDatos);
 
 //comprueba si hubo  error en la conexión y despliega el mensaje.
 if($conexion->connect_errno){

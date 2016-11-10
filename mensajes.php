@@ -12,4 +12,7 @@
 	$Welcome = "Bienvenido a Chibil";
 	$wronguser = "Usuario o contraseña incorrecto"; 
 	$dataneeded = "Necesitas ingresar correo y contraseña";
+
+//Inicio
+	$Sesion_expired = "Por seguridad su sesión se ha cerrado, vuelva a iniciar sesión.";
 ?>

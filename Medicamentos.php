@@ -52,11 +52,9 @@ session_start();
     include("config.php");
     //Declarar Consulta 
     $seleccionar_medicamentos = "SELECT * FROM $catalog_medicamento; ";
-      //echo "<script type=\"text/javascript\">alert(\"$seleccionar_pacientes\");</script>"; 
-
-    //Query de consulta
-      $selec_med = $conexion->query($seleccionar_medicamentos);
-        
+      //echo "<script type=\"text/javascript\">alert(\"$seleccionar_medicamentos\");</script>"; 
+      //Query de consulta
+      $selec_med = $conexion->query($seleccionar_medicamentos);        
     //Numero total de pacientes
       $total_medicamentos = mysqli_num_rows($selec_med);
   ?>
@@ -97,21 +95,47 @@ session_start();
                  //while($row = mysqli_fetch_array($selec_pac)){ ?>
                 <tr>
                   <td class="col-xs-4" id="colorletra" >
-                    <?php  
-                      printf( "%d", $row['Nombremedicamento_cat_id_Nombremedicamento']);
+                    <?php 
+                      $idsustancia = $row['sustanciaActiva_cat_id_sustanciaActiva'];
+                      $nombresust = "SELECT nombre_col FROM sustanciaActiva_cat WHERE id_sustanciaActiva =$idsustancia ;";
+                      $res_sust = $conexion ->query($nombresust);
+                      $row_sust = mysqli_fetch_array($res_sust);
+
+                      printf( "%s", $row_sust['nombre_col'] );
                     ?>
                   </td>
+
                   <td class="col-xs-4" id="colorletra"> <?php 
-                      printf( "%d", $row['sustanciaActiva_cat_id_sustanciaActiva']); ?>
+                      $idnombre = $row['Nombremedicamento_cat_id_Nombremedicamento'];
+                      $nombre = "SELECT nombre_col FROM Nombremedicamento_cat WHERE id_nombremedicamento = $idnombre;";
+                      $res_nombre = $conexion ->query($nombre);
+                      $row_nombre = mysqli_fetch_array($res_nombre);
+
+                      printf( "%s", $row_nombre['nombre_col'] );
+                       ?>
                   </td>
                   <td class="col-xs-4" id="colorletra"> <?php
-                      printf( "%d", $row['Formafarmaceutica_cat_id_formafarmaceutica']); ?>
+                      $idformafarma = $row['Formafarmaceutica_cat_id_formafarmaceutica'];
+                      $forma = "SELECT descripcion_col FROM Formafarmaceutica_cat WHERE id_formafarmaceutica = $idformafarma;";
+                      $res_forma = $conexion ->query($forma);
+                      $row_forma = mysqli_fetch_array($res_forma);
+
+                      printf( "%s", $row_forma['descripcion_col'] );
+                       ?>
                   </td>
                   <td class="col-xs-4" id="colorletra"> <?php
-                      printf( "%d", $row['Presentacionmedic_cat_id_Presentacionmedic']); ?>
+                    ?>
                   </td>
+
                   <td class="col-xs-4" id="colorletra"> <?php
-                      printf( "%d", $row['Laboratorio_cat_id_laboratorio']); ?>
+                      $idlab = $row['Laboratorio_cat_id_laboratorio'];
+                      $laboratorio = "SELECT nombre_col FROM Laboratorio_cat WHERE id_laboratorio = $idlab;";
+                      $res_lab = $conexion ->query($laboratorio);
+                      $row_lab = mysqli_fetch_array($res_lab);
+
+                      printf( "%s", $row_lab['nombre_col'] );
+                       ?>
+                      
                   </td>
                 </tr>
             <?php } ?>

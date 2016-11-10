@@ -364,6 +364,15 @@ border-width: 0;
 background-color: white;
 }
 
+.botonagregarmedicamento{
+background-image: url(imgs/nvo-medic.svg); 
+width: 30px;
+height: 30px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
 .botonverpacientes{
 background-image: url(imgs/pacientes.svg); 
 width: 70px;

@@ -1,6 +1,7 @@
 <?php
  session_start();
 include("config.php");
+include("mensajes.php");
    if(isset($_SESSION['userid'])){
     } else {
       echo '<script> window.location="index.php" </script>';

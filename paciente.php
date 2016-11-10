@@ -7,7 +7,7 @@ include("config.php");
     }
  ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html>x
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -36,8 +36,8 @@ include("config.php");
 $correo_esp = $_POST['correo_especialista'];
 $correo_pac= $_POST['correo_paciente'];
 					
-				$persona = "SELECT * FROM $table_persona WHERE correo_col = '$correo_pac';";
-				//echo "<script type=\"text/javascript\"> alert(\"$id\");</script>";
+        				$persona = "SELECT * FROM $table_persona WHERE correo_col = '$correo_pac';";
+        				//echo "<script type=\"text/javascript\"> alert(\"$id\");</script>";
                 $res_persona = $conexion -> query($persona);
                 $row_pers = $res_persona->fetch_array(MYSQLI_ASSOC);
                 $id = $row_pers['id_persona'];
@@ -46,7 +46,7 @@ $correo_pac= $_POST['correo_paciente'];
                 $res_edad = $conexion -> query($edad);
                 $row_edad = $res_edad -> fetch_array(MYSQLI_ASSOC);
                 $Consulta_direc= "SELECT * from $table_direccion where persona_tb_id_persona = $id";
-                echo "<script type=\"text/javascript\"> alert(\"$Consulta_direc\");</script>";
+                //echo "<script type=\"text/javascript\"> alert(\"$Consulta_direc\");</script>";
                 $res_direc = $conexion->query($Consulta_direc);
                 $row_direc = $res_direc->fetch_array(MYSQLI_ASSOC);
 
@@ -92,15 +92,44 @@ $correo_pac= $_POST['correo_paciente'];
 				      </div>
 				      <div class="row">
 				      	<div class="col-xs-12">
-				      		<h5> Dirección: <?php  printf("Calle %s, %s col. %s c.p %s, Del. %s", $row_direc['calle_col'], $row_direc['num_col'], $row_direc['colonia_col'], $row_direc['codpost_col'],$row_direc['delegacion_col']); ?>
-							</h5>
+				      		<h5> Dirección: <?php  printf("Calle %s no. %s, col. %s C.P. %s, %s.", $row_direc['calle_col'], $row_direc['num_col'], $row_direc['colonia_col'], $row_direc['codpost_col'],$row_direc['delegacion_col']); ?>
+							    </h5>
 				      	</div>
-				      </div>				  
-
-			      </div>
+				      </div>
+            </div>
 			    </div>
 			</div>
 		</div>
+
+    <div class="row"> <!-- tabla historial clínico-->
+          <div class="panel-group">
+              <div class="panel panel-info">
+            <div class="panel-heading">
+              <?php printf("%s %s %s , %s años", $row_pers['nombre_col'], $row_pers['apellidouno_col'], $row_pers['apellidodos_col'], $row_edad['edad']);  ?>
+            </div>
+
+            <div class="panel-body" id="colorletra">
+              <div class="row">
+                <div class="col-xs-4">
+                  <h5> Celular: <?php  printf ("%s", $row_pers['telpersonal_col'] ); ?> </h5>
+                </div>
+                <div class="col-xs-4">
+                  <h5> Correo: <?php  printf ("%s", $row_pers['correo_col'] ); ?> </h5>
+                </div>
+                <div class="col-xs-4">
+                  <h5> Celular: <?php  printf ("%s", $row_pers['telpersonal_col'] ); ?> </h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <h5> Dirección: <?php  printf("Calle %s no. %s, col. %s C.P. %s, %s.", $row_direc['calle_col'], $row_direc['num_col'], $row_direc['colonia_col'], $row_direc['codpost_col'],$row_direc['delegacion_col']); ?>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
 
 
 </div> <!-- CONTAINER-->
