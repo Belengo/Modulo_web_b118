@@ -36,15 +36,15 @@ $table_sensorTemperatura = "SensorTemperatura_tb";
 $catalog_medicamento = "Medicamento_cat";
 $catalogo_nombremedicamento = "Nombremedicamento_cat";
 $catalogo_laboratorio = "Laboratorio_cat";
-$catalgono_sustanciaActiva = "SustanciaActiva_cat";
+$catalogo_sustanciaActiva = "SustanciaActiva_cat";
 $catalgono_formaFarmaceutica = "Formafarmaceutica_cat";
-$catalogo_presentacion = "Presentacionmedic_cat";
+$catalogo_presentacionMedic = "Presentacionmedic_cat";
 	//presentacionmedic
 	$catalogo_empaque = "Empaque_cat";
 	$catalogo_cantidad = "Cantidad_cat";
 	$catalogo_presentacion = "Presentacion_cat";
 	$catalogo_unidades = "Unidades_cat";
-
+	$catalogo_medida = "Medida_Cat";
 	
 
 //Historia Clínica

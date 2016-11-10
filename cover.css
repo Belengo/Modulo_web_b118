@@ -83,6 +83,11 @@ body {
     padding-top: 5%
 }
 
+#little_margin{
+  margin-top:3%;
+}
+
+
 
 #border{
   padding-top: 10px;
@@ -290,24 +295,6 @@ background-color: white;
 margin-top: 5%;
 }
 
-.botonreceta {
-background-image: url(imgs/receta-1.svg); 
-width: 40px;
-height: 40px;
-text-align:right;
-border-width: 0;
-background-color: white;
-}
-
-.botonimprimir {
-background-image: url(imgs/print.svg); 
-width: 40px;
-height: 40px;
-text-align:left;
-border-width: 0;
-background-color: white;
-}
-
 .botonvestible {
 background-image: url(imgs/vestible3.svg); 
 width: 70px;
@@ -364,10 +351,28 @@ border-width: 0;
 background-color: white;
 }
 
+.botonagregarmedic{
+background-image: url(imgs/nvo-medic.svg); 
+width: 30px;
+height: 30px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
 .botonagregarmedicamento{
 background-image: url(imgs/nvo-medic.svg); 
 width: 30px;
 height: 30px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
+.btneli{
+background-image: url(imgs/basura.svg); 
+width: 20px;
+height: 20px;
 text-align:right;
 border-width: 0;
 background-color: white;
@@ -382,6 +387,32 @@ border-width: 0;
 background-color: white;
 }
 
+/*receta.php*/
+.botonreceta {
+background-image: url(imgs/receta-1.svg); 
+width: 40px;
+height: 40px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
+.botonimprimir {
+background-image: url(imgs/print.svg); 
+width: 40px;
+height: 40px;
+text-align:left;
+border-width: 0;
+background-color: white;
+}
+.botonguardar{
+background-image: url(imgs/guardar.svg); 
+width: 40px;
+height: 40px;
+text-align:left;
+border-width: 0;
+background-color: white;
+}
 
 /*Letter colors */
 

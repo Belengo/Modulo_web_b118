@@ -16,9 +16,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="cover.css" rel="stylesheet">
-
+    <script type="text/javascript" src="jvs/functions_validar.js"></script>
     
   <TITLE>Chibil</TITLE>
+
+
 </head>
 <body>
   
@@ -51,7 +53,7 @@
                             <div class="modal-body">
                               <div id="colorletra" class="container">
                          <div class="container-fluid">
-     <!--action form-->          <form action="index.php" method="POST">
+     <!--action form-->          <form action="index.php" method="POST" id="form_Regi"  name="form_Reg" onsubmit="return validacion()">
       
                                   <div class="row"> 
                                     <div class="col-xs-4">
@@ -143,6 +145,16 @@
                                                 <label id="colorletra" for="txtDelegacion">Municipio/Delegación:</label>
                                                 <input type="text" class="form-control" name="txtDelegacion" placeholder="Municipio o Delegación" pattern='[A-Za-z áéíóú ÁÉÍÓÚ 0-9 .]+' title="No se aceptan caractéres especiales">
                                             </div>
+
+                                            <div class="form-group"><label id="colorletra" for="dateNac" align="left">Fecha de nacimiento:</label>
+                                              <div class='input-group date' id='datetimepicker10'>
+                                                  <input type='text' class="form-control"  placeholder="YYYY/MM/DD" />
+                                                  <span class="input-group-addon">
+                                                      <span class="glyphicon glyphicon-calendar">
+                                                      </span>
+                                                  </span>
+                                              </div>
+                                            </div>
                                     </div><!--col-xs-6 -->
                                  </div> <!-- row -->
 
@@ -175,7 +187,7 @@
                                  <div class="row"> 
                                     <div class="col-xs-6">
                                      <div class="form-group">
-                                       <button type="submit" name="btnRegistrar" class="btn btn-primary btn-lg active">Registrarme</button>
+                                       <button type="submit" name="btnRegistrar" class="btn btn-primary btn-lg active" onclick="validacion()">Registrarme</button>
      <!--action form-->          </form>
 
 

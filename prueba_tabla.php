@@ -20,88 +20,50 @@ include('config.php');
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- Todos los plugins JavaScript de Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="jvs/functions.js">
+        <script type="text/javascript" src="jvs/functions.js">
 
 </script> 
 </head>
 <body>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-	<?php
-        $id_pac = $_SESSION['paciente']; 
-        //$correo_pac = $_POST['correo_paciente']; 
-          $nombre_pac = "SELECT CONCAT (nombre_col,' ', apellidouno_col,' ',apellidodos_col) as 'NombreCompleto', correo_col as 'correo' FROM $table_persona WHERE id_persona='$id_pac'";
-          //echo "<script type=\"text/javascript\">alert(\"$nombre_pac\");</script>"; 
-          $res_nombre_pac = $conexion->query($nombre_pac);
-          $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
-    ?>
 
-<div class="container-fluid">
-  <div class="container">
+<div class="container-fluid" id>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="container-fluid" align="left"> 
-          <form action="pag_paciente.php" method="POST">
-	        <input type="hidden" name="correo_paciente" value="<?php echo $row_res_nombre_pac['correo'] ?>" width="3" height="3" >
-	        <input class="botonregresar" value="" type="submit" name="ver">
-	        </input>  
-	        </input>
-      	  </form>
-        </div>
-      </div>
-    </div>
+  <div class="row" id="colorletra"> <!--Recetas-->
+    <div class="col-xs-6" > 
+      <button type="button" class="botonagregarmedicamento" data-toggle="modal" data-target="#myModal"></button>Agregar medicamento
+    </div> <!--col-xs-6 -->
+    <div class="row" align="CENTER"> </div>            
+  </div>  <!--Recetas-->
 
-    <div class="col-xs-12">
-    		<h3>Generar Tratamiento</h3>
-    </div>
+  <div class="table-responsive">
+    <table id="target" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Sustancia Activa</th>
+          <th>Presentación</th>
+          <th>Dosis</th>
+          <th>Periodo</th>
+          <th>Duración</th>
+          <th>Indicación</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
 
-	<div class="row" id="colorletra"> <!--Recetas-->
-	    <div class="col-xs-6" align="left" id="little_margin" > 
-	      	<button type="button" class="botonagregarmedicamento" data-toggle="modal" data-target="#myModal"></button>Ver Medicamentos
-	    </div> <!--col-xs-6 -->
-		<div class="row" align="CENTER"> </div>            
-	</div>  <!--Recetas-->
-
-	<div class="table-responsive" id="little_margin" >
-	    <table id="target" class="table table-bordered table-hover">
-	      	<thead>
-		        <tr>
-		          <th>Sustancia Activa</th>
-		          <th>Presentación</th>
-		          <th>Dosis</th>
-		          <th>Periodo</th>
-		          <th>Duración</th>
-		          <th>Indicación</th>
-		          <th>&nbsp;</th>
-		        </tr>
-	      	</thead>
-	        <tbody>
-	      	</tbody>
-	    </table>
-	</div>
- </div>
-
-
-<div class="container"> <!-- contenedor botones -->
-  <div class="row" id="little_margin">
-  	<div class="col-xs-4">
-      <form action="guardar_receta.php" method="POST"> 
-        <input type="submit" class="botonguardar" value="" name="guardar_receta"></input>
-        <input type="hidden" name="id_paciente" value="<?php echo $id_pac ?>" width="30" height="30" >
-        </input> 
-        <input type="hidden" name="id_especialista" value="<?php echo $_SESSION['userid'] ?>" width="30" height="30" >
-        </input>        
-      </form> 
-    </div>
-    <div class="col-xs-4">
+  <div class="row">
+    <div class="col-xs-6">
       <form action="PDFreceta.php" method="POST"> 
         <input type="submit" class="botonimprimir" value="" name="historialreceta"></input>
         <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
         </input> 
       </form> 
     </div>  
-    <div class="col-xs-4">         
+    <div class="col-xs-6">         
       <form action="receta.php" method="POST">
         <input type="submit" class="botonreceta" value="" name="historialreceta"></input>
         <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
@@ -109,7 +71,6 @@ include('config.php');
       </form> 
     </div>
   </div>
-</div>  <!-- contenedor botones -->
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -135,7 +96,7 @@ include('config.php');
               <h4 id="colorletra">Buscar medicamento:</h4> <input type="search" class="form-control" id="filtrar" placeholder="Buscar medicamento..." name="buscador" ></input>
             </form>        
 
-            <div class="table table-hover">
+            <div class="table-responsive">
               <table id="source" class="table table-fixed table-hover">
                 <thead id="colorletra">
                   <tr>
@@ -204,7 +165,7 @@ include('config.php');
         </div> <!-- modal content-->
       </div> <!--modal-dialog modal-lg -->
     </div> <!-- modal fade-->  
-</div> <!-- container fluid-->
+
   
 
 

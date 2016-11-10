@@ -18,19 +18,10 @@ session_start();
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- Todos los plugins JavaScript de Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-        $(document).ready(function () {
-            (function ($) {
-                $('#filtrar').keyup(function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $('.buscar tr').hide();
-                    $('.buscar tr').filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-                })
-            }(jQuery));
-        });
-      </script>  
+    
+<script type="text/javascript" src="jvs/functions.js">
+
+</script> 
 </head>
 <body >
 

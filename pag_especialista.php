@@ -3,14 +3,6 @@ session_start();
 include('config.php'); 
 include('mensajes.php');
 
-$now = time();
-  
-   if($now > $_SESSION['expire']) {
-    session_destroy();
-    echo "<script type=\"text/javascript\"> alert(\"$Sesion_expired\");</script>";
-    echo '<script> location.href="http://localhost:8888/Modulo_web_b118/index.php" </script>';
-    exit;
-  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +16,10 @@ $now = time();
     <link href="cover.css" rel="stylesheet">
     <link rel="shortcut icon" href="SmallLogo.ico" />
   <TITLE>Chibil</TITLE>
+      
+<script type="text/javascript" src="jvs/functions.js">
+
+</script> 
 </head>
 <body>
 
