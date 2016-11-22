@@ -354,6 +354,15 @@ border-width: 0;
 background-color: white;
 }
 
+.botonnuevo {
+background-image: url(imgs/registro.svg); 
+width: 40px;
+height: 40px;
+text-align:right;
+border-width: 0;
+background-color: white;
+}
+
 .botonver_mas{
 background-image: url(imgs/ver_mas.svg); 
 width: 30px;

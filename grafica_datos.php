@@ -1,6 +1,20 @@
-<!DOCTYPE HTML>
-<HEAD>
-    <title>Grafica</title>
+<?php
+session_start();
+include('config.php'); 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="cover.css" rel="stylesheet">
+    <link rel="shortcut icon" href="SmallLogo.ico" />
+    
+  <TITLE>Chibil</TITLE>
     <link rel="stylesheet" type="text/css" href="grafica_theme.css">
 </HEAD>
 <BODY>
@@ -10,12 +24,19 @@
 <?php
 require_once("RandomClass.php");
 
+        $id_pac = $_SESSION['paciente']; 
+        $id_bitacora = $_POST['bitacora'];
+        $nombre_pac = "SELECT CONCAT (nombre_col,' ', apellidouno_col,' ',apellidodos_col) as 'NombreCompleto', correo_col as 'correo' FROM $table_persona WHERE id_persona='$id_pac'";
+        //echo "<script type=\"text/javascript\">alert(\"$id_bitacora\");</script>"; 
+        $res_nombre_pac = $conexion->query($nombre_pac);
+        $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
+        $Paciente = $row_res_nombre_pac['NombreCompleto'];
+
 //Creamos un objeto de la clase randomTable
 $rand = new RandomTable();
-//insertamos un valor aleatorio
-//$rand->insertRandom();
 //obtenemos toda la información de la tabla random
-$lectura = "SELECT frec_col, temp_col, tiempo_col FROM Lecturas_tb;";
+$lectura = "SELECT frec_col, temp_col, tiempo_col FROM Lecturas_tb WHERE Bitacora_tb_id_bitacora =$id_bitacora;";
+//echo "<script type=\"text/javascript\">alert(\"$lectura\");</script>";
 $rawdata = $rand->getAllInfo($lectura);
 
 //nos creamos dos arrays para almacenar el tiempo y el valor numérico
@@ -35,7 +56,25 @@ for($i = 0 ;$i<count($rawdata);$i++){
     //echo "<script type=\"text/javascript\">alert(\"$timeArray[$i]\");</script>"; 
 }
 ?>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="container-fluid" align="left"> 
+          <form action="vestible.php" method="POST">
+            <input type="hidden" name="correo_paciente" value="<?php echo $row_res_nombre_pac['correo']; ?>" width="3" height="3" >
+            <input class="botonregresar" VALUE="" type="submit" name="ver">
+            </input>  
+            </input>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
 <div id="contenedor" style="width:100%; height: 400px;"></div>
+</div>
+
 
 <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Importo el archivo Javascript de Highcharts directamente desde su servidor -->
@@ -88,7 +127,7 @@ chartCPU = new Highcharts.StockChart({
     },
 
     title: {
-        text: 'Paciente:'
+        text: 'Paciente: <?php echo $Paciente; ?>'
     },
 
     xAxis: {
@@ -110,7 +149,7 @@ chartCPU = new Highcharts.StockChart({
 
             
     series: [{
-        name: 'frec',
+        name: 'Frec',
                 data: (function() {
                    var data = [];
                     <?php

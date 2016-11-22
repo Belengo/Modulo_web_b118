@@ -9,7 +9,7 @@ class RandomTable{
             $server = "localhost";
             $usuario = "Admin";
             $pass = "root";
-            $BD = "mydb";
+            $BD = "B118";
             //variable que guarda la conexión de la base de datos
             $conexion = mysqli_connect($server, $usuario, $pass, $BD); 
             //Comprobamos si la conexión ha tenido exito

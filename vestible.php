@@ -36,13 +36,14 @@ include('config.php');
           $row_res_nombre_pac = $res_nombre_pac->fetch_array(MYSQLI_ASSOC);
         //$correo_pac = $_POST['correo_paciente']; 
           $vestible_id = "SELECT Vestible_cat_idVestible_cat FROM $table_paciente WHERE id_paciente='$id_pac'";
-          //echo "<script type=\"text/javascript\">alert(\"$nombre_pac\");</script>"; 
+          //echo "<script type=\"text/javascript\">alert(\"$vestible_id\");</script>"; 
           $res_vestible_id = $conexion->query($vestible_id);
           $row_res_vestible_id  = $res_vestible_id ->fetch_array(MYSQLI_ASSOC);
+          $id_vestible = $row_res_vestible_id['Vestible_cat_idVestible_cat'];
           
           //Declarar Consulta 
-            $seleccionar_bitacoras = "SELECT *  FROM Bitacora_tb WHERE Vestible_cat_idVestible_cat group by fecha_col order by fecha_col;";
-            //echo "<script type=\"text/javascript\">alert(\"$seleccionar_pacientes\");</script>"; 
+            $seleccionar_bitacoras = "SELECT *  FROM Bitacora_tb WHERE Vestible_cat_idVestible_cat = $id_vestible order by fecha_col;";
+            //echo "<script type=\"text/javascript\">alert(\"$seleccionar_bitacoras\");</script>"; 
 
           //Query de consulta
             $selec_bitacora= $conexion->query($seleccionar_bitacoras);
@@ -70,12 +71,12 @@ include('config.php');
       <div class="row">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <div class="col-xs-4" align="left"><img class="img-thumbnail" src="imgs/user.svg" onmouseover="this.width=55;this.height=55;" onmouseout="this.width=40;this.height=40;" onclick="window.location='Formulario_Registro_Paciente.php'" width="40" height="40"><span>Nuevo<span>
+          <div class="col-xs-4" align="left"><button type="button" class="botonnuevo" data-toggle="modal" data-target="#myModal"></button> 
           </div>  
           <div class="col-xs-4"></div>      
           <div class="col-xs-4">
             <div class="input-group">
-              <input type="search" class="form-control" id="filtrar" placeholder="Buscar paciente..."></input>
+              <input type="search" class="form-control" id="filtrar" placeholder="Buscar por fecha..."></input>
             </div>
           </div>
           <br /> </br/>
@@ -94,12 +95,14 @@ include('config.php');
             <?php 
               for($i=0;$i<$total_bitacoras; $i++){
                 $row = mysqli_fetch_array($selec_bitacora);
+                  $datetime = $row['fecha_col'];
+                  $data = explode(" ", $datetime);
                  //while($row = mysqli_fetch_array($selec_pac)){ ?>
                 <tr>
                   <td>
                     <div class="col-xs-6">
-                      <form action="verpacientes.php" method="POST">
-                      <input type="hidden" name="correo_paciente" value="<?php echo $row['correo'] ?>" width="3" height="3" >
+                      <form action="eliminar_bitacora.php" method="POST">
+                      <input type="hidden" name="idbitacora" value="<?php echo $row['id_bitacora']; ?>" width="3" height="3" >
                       <input class="btneli" value="" type="submit" name="ver"></input>  
                       </input>
                       </form> 
@@ -107,19 +110,18 @@ include('config.php');
                   </td>
                   <td class="col-xs-4" id="colorletra" >
                     <?php  
-                      printf( "%s ", $row['fecha_col']); ?>
+                      $fecha= trim($data[0]);
+                      printf( "%s ", $fecha); ?>
                   </td>
                   <td class="col-xs-4" id="colorletra"> <?php 
-                      printf( "%s", $row['telefono']); ?>
-                  </td>
-                  <td class="col-xs-4" id="colorletra"> <?php
-                      printf( "%s", $row['correo']); ?>
+                      
+                      printf( "%s", $row['id_bitacora']); ?>
                   </td>
 
                   <td class="col-xs-1" id="colorletra"> 
                     
-                    <form action="pag_paciente.php" method="POST">
-                    <input type="hidden" name="correo_paciente" value="<?php echo $row['correo'] ?>" width="3" height="3" >
+                    <form action="grafica_datos.php" method="POST">
+                    <input type="hidden" name="bitacora" value="<?php echo $row['id_bitacora']; ?>" width="3" height="3" >
                     <input class="botoncontacto" value="" type="submit" name="ver"></input>  
                     </input>
                     </form> 
@@ -130,6 +132,33 @@ include('config.php');
         </table>
       </div> <!-- panel panel-default"> -->
     </div> <!-- div class row-->
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Subir Archivo .txt</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Seleccione el archivo de la lectura.</h3>
+          <form enctype="multipart/form-data" action="subir_archivo.php" method="POST">
+          <input name="uploadedfile" type="file">
+          <input type="submit" value="Subir archivo">
+        </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 
   </div>
