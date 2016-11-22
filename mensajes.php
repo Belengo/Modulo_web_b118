@@ -15,4 +15,15 @@
 
 //Inicio
 	$Sesion_expired = "Por seguridad su sesión se ha cerrado, vuelva a iniciar sesión.";
+//Miperfil
+	 $actualizacion_correcta= "Sus datos se han actualizado correctamente";
+	 $actualizacion_incorrecta = "No ha sido posible actualizar todos sus datos";
+//diagnostico
+	  $MensajeGuardadoCorrectamente = "Se ha guardado correctamente";
+
+//REGISTRO PACIENTE 
+	  $registro_correcto = "Su registro se ha guardado satisfactoriamente.";
+	  $registro_incorrecto = "Su registro no se ha podido guardar";
+	  $vestible_no_Valido = "El codigo de vestible que intentó registrar no es válido";
+
 ?>

@@ -7,5 +7,9 @@ function getSustanciaTopica(){
 function getNotasAlergias(){
  		return $_POST['txtNotasAlergias'];
  	} 
+ 	
+function getAnticonvulsivos(){
+ 		return $_POST['txtAlergiasAntiepilepticos'];
+ 	} 
 
 ?>

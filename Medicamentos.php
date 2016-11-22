@@ -115,6 +115,40 @@ session_start();
                        ?>
                   </td>
                   <td class="col-xs-4" id="colorletra"> <?php
+
+                      $id_presentacion = $row['Presentacionmedic_cat_id_Presentacionmedic'];
+                      $presentacion = "SELECT * FROM $catalogo_presentacionMedic WHERE  id_presentacionmedic = $id_presentacion;";
+                      $res_presentacion = $conexion -> query($presentacion);
+                      $row_presentacion = mysqli_fetch_array($res_presentacion);
+                      $empaqueid = $row_presentacion['empaque_cat_id_empaquemed'];
+                      $cantidadid = $row_presentacion['cantidad_cat_id_cantidad'];
+                      $presenid = $row_presentacion['presentacion_cat_id_presentacion'];
+                      $unidadesid = $row_presentacion['Unidades_cat_id_Unidades'];
+                      $medidaid= $row_presentacion['Medida_cat_idmedida_cat'];
+
+                      $empaque = "SELECT nombreEmpaque_col FROM $catalogo_empaque WHERE id_empaque = $empaqueid  ;";
+                      //echo "<script type=\"text/javascript\">alert(\"$empaque\");</script>"; 
+                       $res_empaque = $conexion ->query($empaque);
+                       $row_empaque = mysqli_fetch_array($res_empaque);
+
+                      $cantidad = "SELECT cantidad_col FROM $catalogo_cantidad WHERE id_cantidad = $cantidadid;";
+                     //echo "<script type=\"text/javascript\">alert(\"$cantidad\");</script>"; 
+                       $res_cantidad = $conexion -> query($cantidad);
+                       $row_cantidad = mysqli_fetch_array($res_cantidad);
+
+                       $presen = "SELECT presentacion_col FROM $catalogo_presentacion WHERE id_presentacion = $presenid;";
+                       $res_presen= $conexion -> query($presen);
+                       $row_presen = mysqli_fetch_array($res_presen);
+
+                        $unidades = "SELECT cantidad_col FROM $catalogo_unidades WHERE id_unidades = $unidadesid;";
+                       $res_unidades= $conexion -> query($unidades);
+                       $row_unidades = mysqli_fetch_array($res_unidades);
+                       
+                        $medida = "SELECT medida_col FROM $catalogo_medida  WHERE idmedida_cat = $medidaid;";
+                         
+                       $res_medida= $conexion -> query($medida);
+                       $row_medida = mysqli_fetch_array($res_medida);
+                       printf("%s con %s %s de %s %s", $row_empaque['nombreEmpaque_col'], $row_cantidad['cantidad_col'], $row_presen['presentacion_col'], $row_unidades['cantidad_col'], $row_medida['medida_col']);
                     ?>
                   </td>
 

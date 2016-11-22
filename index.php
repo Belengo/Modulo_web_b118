@@ -147,8 +147,8 @@
                                             </div>
 
                                             <div class="form-group"><label id="colorletra" for="dateNac" align="left">Fecha de nacimiento:</label>
-                                              <div class='input-group date' id='datetimepicker10'>
-                                                  <input type='text' class="form-control"  placeholder="YYYY/MM/DD" />
+                                              <div class='input-group date' id='datetimepicker10' name="txtfechaNac">
+                                                  <input type='text' class="form-control"  placeholder="YYYY-MM-DD" name="txtfechaNac" />
                                                   <span class="input-group-addon">
                                                       <span class="glyphicon glyphicon-calendar">
                                                       </span>
@@ -248,7 +248,7 @@
             <h1 id="colorletra">Chibil</h1>
           </div>
           <div class="-inner-cover">
-            <p class="lead" id="colorletra">Bienvenido y Bienvenida a Chibil la herramienta web que auxiliar en el monitoreo a pacientes con epilepsia haciendo uso del dispositivo vestible Chibil.</p>
+            <p class="lead" id="colorletra">Bienvenido y Bienvenida a Chibil la herramienta web auxiliar en el monitoreo a pacientes con epilepsia haciendo uso del dispositivo vestible Chibil.</p>
         </div><!--div-->
           
       </div> <!-- div-cover-container-->
@@ -375,6 +375,7 @@ if (isset($_POST["btnRegistrar"])) {
         $sexo = getSexo();          //persona_tb
         $telpersonal = getTelpersonal(); //persona_tb
         $correo = getCorreo();    //persona_tb
+        $fecha_nac = getFecha();
         //DIRECCION
         $calle = getCalle();        //direccion_tb
         $num = getNum();        //direccion_tb
@@ -406,8 +407,7 @@ if (isset($_POST["btnRegistrar"])) {
           } else {
 
             $secret_pssw = password_hash($contrasena, PASSWORD_BCRYPT);
-              $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo'); ";
-            //mysql_query($conexion, $nueva_persona);
+              $nueva_persona = "INSERT INTO $table_persona (nombre_col, apellidouno_col, apellidodos_col, telpersonal_col, correo_col, sexo_col, fechanac_col) VALUES ('$nombre', '$apellidouno', '$apellidodos', '$telpersonal', '$correo', '$sexo', '$fecha_nac'); ";
               if ($conexion->query($nueva_persona) === TRUE) {
               $last_id = $conexion->insert_id;
                 //echo "<script type=\"text/javascript\">alert(\"$last_id\");</script>";        

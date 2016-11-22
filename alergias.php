@@ -17,14 +17,15 @@ include("mensajes.php");
 
       $topicas= getSustanciaTopica();
       $notasalergias = getNotasAlergias();
+      $anticonvulsivos = getAnticonvulsivos();
   
 
 
-      $nuevo_heredofam = "INSERT INTO $table_alergias(fecha_col, susTopicas_col, notasAlergia_col, Paciente_tb_id_paciente) VALUES ('$fecha_actual', '$topicas', '$notasalergias', $id_paciente);";
+      $nuevo_alergia= "INSERT INTO $table_alergias(fecha_col, susTopicas_col, notasAlergia_col, Paciente_tb_id_paciente, Antiepilepticoalergia_col) VALUES ('$fecha_actual', '$topicas', '$notasalergias', $id_paciente, '$anticonvulsivos');";
 
-      //echo "<script type=\"text/javascript\">alert(\"$nuevo_heredofam\");</script>";
+      
        
-      if (($conexion -> query($nuevo_heredofam) === TRUE)){
+      if (($conexion -> query($nuevo_alergia) === TRUE)){
         echo "<script type=\"text/javascript\">alert(\"$MensajeGuardadoCorrectamente\");</script>";
          echo '<script>window.location ="historiaclinica.php" </script>';
       } 

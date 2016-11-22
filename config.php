@@ -48,13 +48,12 @@ $catalogo_presentacionMedic = "Presentacionmedic_cat";
 	
 
 //Historia Clínica
-$table_historiaclinica = "HistoriaClinica_tb";
 $table_diagnostico = "Diagnóstico_tb";
 $table_antecedentesHeredo = "AntecedentesHeredoFam_tb";
 $table_antecedentesPatologicos = "AntecedentesPatologicos_tb";
 $table_antecedentesNopatologicos = "AntecedentesNoPatologicos_tb";
 $table_alergias = "Alergias_tb";
-$table_alergias_antiepilepticos = "Alergias_tb_has_SustanciaActiva_cat";
+
 
 
 

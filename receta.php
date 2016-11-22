@@ -19,7 +19,7 @@ include('config.php');
 <!-- Librería jQuery requerida por los plugins de JavaScript -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <!-- Todos los plugins JavaScript de Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="jvs/functions.js">
 
 </script> 
@@ -64,9 +64,10 @@ include('config.php');
 	</div>  <!--Recetas-->
 
 	<div class="table-responsive" id="little_margin" >
-	    <table id="target" class="table table-bordered table-hover">
+	    <table id="target" class="table table-hover">
 	      	<thead>
 		        <tr>
+              <th>&nbsp;</th>
 		          <th>Sustancia Activa</th>
 		          <th>Presentación</th>
 		          <th>Dosis</th>
@@ -86,7 +87,7 @@ include('config.php');
 <div class="container"> <!-- contenedor botones -->
   <div class="row" id="little_margin">
   	<div class="col-xs-4">
-      <form action="guardar_receta.php" method="POST"> 
+      <form onsubmit="savePurchase(event)" method="POST"> 
         <input type="submit" class="botonguardar" value="" name="guardar_receta"></input>
         <input type="hidden" name="id_paciente" value="<?php echo $id_pac ?>" width="30" height="30" >
         </input> 
@@ -139,7 +140,7 @@ include('config.php');
               <table id="source" class="table table-fixed table-hover">
                 <thead id="colorletra">
                   <tr>
-                    <th>&nbsp;</th>
+                    <th>id</th>
                     <th>Sustancia Activa</th>
                     <th>Presentacion</th>
                     <th>&nbsp;</th>
@@ -150,7 +151,7 @@ include('config.php');
                       $row = mysqli_fetch_array($selec_med);
                       //while($row = mysqli_fetch_array($selec_pac)){ ?>
                     <tr>
-                      <td>&nbsp;</td>
+                      <td><p class="id_med"><?php printf("%d", $row['id_medicamento']); ?> </p></td>
                       <td><?php 
                         $idsustancia = $row['sustanciaActiva_cat_id_sustanciaActiva'];
                         $nombresust = "SELECT nombre_col FROM $catalogo_sustanciaActiva WHERE id_sustanciaActiva =$idsustancia ;";

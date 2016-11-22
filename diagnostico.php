@@ -2,11 +2,13 @@
 session_start();
 include("config.php");
 include("captura_diagnostico.php");
+include("mensajes.php");
 
+$id_paciente = $_SESSION['paciente'];
 
+  
       //Mensajes
-       $MensajeGuardadoCorrectamente = "Se ha guardado correctamente";
-
+      
      //Generar fecha.
         $date = "SELECT NOW() as 'fecha'";
         $res_date = $conexion -> query($date);
@@ -15,7 +17,7 @@ include("captura_diagnostico.php");
         //echo "<script type=\"text/javascript\">alert(\"$fecha_actual\");</script>";
 
       //id_paciente  
-        $id_paciente = $_SESSION['paciente'];
+        
         //echo "<script type=\"text/javascript\">alert(\"$id_paciente\");</script>";
 
       $motivoConsulta  = getMotivo();
@@ -31,6 +33,9 @@ include("captura_diagnostico.php");
         echo "<script type=\"text/javascript\">alert(\"$MensajeGuardadoCorrectamente\");</script>";
          echo '<script>window.location ="historiaclinica.php" </script>';
       } 
+ 
+
+
 
 ?>
 

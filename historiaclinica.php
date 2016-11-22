@@ -105,10 +105,10 @@ include("config.php");
           <div class="row" id="border">
             <div class="col-xs-3"></div>
             <div class="col-xs-3">
-              <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnModificarDiagnostico" type="submit">Modificar</button>
+              <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnModificarDiagnostico" name="btnModificarDiagnostico" type="submit" > Modificar</button>
             </div> 
             <div class="col-xs-3">
-                <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnGuardarDiagnostico" type="submit">Guardar </button>
+                <button class="btn btn-lg btn-primary btn-block" id="colorfondo" id="btnGuardarDiagnostico" name="btnGuardarDiagnostico" type="submit">Guardar </button>
             </div> 
             <div class="col-xs-3"></div>
           </div>

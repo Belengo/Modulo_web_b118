@@ -72,6 +72,7 @@ include('rutas.php')
         <table id="colorletra" class="table table-fixed" >
           <thead>
             <tr style="font-weight:bold" align="center">
+              <td> </td>
               <td class="col-xs-4"><img class="img-thumbnail" src= "imgs/id-card.svg" width="40" height="40" ></img></td> 
               <td class="col-xs-4"><img class="img-thumbnail" src= "imgs/phone-receiver.svg" width="40" height="40" > </img></td>
               <td class="col-xs-4"><img class="img-thumbnail" src="imgs/email.svg" width="40" height="40" ></img></td>
@@ -83,6 +84,7 @@ include('rutas.php')
                 $row = mysqli_fetch_array($selec_pac);
                  //while($row = mysqli_fetch_array($selec_pac)){ ?>
                 <tr>
+
                   <td class="col-xs-4" id="colorletra" >
                     <?php  
                       printf( "%s %s %s", $row['nombre_col'], $row['apellidouno_col'], $row['apellidodos_col']); ?>
@@ -93,7 +95,9 @@ include('rutas.php')
                   <td class="col-xs-4" id="colorletra"> <?php
                       printf( "%s", $row['correo']); ?>
                   </td>
+
                   <td class="col-xs-1" id="colorletra"> 
+                    
                     <form action="pag_paciente.php" method="POST">
                     <input type="hidden" name="correo_paciente" value="<?php echo $row['correo'] ?>" width="3" height="3" >
                     <input class="botoncontacto" value="" type="submit" name="ver"></input>  
@@ -117,7 +121,13 @@ include('rutas.php')
 </div> <!-- container margin top =5%-->
 
 
+<?php
+
+
+?>
+
 
 </body>
 </html>
+
 

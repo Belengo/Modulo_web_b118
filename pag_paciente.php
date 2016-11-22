@@ -28,7 +28,7 @@ include('config.php');
 
 
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 3%">
 
     <div class="row">
       <div class="col-xs-12">
@@ -41,8 +41,7 @@ include('config.php');
   
 <div class="container-fluid" align="center" >
             <?php 
-            //RECIBE DATO (CORREO PACIENTE)
-          //  $id_paciente = $_SESSION['paciente'];
+            //RECIBE DATO (CORREO PACIENTE);
             $correo_pac = $_POST['correo_paciente'];
            //CONSULTA ID
               $id_pac = "SELECT id_persona FROM $table_persona WHERE correo_col='$correo_pac';";
@@ -61,7 +60,9 @@ include('config.php');
                 $res_diagnostico = $conexion -> query($diagnostico);
                 $row_res_diagnostico = $res_diagnostico -> fetch_array(MYSQLI_ASSOC);
             //consulta a tabla alergias
-                $alergias = "SELECT * FROM $table_diagnostico WHERE Paciente_tb_id_Paciente = '$id_paciente' group by fecha_col order by fecha_col DESC LIMIT 1;"
+                $alergias = "SELECT Antiepilepticoalergia_col FROM $table_alergias WHERE Paciente_tb_id_Paciente = '$id_paciente' group by fecha_col order by fecha_col DESC LIMIT 1;";
+                $res_alergias = $conexion -> query($alergias);
+                $row_res_alergia = $res_alergias -> fetch_array(MYSQLI_ASSOC);
             ?>
     
     <div class="row" id="colorletra" align="left"><!--Contenedor datos pac-->
@@ -78,7 +79,7 @@ include('config.php');
       </div>
       <div class="col-xs-12 col-md-4" id="caja"><br /> <h7> Alergias Antipilépticos:</h7> <h4 align="center" />
         <?php
-          echo $row_res_alergia['antiepilepticos'];
+          echo $row_res_alergia['Antiepilepticoalergia_col'];
         ?> 
       </div>
     </div> <!--Contenedor datos pacientes-->
@@ -88,10 +89,19 @@ include('config.php');
 
         <div class="container-fluid" " > <!--Contenedor botones pac-->
 
+          <div class="row">
+            <div class="col-xs-4" id="img_paddin">
+              <form action="Perfil_Pac.php" method="POST">
+                <input class="botoncerebro" value="" type="submit" name="receta"></input><P id="colorletra">PERFIL</P>
+                <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
+                </input> 
+                </form>
+            </div>
+          </div>
           <div class="row"> <!--HistoriaClinica-->
-            <div class="col-xs-4">
+            <div class="col-xs-4" id="img_paddin">
               <form action="historiaclinica.php" method="POST">
-              <input type="submit" class="botonclinica" value="" name="historiaclinica"></input>HISTORIA CLÍNICA
+              <input type="submit" class="botonclinica" value="" name="historiaclinica"></input><P id="colorletra">HISTORIA CLÍNICA</P>
               <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
               </input> 
               </form> 
@@ -99,9 +109,9 @@ include('config.php');
           </div> <!--HistoriaClinica-->
 
           <div class="row">  <!--Receta-->
-            <div class="col-xs-4">
+            <div class="col-xs-4" id="img_paddin">
               <form action="receta.php" method="POST">
-              <input class="botonnuevareceta" value="" type="submit" name="historiaclinica"></input> RECETA
+              <input class="botonnuevareceta" value="" type="submit" name="receta"></input> <P id="colorletra">RECETA</P>
               <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
               </input> 
               </form>
@@ -109,10 +119,10 @@ include('config.php');
           </div> <!--Receta-->          
 
 
-          <div class="row">  <!--Vestible-->
-            <div class="col-xs-4">
+          <div class="row" >  <!--Vestible-->
+            <div class="col-xs-4" id="img_paddin">
               <form action="vestible.php" method="POST">
-              <input class="botonvestible" value="" type="submit" name="historiaclinica"></input> VESTIBLE
+              <input class="botonvestible" value="" type="submit" name="vestible"></input> <P id="colorletra">VESTIBLE</P>
               <input type="hidden" name="correo_paciente" value="<?php echo $correo_pac ?>" width="30" height="30" >
               </input> 
               </form>
@@ -127,35 +137,28 @@ include('config.php');
 
           <div class="row" id="container_margin" > <!-- DX -->
             <div class="col-xs-6" id="caja1">
-              <h7 id="colorletra">
+              <h4 id="colorletra">
                 <?php 
                   echo "Dx. ".$row_res_diagnostico["padecimientoActual_col"];
                 ?>   
-              </p></h7>           
+              </p></h4>           
             </div>
            </div>  <!-- DX -->
 
-          <div class="row" id="container_margin"> <!-- TRATAMIENTO ACTUAL -->
+          <div class="row" id="container_margin" style="margin-top: 5%"> <!-- TRATAMIENTO ACTUAL -->
             <div class="col-xs-6" id="caja1" name="TRATAMIENTO">
-              <h7 id="colorletra"><p>  TRATAMIENTO ACTUAL
+              <h4 id="colorletra">  TRATAMIENTO ACTUAL
                 <?php 
                   /*echo "Dx. ".$row_res_ultima_fecha['padecimientoActual_col'];*/
                 ?>   
-              </p></h7>           
+              </p></h4>           
             </div>
           </div>  <!-- TRATAMIENTO ACTUAL -->
-          <div class="row"  id="container_margin">  <!-- COMBINACIONES TRATAMIENTO -->
-            <div class="col-xs-6" id="caja1">
-              <h7 id="colorletra"><p> COMBINACIONES DE TRATAMIENTOS 
-                <?php 
-                  /*echo "Dx. ".$row_res_ultima_fecha['combinciones_col'];*/
-                ?>   
-              </p></h7>           
-            </div>
-          </div>  <!-- COMBINACIONES TRATAMIENTO -->
+
         </div> <!--contenedor datos DX trata y cobinaciones de tratamientos previos-->
       </div> <!-- div class="col-xs-8"> -->
     </div> <!--ROW  -->
+
 
 
 

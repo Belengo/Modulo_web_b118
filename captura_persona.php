@@ -24,4 +24,8 @@
  	function getCorreo(){
  		return $_POST['txtCorreo'];
  	} 
+
+ 	function getFecha(){
+ 		return $_POST['txtfechaNac'];
+ 	} 
 ?>
